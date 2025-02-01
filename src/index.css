@@ -53,6 +53,36 @@
   }
 }
 
+.glass-card {
+  @apply bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl border border-white border-opacity-20 shadow-xl;
+}
+
+.planet-card {
+  @apply relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:scale-105;
+}
+
+/* Stars Animation */
+.stars {
+  background: #000 url(/stars.png) repeat top center;
+  z-index: 0;
+}
+
+.twinkling {
+  background: transparent url(/twinkling.png) repeat top center;
+  animation: move-twinkle 200s linear infinite;
+  z-index: 1;
+}
+
+@keyframes move-twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+/* Quiz transitions */
 .fade-enter {
   opacity: 0;
 }
@@ -69,12 +99,4 @@
 .fade-exit-active {
   opacity: 0;
   transition: opacity 300ms ease-in;
-}
-
-.glass-card {
-  @apply bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl border border-white border-opacity-20 shadow-xl;
-}
-
-.planet-card {
-  @apply relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:scale-105;
 }
