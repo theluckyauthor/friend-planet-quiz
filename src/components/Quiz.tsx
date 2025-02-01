@@ -3,77 +3,155 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
 
 const questions = [
   {
-    question: "How did you meet your friend?",
+    question: "How often do you talk to this friend?",
     options: [
-      "Through mutual friends",
-      "At school/work",
-      "Online",
-      "By chance/randomly",
+      "Every day 🌞",
+      "A few times a week 📅",
+      "A few times a month 📆",
+      "Occasionally, when something comes up ☄️",
+      "Rarely, but we always pick up where we left off 🌌",
     ],
   },
   {
-    question: "What's your favorite activity together?",
+    question: "How do you feel after hanging out or talking to this friend?",
     options: [
-      "Deep conversations",
-      "Adventure and exploration",
-      "Relaxing and chilling",
-      "Creative projects",
+      "Energized and deeply connected 💖",
+      "Happy and comfortable 😊",
+      "It's fun, but we don't go too deep 😆",
+      "It depends on the situation 🤷‍♂️",
+      "Nostalgic—we don't talk much anymore but have history ⏳",
     ],
   },
   {
-    question: "How do you handle disagreements?",
+    question: "How long have you known this friend?",
     options: [
-      "Talk it out immediately",
-      "Need some space first",
-      "Compromise quickly",
-      "Rarely disagree",
+      "My whole life or close to it 🌞",
+      "Many years—solid history 💡",
+      "A couple of years, but we bonded quickly ⏳",
+      "A recent friendship! ⏩",
+      "We had a phase of being close, but now we've drifted 🪐",
     ],
   },
-  // Add more questions here
+  {
+    question: "What's your usual way of interacting?",
+    options: [
+      "Deep one-on-one convos about everything 🗣️",
+      "Hanging out in small groups 🎭",
+      "We mostly see each other at events or group settings 🎉",
+      "We text/meme each other more than we meet IRL 📱😂",
+      "Just occasional check-ins here and there 📞",
+    ],
+  },
+  {
+    question: "If something important happens in your life, how likely are you to tell this friend?",
+    options: [
+      "Immediately—they're one of the first people I tell 🚀",
+      "Pretty soon, but not always first 📣",
+      "If it comes up naturally in conversation 🤔",
+      "Probably wouldn't bring it up unless they asked 🕵️‍♂️",
+      "They wouldn't be the first to know, but I'd tell them eventually 📜",
+    ],
+  },
+  {
+    question: "What kind of support do you expect from this friend?",
+    options: [
+      "Emotional support, deep convos, and life advice 💙",
+      "Fun and adventure—they make life exciting! 🎢",
+      "Someone to chill and share good vibes with 🎶",
+      "A reliable presence, even if we don't talk all the time 🌙",
+      "We don't really rely on each other much anymore 🚀",
+    ],
+  },
+  {
+    question: "If you and this friend planned a trip together, what would it look like?",
+    options: [
+      "A deep bonding experience—just us exploring together 🏕️",
+      "A fun adventure with a small, close-knit group 🏝️",
+      "A huge group trip with lots of social energy 🎡",
+      "We'd probably just send memes about planning a trip but never actually go 😂",
+      "We used to do stuff like this, but not anymore 🛰️",
+    ],
+  },
+  {
+    question: "How do you handle conflicts with this friend?",
+    options: [
+      "We talk it out openly and honestly 💬",
+      "We give each other space, then resolve it when ready 🌍",
+      "We avoid drama and let things slide 😅",
+      "We rarely fight, but when we do, it's intense 🌀",
+      "If there's conflict, we just drift apart 🚶‍♂️",
+    ],
+  },
+  {
+    question: "What's the most likely way you and this friend will interact in the future?",
+    options: [
+      "We'll always be in each other's lives, no question 🔥",
+      "We'll stay connected, even if it's not super frequent 🌐",
+      "We'll probably keep it casual, meeting up when we can 🚗",
+      "Not sure—it depends on life's direction 🛤️",
+      "We may not talk much, but the memories will always be there 📸",
+    ],
+  },
+  {
+    question: "Describe your friendship in a few words!",
+    isOpenEnded: true,
+  },
 ];
 
 export const Quiz = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
+  const [answers, setAnswers] = useState<(number | string)[]>([]);
+  const [description, setDescription] = useState("");
   
   const { name, friendName } = location.state || {};
   
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   const handleAnswer = (answerIndex: number) => {
-    const newAnswers = [...answers, answerIndex];
+    const newAnswers = [...answers];
+    newAnswers[currentQuestion] = answerIndex;
     setAnswers(newAnswers);
     
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-      // Calculate result based on answers
-      navigate("/result", { 
-        state: { 
-          name, 
-          friendName, 
-          planetType: calculatePlanetType(newAnswers) 
-        } 
-      });
     }
   };
 
-  const calculatePlanetType = (answers: number[]) => {
-    // Simple algorithm - can be made more sophisticated
-    const sum = answers.reduce((a, b) => a + b, 0);
-    if (sum <= 4) return "earth";
-    if (sum <= 8) return "mars";
-    if (sum <= 12) return "venus";
-    return "jupiter";
+  const handleDescriptionSubmit = () => {
+    const newAnswers = [...answers, description];
+    navigate("/result", { 
+      state: { 
+        name, 
+        friendName, 
+        planetType: calculatePlanetType(newAnswers),
+        description
+      } 
+    });
   };
 
+  const calculatePlanetType = (answers: (number | string)[]) => {
+    // Calculate average score excluding the last open-ended answer
+    const numericAnswers = answers.slice(0, -1) as number[];
+    const sum = numericAnswers.reduce((a, b) => a + b, 0);
+    const avg = sum / numericAnswers.length;
+
+    // Map average score to planet types
+    if (avg < 1.5) return "earth"; // Very close friendship
+    if (avg < 2.5) return "venus"; // Warm and harmonious
+    if (avg < 3.5) return "mars"; // Dynamic and adventurous
+    return "jupiter"; // Distant or evolving
+  };
+
+  const currentQ = questions[currentQuestion];
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
         <div className="space-y-4">
           <Progress value={progress} className="w-full" />
@@ -83,21 +161,39 @@ export const Quiz = () => {
         </div>
 
         <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-center">
-            {questions[currentQuestion].question}
+          <h2 className="text-2xl font-semibold text-center text-white">
+            {currentQ.question}
           </h2>
           
           <div className="grid gap-4">
-            {questions[currentQuestion].options.map((option, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                className="w-full text-left justify-start h-auto p-4 hover:bg-primary/10"
-                onClick={() => handleAnswer(index)}
-              >
-                {option}
-              </Button>
-            ))}
+            {currentQ.isOpenEnded ? (
+              <div className="space-y-4">
+                <Textarea
+                  placeholder="Share your thoughts..."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="min-h-[100px]"
+                />
+                <Button
+                  onClick={handleDescriptionSubmit}
+                  className="w-full"
+                  disabled={!description.trim()}
+                >
+                  Complete Quiz
+                </Button>
+              </div>
+            ) : (
+              currentQ.options?.map((option, index) => (
+                <Button
+                  key={index}
+                  variant="outline"
+                  className="w-full text-left justify-start h-auto p-4 hover:bg-primary/10 text-white border-white/20"
+                  onClick={() => handleAnswer(index)}
+                >
+                  {option}
+                </Button>
+              ))
+            )}
           </div>
         </div>
       </Card>
