@@ -8,6 +8,7 @@ import { calculatePlanetType } from "@/utils/quizScoring";
 import { trackQuizStart, trackQuizCompletion } from "@/utils/analytics";
 import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 const questions = [
   {
@@ -113,11 +114,32 @@ export const Quiz = () => {
   const [answers, setAnswers] = useState<(number | string)[]>([]);
   const [description, setDescription] = useState("");
   
-  // Get comparison ID from URL if it exists
+  // Get data from URL if it exists
   const searchParams = new URLSearchParams(window.location.search);
-  const comparisonId = searchParams.get('compare');
+  const encodedData = searchParams.get('data');
   
-  const { name, friendName } = location.state || {};
+  // Get the original quiz result if this is a comparison
+  const originalResult = React.useMemo(() => {
+    if (!encodedData) return null;
+    try {
+      return JSON.parse(atob(encodedData));
+    } catch (error) {
+      console.error("Failed to decode share data", error);
+      return null;
+    }
+  }, [encodedData]);
+
+  // If this is a comparison quiz, update the friend's name
+  useEffect(() => {
+    if (originalResult && !location.state?.friendName) {
+      navigate("/", { 
+        state: { 
+          comparisonData: originalResult,
+          friendName: originalResult.n // original sharer's name
+        }
+      });
+    }
+  }, [originalResult, location.state?.friendName, navigate]);
 
   // Start tracking when quiz begins
   useEffect(() => {
@@ -186,46 +208,32 @@ export const Quiz = () => {
     // Track quiz completion
     trackQuizCompletion(planetType);
     
-    // Generate unique ID for this result
     const resultId = crypto.randomUUID();
     
-    // Store result in localStorage
-    const result = {
-      id: resultId,
-      name,
-      friendName,
+    // If this is a comparison, include both results
+    const navigationState = originalResult ? {
+      resultId,
+      name: location.state?.name,
+      friendName: originalResult.n,
       planetType,
       description,
-      answers, // Store answers for potential future analysis
-      timestamp: new Date().toISOString()
+      comparisonResult: {
+        name: originalResult.n,
+        friendName: originalResult.fn,
+        planetType: originalResult.pt,
+        description: originalResult.d
+      }
+    } : {
+      resultId,
+      name: location.state?.name,
+      friendName: location.state?.friendName,
+      planetType,
+      description
     };
     
-    localStorage.setItem(`quiz_result_${resultId}`, JSON.stringify(result));
-    
-    // If this is a comparison quiz, store the connection
-    if (comparisonId) {
-      localStorage.setItem(`quiz_comparison_${comparisonId}`, resultId);
-    }
-    
     // Navigate to results page
-    navigate("/result", { 
-      state: { 
-        resultId,
-        comparisonId,
-        name, 
-        friendName, 
-        planetType,
-        description
-      } 
-    });
+    navigate("/result", { state: navigationState });
   };
-
-  // Redirect if missing required data
-  useEffect(() => {
-    if (!name || !friendName) {
-      navigate("/");
-    }
-  }, [name, friendName, navigate]);
 
   const currentQ = questions[currentQuestion];
 
@@ -282,26 +290,17 @@ export const Quiz = () => {
                   ))}
                 </div>
                 
-                <div className="flex justify-between gap-4 mt-6">
-                  <Button
-                    onClick={handlePreviousQuestion}
-                    disabled={currentQuestion === 0}
-                    variant="outline"
-                    className="bg-white/10 hover:bg-white/20 text-white border-white/20"
-                  >
-                    Previous
-                  </Button>
-                  
-                  {currentQuestion < questions.length - 1 && (
+                {currentQuestion > 0 && (
+                  <div className="flex justify-start mt-6">
                     <Button
-                      onClick={handleNextQuestion}
-                      disabled={answers[currentQuestion] === undefined}
+                      onClick={handlePreviousQuestion}
+                      variant="outline"
                       className="bg-white/10 hover:bg-white/20 text-white border-white/20"
                     >
-                      Next
+                      Previous Question
                     </Button>
-                  )}
-                </div>
+                  </div>
+                )}
               </>
             )}
           </div>
