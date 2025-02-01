@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -114,37 +114,40 @@ function generateUID(): string {
 
 export const Quiz = () => {
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<(number | string)[]>([]);
   const [description, setDescription] = useState("");
   
-  // Get data from URL if it exists
-  const searchParams = new URLSearchParams(window.location.search);
+  // Get data from URL if it exists (for direct comparison)
   const encodedData = searchParams.get('data');
   
-  // Get the original quiz result if this is a comparison
-  const originalResult = React.useMemo(() => {
-    if (!encodedData) return null;
-    try {
-      return JSON.parse(atob(encodedData));
-    } catch (error) {
-      console.error("Failed to decode share data", error);
-      return null;
-    }
-  }, [encodedData]);
-
-  // If this is a comparison quiz, update the friend's name
   useEffect(() => {
-    if (originalResult && !location.state?.friendName) {
-      navigate("/", { 
-        state: { 
-          comparisonData: originalResult,
-          friendName: originalResult.n // original sharer's name
+    if (encodedData) {
+      try {
+        const comparisonData = JSON.parse(atob(encodedData));
+        // Set up the quiz state for comparison
+        const quizState = {
+          name: "", // Will be filled by user
+          friendName: comparisonData.n,
+          originalResult: {
+            n: comparisonData.n,
+            fn: comparisonData.fn,
+            pt: comparisonData.pt,
+            d: comparisonData.d
+          }
+        };
+        // If we don't have a state yet, set it up
+        if (!location.state) {
+          navigate("", { state: quizState, replace: true });
         }
-      });
+      } catch (error) {
+        console.error("Failed to parse comparison data", error);
+        navigate("/");
+      }
     }
-  }, [originalResult, location.state?.friendName, navigate]);
+  }, [encodedData, navigate, location.state]);
 
   // Start tracking when quiz begins
   useEffect(() => {
@@ -215,29 +218,35 @@ export const Quiz = () => {
     
     const resultId = generateUID();
     
-    // If this is a comparison, include both results
-    const navigationState = location.state?.originalResult ? {
-      resultId,
-      name: location.state.name,
-      friendName: location.state.originalResult.n,
-      planetType,
-      description,
-      comparisonResult: {
-        name: location.state.originalResult.n,
-        friendName: location.state.originalResult.fn,
-        planetType: location.state.originalResult.pt,
-        description: location.state.originalResult.d
-      }
-    } : {
-      resultId,
-      name: location.state.name,
-      friendName: location.state.friendName,
-      planetType,
-      description
-    };
-    
-    // Navigate to results page
-    navigate("/result", { state: navigationState });
+    // If this is a comparison quiz, navigate to comparison results
+    if (location.state?.originalResult) {
+      navigate("/compare-results", {
+        state: {
+          resultId,
+          name: location.state.name,
+          friendName: location.state.originalResult.n,
+          planetType,
+          description,
+          comparisonResult: {
+            name: location.state.originalResult.n,
+            friendName: location.state.originalResult.fn,
+            planetType: location.state.originalResult.pt,
+            description: location.state.originalResult.d
+          }
+        }
+      });
+    } else {
+      // Regular result navigation
+      navigate("/result", {
+        state: {
+          resultId,
+          name: location.state.name,
+          friendName: location.state.friendName,
+          planetType,
+          description
+        }
+      });
+    }
   };
 
   const currentQ = questions[currentQuestion];
