@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
+import { calculatePlanetType } from "@/utils/quizScoring";
 
 const questions = [
   {
@@ -125,27 +126,16 @@ export const Quiz = () => {
 
   const handleDescriptionSubmit = () => {
     const newAnswers = [...answers, description];
+    const planetType = calculatePlanetType(newAnswers);
+    
     navigate("/result", { 
       state: { 
         name, 
         friendName, 
-        planetType: calculatePlanetType(newAnswers),
+        planetType,
         description
       } 
     });
-  };
-
-  const calculatePlanetType = (answers: (number | string)[]) => {
-    // Calculate average score excluding the last open-ended answer
-    const numericAnswers = answers.slice(0, -1) as number[];
-    const sum = numericAnswers.reduce((a, b) => a + b, 0);
-    const avg = sum / numericAnswers.length;
-
-    // Map average score to planet types
-    if (avg < 1.5) return "earth"; // Very close friendship
-    if (avg < 2.5) return "venus"; // Warm and harmonious
-    if (avg < 3.5) return "mars"; // Dynamic and adventurous
-    return "jupiter"; // Distant or evolving
   };
 
   const currentQ = questions[currentQuestion];
