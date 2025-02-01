@@ -1,4 +1,16 @@
-export type PlanetType = 'Mercury' | 'Venus' | 'Earth' | 'Mars' | 'Jupiter' | 'Saturn' | 'Uranus' | 'Neptune';
+export type PlanetType = 
+  | 'sun' 
+  | 'mercury' 
+  | 'venus' 
+  | 'earth' 
+  | 'mars' 
+  | 'jupiter' 
+  | 'saturn' 
+  | 'uranus' 
+  | 'neptune' 
+  | 'pluto' 
+  | 'moon' 
+  | 'comet';
 
 interface QuizAnalytics {
   startTime: Date;

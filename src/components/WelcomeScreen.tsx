@@ -1,20 +1,25 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Stars } from "lucide-react"
 
-export default function Home() {
+export const WelcomeScreen = () => {
   const [userName, setUserName] = useState("")
   const [friendName, setFriendName] = useState("")
-  const router = useRouter()
+  const navigate = useNavigate()
 
   const handleStartQuiz = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push(`/quiz?user=${encodeURIComponent(userName)}&friend=${encodeURIComponent(friendName)}`)
+    navigate("/quiz", { 
+      state: { 
+        name: userName, 
+        friendName 
+      }
+    })
   }
 
   return (
