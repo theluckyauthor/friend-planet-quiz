@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+ 
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -37,31 +37,11 @@
   }
 }
 
-.floating {
-  animation: floating 3s ease-in-out infinite;
-}
-
-@keyframes floating {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
+/* Custom animations and styles */
 .glass-card {
   @apply bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl border border-white border-opacity-20 shadow-xl;
 }
 
-.planet-card {
-  @apply relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:scale-105;
-}
-
-/* Stars Animation */
 .stars {
   background: #000 url(/stars.png) repeat top center;
   z-index: 0;
@@ -74,29 +54,17 @@
 }
 
 @keyframes move-twinkle {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 5000px;
-  }
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
 }
 
-/* Quiz transitions */
-.fade-enter {
-  opacity: 0;
+/* Additional animations */
+.floating {
+  animation: floating 3s ease-in-out infinite;
 }
 
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in;
-}
-
-.fade-exit {
-  opacity: 1;
-}
-
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 300ms ease-in;
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }

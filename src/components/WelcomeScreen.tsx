@@ -1,28 +1,21 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
-import { Stars } from "lucide-react";
+"use client"
 
-export const WelcomeScreen = () => {
-  const [name, setName] = useState("");
-  const [friendName, setFriendName] = useState("");
-  const navigate = useNavigate();
-  const { toast } = useToast();
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Stars } from "lucide-react"
 
-  const handleStart = () => {
-    if (!name || !friendName) {
-      toast({
-        title: "Please fill in both names",
-        description: "We need to know who's taking the quiz!",
-        variant: "destructive",
-      });
-      return;
-    }
-    navigate("/quiz", { state: { name, friendName } });
-  };
+export default function Home() {
+  const [userName, setUserName] = useState("")
+  const [friendName, setFriendName] = useState("")
+  const router = useRouter()
+
+  const handleStartQuiz = (e: React.FormEvent) => {
+    e.preventDefault()
+    router.push(`/quiz?user=${encodeURIComponent(userName)}&friend=${encodeURIComponent(friendName)}`)
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black overflow-hidden relative">
@@ -32,7 +25,7 @@ export const WelcomeScreen = () => {
         <div className="twinkling absolute inset-0" />
       </div>
       
-      <Card className="glass-card w-full max-w-md p-8 space-y-8 relative z-10">
+      <div className="glass-card w-full max-w-md p-8 space-y-8 relative z-10">
         <div className="space-y-2 text-center">
           <div className="flex justify-center mb-4">
             <Stars className="w-12 h-12 text-primary animate-pulse" />
@@ -44,38 +37,45 @@ export const WelcomeScreen = () => {
             Discover your cosmic friendship connection
           </p>
         </div>
-        
-        <div className="space-y-4">
+
+        <form onSubmit={handleStartQuiz} className="space-y-4">
           <div className="space-y-2">
+            <Label htmlFor="userName" className="text-white">Your Name</Label>
             <Input
-              placeholder="Your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              type="text"
+              id="userName"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Enter your name"
+              required
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
           <div className="space-y-2">
+            <Label htmlFor="friendName" className="text-white">Friend's Name</Label>
             <Input
-              placeholder="Your friend's name"
+              type="text"
+              id="friendName"
               value={friendName}
               onChange={(e) => setFriendName(e.target.value)}
-              className="w-full bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              placeholder="Enter your friend's name"
+              required
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
           </div>
-        </div>
-
-        <Button 
-          onClick={handleStart}
-          className="w-full bg-primary hover:bg-primary/90 text-white group relative overflow-hidden"
-        >
-          <span className="relative z-10">Start Quiz</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-        </Button>
+          <Button 
+            type="submit"
+            className="w-full bg-primary hover:bg-primary/90 text-white group relative overflow-hidden"
+          >
+            <span className="relative z-10">Start Quiz</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </Button>
+        </form>
 
         <p className="text-xs text-center text-white/60">
           No login required • Takes only 2 minutes • Get instant results
         </p>
-      </Card>
+      </div>
     </div>
-  );
-};
+  )
+}

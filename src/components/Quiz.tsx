@@ -177,7 +177,7 @@ export const Quiz = () => {
                 <Button
                   key={index}
                   variant="outline"
-                  className="w-full text-left justify-start h-auto p-4 hover:bg-primary/10 text-white border-white/20"
+                  className="w-full text-left justify-start h-auto p-4 hover:bg-primary/20 text-white/90 border-white/40 bg-white/10"
                   onClick={() => handleAnswer(index)}
                 >
                   {option}
