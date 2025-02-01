@@ -161,7 +161,7 @@ export const CompareResults = () => {
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = `cosmic-friendship-${state.name}-${state.friendName}.png`;
+      link.download = `cosmic-friendship-${location.state.originalResult.fn}-${state.friendName}.png`;
       link.click();
 
       toast({
@@ -181,14 +181,12 @@ export const CompareResults = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <Card className="glass-card w-full max-w-4xl p-8 space-y-8">
-        {/* Display invitation message if it's a comparison quiz */}
-        {location.state?.originalResult && (
-          <div className="text-center text-white mb-4">
-            <h2 className="text-xl font-bold">
-              {location.state.friendName} has invited you, {location.state.originalResult.n}, to take this friendship quiz!
-            </h2>
-          </div>
-        )}
+        {/* Always display the invitation message */}
+        <div className="text-center text-white mb-4">
+          <h2 className="text-xl font-bold">
+            {location.state.originalResult.fn} has invited you, {location.state.originalResult.n}, to take this friendship quiz!
+          </h2>
+        </div>
 
         {/* Wrap only the content we want to capture in resultsRef */}
         <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
@@ -199,7 +197,7 @@ export const CompareResults = () => {
           <PlanetComparison 
             myPlanet={state.planetType}
             friendPlanet={state.comparisonResult.planetType}
-            myName={state.name}
+            myName={location.state.originalResult.fn}
             friendName={state.comparisonResult.name}
             myDescription={state.description}
             friendDescription={state.comparisonResult.description}

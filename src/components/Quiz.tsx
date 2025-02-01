@@ -261,7 +261,7 @@ export const Quiz = () => {
         {isComparisonQuiz && (
           <div className="text-center text-white mb-4">
             <h2 className="text-xl font-bold">
-              {location.state.name} has invited you, {location.state.originalResult.n}, to take this friendship quiz!
+              {location.state.originalResult.n} has invited you, {location.state.originalResult.fn}, to take this friendship quiz!
             </h2>
           </div>
         )}
