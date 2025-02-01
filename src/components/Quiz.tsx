@@ -107,6 +107,11 @@ const questions = [
   },
 ];
 
+// Add this helper function at the top of the file
+function generateUID(): string {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
 export const Quiz = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -208,25 +213,25 @@ export const Quiz = () => {
     // Track quiz completion
     trackQuizCompletion(planetType);
     
-    const resultId = crypto.randomUUID();
+    const resultId = generateUID();
     
     // If this is a comparison, include both results
-    const navigationState = originalResult ? {
+    const navigationState = location.state?.originalResult ? {
       resultId,
-      name: location.state?.name,
-      friendName: originalResult.n,
+      name: location.state.name,
+      friendName: location.state.originalResult.n,
       planetType,
       description,
       comparisonResult: {
-        name: originalResult.n,
-        friendName: originalResult.fn,
-        planetType: originalResult.pt,
-        description: originalResult.d
+        name: location.state.originalResult.n,
+        friendName: location.state.originalResult.fn,
+        planetType: location.state.originalResult.pt,
+        description: location.state.originalResult.d
       }
     } : {
       resultId,
-      name: location.state?.name,
-      friendName: location.state?.friendName,
+      name: location.state.name,
+      friendName: location.state.friendName,
       planetType,
       description
     };

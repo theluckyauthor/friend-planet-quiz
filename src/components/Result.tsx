@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -49,6 +49,7 @@ export const Result = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { resultId, name, friendName, planetType, description, comparisonResult } = location.state || {};
+  const [showShareUrl, setShowShareUrl] = useState(false);
 
   // Redirect if missing required data
   useEffect(() => {
@@ -66,10 +67,10 @@ export const Result = () => {
     try {
       // Create a data object with the essential information
       const shareData = {
-        n: name, // original sharer's name
-        fn: friendName, // friend's name
-        pt: planetType, // planet type
-        d: description // description
+        n: name,
+        fn: friendName,
+        pt: planetType,
+        d: description
       };
 
       // Encode the data as base64 to make it URL-safe
@@ -88,41 +89,95 @@ export const Result = () => {
           text: shareText,
           url: shareUrl
         });
-        
-        toast({
-          title: "Share sent!",
-          description: "Waiting for your friend to take the quiz"
-        });
       } else {
-        // Fallback to clipboard
-        await navigator.clipboard.writeText(shareUrl);
-        
-        toast({
-          title: "Link copied!",
-          description: "Share it with your friend to compare results",
-          action: (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(shareText + "\n\n" + shareUrl)}`, '_blank')}
-            >
-              Share on WhatsApp
-            </Button>
-          ),
-        });
+        // Show the URL for manual copying
+        setShowShareUrl(true);
       }
     } catch (error) {
       console.error("Sharing failed", error);
-      toast({
-        title: "Couldn't share",
-        description: "Please try copying the link manually",
-        variant: "destructive"
-      });
+      setShowShareUrl(true);
     }
   };
 
   const handleRetake = () => {
     navigate("/");
+  };
+
+  const getCelestialLabel = (planetType: string) => {
+    switch (planetType) {
+      case 'sun':
+        return 'Your Friendship Star';
+      case 'moon':
+        return 'Your Friendship Satellite';
+      case 'comet':
+        return 'Your Friendship';
+      default:
+        return 'Your Friendship Planet';
+    }
+  };
+
+  const getCombinedFlavor = (planet1: string, planet2: string) => {
+    const combinations: Record<string, Record<string, string>> = {
+      sun: {
+        sun: "A Radiant Bond ☀️☀️ - Two bright stars illuminating each other's lives with warmth and energy!",
+        moon: "Cosmic Balance 🌞🌙 - A perfect harmony of energy and reflection, day and night united.",
+        venus: "Warm Embrace ☀️💖 - A nurturing connection that helps both friends grow and shine.",
+        mercury: "Dynamic Duo ☀️💫 - Quick-witted exchanges that keep the friendship energized and bright.",
+        mars: "Power Pair ☀️🔥 - A high-energy bond that motivates and inspires both friends.",
+        jupiter: "Expansive Joy ☀️🌟 - A friendship that brings growth, wisdom, and endless possibilities.",
+        saturn: "Timeless Bond ☀️⭐ - A stable, enduring connection that stands the test of time.",
+        comet: "Cyclical Magic ☀️☄️ - An energizing friendship that reignites with every meeting."
+      },
+      moon: {
+        moon: "Lunar Symphony 🌙🌙 - A deeply intuitive connection where both friends understand each other without words.",
+        venus: "Gentle Tides 🌙💖 - A soothing, nurturing bond that ebbs and flows with natural rhythm.",
+        mercury: "Night Whispers 🌙💫 - Quiet conversations that bring clarity and understanding.",
+        mars: "Moonlit Adventures 🌙🔥 - A dynamic blend of reflection and action.",
+        jupiter: "Cosmic Growth 🌙🌟 - An emotionally enriching bond that helps both friends evolve.",
+        saturn: "Steady Reflection 🌙⭐ - A reliable connection grounded in emotional wisdom.",
+        comet: "Phases of Wonder 🌙☄️ - A friendship that waxes and wanes but never truly fades."
+      },
+      venus: {
+        venus: "Heart Connection 💖💖 - A deeply nurturing bond where both friends feel truly seen and valued.",
+        mercury: "Social Harmony 💖💫 - Quick to laugh, quick to care, this friendship brings joy to both.",
+        mars: "Passionate Support 💖🔥 - A dynamic friendship that combines care with motivation.",
+        jupiter: "Growing Together 💖🌟 - An expansive bond that nurtures personal growth.",
+        saturn: "Lasting Love 💖⭐ - A stable, nurturing friendship that stands the test of time.",
+        comet: "Sweet Returns 💖☄️ - A tender connection that strengthens with each reunion."
+      },
+      mercury: {
+        mercury: "Swift Spirits 💫💫 - A friendship full of wit, banter, and lightning-fast understanding.",
+        mars: "Quick Action 💫🔥 - Energetic exchanges that spark ideas and drive.",
+        jupiter: "Bright Ideas 💫🌟 - An intellectually stimulating friendship that expands horizons.",
+        saturn: "Thoughtful Bond 💫⭐ - Deep conversations that build lasting understanding.",
+        comet: "Sparking Joy 💫☄️ - Brief but brilliant exchanges that light up both lives."
+      },
+      mars: {
+        mars: "Dynamic Force 🔥🔥 - A powerhouse friendship that motivates and energizes both.",
+        jupiter: "Bold Adventures 🔥🌟 - An expansive connection that pushes boundaries together.",
+        saturn: "Steady Strength 🔥⭐ - A grounding force that channels energy into growth.",
+        comet: "Fierce Returns 🔥☄️ - An intense bond that blazes bright with each meeting."
+      },
+      jupiter: {
+        jupiter: "Cosmic Expansion 🌟🌟 - A friendship that constantly grows and brings new opportunities.",
+        saturn: "Wise Growth ⭐🌟 - Balancing expansion with stability for lasting wisdom.",
+        comet: "Joyful Returns 🌟☄️ - Each reunion brings new adventures and insights."
+      },
+      saturn: {
+        saturn: "Eternal Bond ⭐⭐ - A rock-solid friendship that grows stronger with time.",
+        comet: "Patient Love ⭐☄️ - A steady presence that welcomes each return."
+      },
+      comet: {
+        comet: "Celestial Dance ☄️☄️ - A unique rhythm of connection that creates its own orbit."
+      }
+    };
+
+    // Ensure consistent ordering of planets for lookup
+    const [first, second] = [planet1, planet2].sort();
+    
+    // Try to get the combination, fallback to default if not found
+    return combinations[first]?.[second] || 
+      `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
   };
 
   return (
@@ -135,8 +190,11 @@ export const Result = () => {
             </div>
           </div>
           <div className="space-y-2">
-            <p className="text-xl text-white/80">Your Friendship Planet is:</p>
+            <p className="text-xl text-white/80">
+              {getCelestialLabel(planetType)} is:
+            </p>
             <h1 className="text-3xl font-bold text-white">
+              {planetType === 'comet' ? 'Comet: A Cosmic ' : (planetType.charAt(0).toUpperCase() + planetType.slice(1) + ' - ')}
               {planetData[planetType as keyof typeof planetData].title}
             </h1>
           </div>
@@ -174,14 +232,23 @@ export const Result = () => {
         )}
 
         {comparisonResult ? (
-          <PlanetComparison 
-            myPlanet={planetType} 
-            friendPlanet={comparisonResult.planetType}
-            myName={name}
-            friendName={comparisonResult.name}
-            myDescription={description}
-            friendDescription={comparisonResult.description}
-          />
+          <>
+            <PlanetComparison 
+              myPlanet={planetType} 
+              friendPlanet={comparisonResult.planetType}
+              myName={name}
+              friendName={comparisonResult.name}
+              myDescription={description}
+              friendDescription={comparisonResult.description}
+            />
+            
+            <div className="space-y-4 text-center">
+              <h2 className="text-2xl font-bold text-white">Your Combined Cosmic Energy</h2>
+              <p className="text-white/90 text-lg">
+                {getCombinedFlavor(planetType, comparisonResult.planetType)}
+              </p>
+            </div>
+          </>
         ) : (
           <div className="space-y-4">
             <Button
@@ -192,6 +259,26 @@ export const Result = () => {
               <Share2 className="mr-2 h-4 w-4" />
               Share & Compare with Friend
             </Button>
+            
+            {showShareUrl && (
+              <div className="space-y-2">
+                <p className="text-center text-white/60 text-sm">
+                  Share this link with {friendName} to compare results:
+                </p>
+                <div 
+                  className="p-3 bg-white/5 rounded border border-white/10 text-white/90 text-sm break-all cursor-text"
+                  onClick={(e) => e.currentTarget.select()}
+                >
+                  {`${window.location.origin}/quiz?data=${btoa(JSON.stringify({
+                    n: name,
+                    fn: friendName,
+                    pt: planetType,
+                    d: description
+                  }))}`}
+                </div>
+              </div>
+            )}
+            
             <p className="text-center text-white/60 text-sm">
               Share this quiz with {friendName} to see how they view your friendship! 
               <span role="img" aria-label="sparkles"> ✨</span>
