@@ -134,9 +134,12 @@ export const Result = () => {
               {planetData[planetType as keyof typeof planetData].emoji}
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-white">
-            {planetData[planetType as keyof typeof planetData].title}
-          </h1>
+          <div className="space-y-2">
+            <p className="text-xl text-white/80">Your Friendship Planet is:</p>
+            <h1 className="text-3xl font-bold text-white">
+              {planetData[planetType as keyof typeof planetData].title}
+            </h1>
+          </div>
           <p className="text-muted-foreground">
             {name} & {friendName}
           </p>
