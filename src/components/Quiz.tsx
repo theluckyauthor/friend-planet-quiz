@@ -110,6 +110,10 @@ export const Quiz = () => {
   const [answers, setAnswers] = useState<(number | string)[]>([]);
   const [description, setDescription] = useState("");
   
+  // Get comparison ID from URL if it exists
+  const searchParams = new URLSearchParams(window.location.search);
+  const comparisonId = searchParams.get('compare');
+  
   const { name, friendName } = location.state || {};
   
   const progress = ((currentQuestion + 1) / questions.length) * 100;
@@ -128,8 +132,30 @@ export const Quiz = () => {
     const newAnswers = [...answers, description];
     const planetType = calculatePlanetType(newAnswers);
     
+    // Generate unique ID for this result
+    const resultId = crypto.randomUUID();
+    
+    // Store result in localStorage
+    const result = {
+      id: resultId,
+      name,
+      friendName,
+      planetType,
+      description,
+      timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem(`quiz_result_${resultId}`, JSON.stringify(result));
+    
+    // If this is a comparison quiz, store the connection
+    if (comparisonId) {
+      localStorage.setItem(`quiz_comparison_${comparisonId}`, resultId);
+    }
+    
     navigate("/result", { 
       state: { 
+        resultId,
+        comparisonId,
         name, 
         friendName, 
         planetType,

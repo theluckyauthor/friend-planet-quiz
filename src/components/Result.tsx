@@ -4,64 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Share2 } from "lucide-react";
 import { PlanetType } from "@/utils/analytics";
+import React from "react";
+import { toast } from "@/components/ui/use-toast";
+import { planetData} from "@/utils/planetData";
 
-const planetData = {
-  sun: {
-    title: "Sun Friends",
-    description: "Your friendship burns bright and warm, providing energy and light to those around you.",
-  },
-  mercury: {
-    title: "Mercury Friends",
-    description: "Quick, dynamic, and always in motion - your friendship is marked by swift communication and adaptability.",
-  },
-  venus: {
-    title: "Venus Friends",
-    description: "Your friendship is harmonious and beautiful. Like Venus, you share a deep appreciation for beauty, art, and emotional connection.",
-  },
-  earth: {
-    title: "Earth Friends",
-    description: "Your friendship is grounded and reliable, just like Earth. You provide each other with stability and support.",
-  },
-  mars: {
-    title: "Mars Friends",
-    description: "Your friendship is adventurous and energetic! Like the red planet, you share a passion for exploration.",
-  },
-  jupiter: {
-    title: "Jupiter Friends",
-    description: "Your friendship is larger than life! Like Jupiter, you bring growth and expansion to each other's lives.",
-  },
-  saturn: {
-    title: "Saturn Friends",
-    description: "Like Saturn's rings, your friendship has many layers and is uniquely beautiful.",
-  },
-  uranus: {
-    title: "Uranus Friends",
-    description: "Your friendship is unique and unconventional, following its own path.",
-  },
-  neptune: {
-    title: "Neptune Friends",
-    description: "Deep and mysterious, your friendship has spiritual and emotional depths.",
-  },
-  pluto: {
-    title: "Pluto Friends",
-    description: "Though distant at times, your friendship maintains a powerful connection.",
-  },
-  moon: {
-    title: "Moon Friends",
-    description: "Your friendship waxes and wanes but maintains a constant presence.",
-  },
-  comet: {
-    title: "Comet Friends",
-    description: "Your friendship brings excitement when paths cross, leaving lasting memories.",
-  },
-};
 
 interface ComparisonProps {
   myPlanet: PlanetType;
   friendPlanet?: PlanetType;
+  myName: string;
+  friendName: string;
 }
 
-const PlanetComparison = ({ myPlanet, friendPlanet }: ComparisonProps) => {
+const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName }: ComparisonProps) => {
   if (!friendPlanet) {
     return null;
   }
@@ -76,7 +31,7 @@ const PlanetComparison = ({ myPlanet, friendPlanet }: ComparisonProps) => {
             alt={myPlanet}
             className="w-24 h-24"
           />
-          <p className="text-white mt-2">You</p>
+          <p className="text-white mt-2">{myName}</p>
         </div>
         <div className="floating delay-75">
           <img
@@ -84,7 +39,7 @@ const PlanetComparison = ({ myPlanet, friendPlanet }: ComparisonProps) => {
             alt={friendPlanet}
             className="w-24 h-24"
           />
-          <p className="text-white mt-2">Your Friend</p>
+          <p className="text-white mt-2">{friendName}</p>
         </div>
       </div>
     </div>
@@ -94,7 +49,17 @@ const PlanetComparison = ({ myPlanet, friendPlanet }: ComparisonProps) => {
 export const Result = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { name, friendName, planetType, description } = location.state || {};
+  const { resultId, comparisonId, name, friendName, planetType, description } = location.state || {};
+
+  // Get comparison result if it exists
+  const comparisonResult = React.useMemo(() => {
+    if (!comparisonId) return null;
+    const comparedResultId = localStorage.getItem(`quiz_comparison_${comparisonId}`);
+    if (!comparedResultId) return null;
+    
+    const result = localStorage.getItem(`quiz_result_${comparedResultId}`);
+    return result ? JSON.parse(result) : null;
+  }, [comparisonId]);
 
   // Redirect if missing required data
   useEffect(() => {
@@ -109,14 +74,31 @@ export const Result = () => {
   }
 
   const handleShare = async () => {
+    // Generate a unique comparison ID
+    const newComparisonId = crypto.randomUUID();
+    
+    // Store the current result ID for comparison
+    localStorage.setItem(`quiz_comparison_${newComparisonId}`, resultId);
+    
+    const shareUrl = `${window.location.origin}/quiz?compare=${newComparisonId}`;
+    
     try {
-      await navigator.share({
-        title: "Friend Planet Quiz Result",
-        text: `${name} and ${friendName} are ${planetData[planetType as keyof typeof planetData].title}! Take the quiz to discover your Friend Planet!`,
-        url: window.location.origin,
-      });
+      if (navigator.share) {
+        await navigator.share({
+          title: "Friend Planet Quiz",
+          text: `${name} wants to compare your friendship! Take the quiz and see how your views match.`,
+          url: shareUrl
+        });
+      } else {
+        // Fallback to copying to clipboard
+        await navigator.clipboard.writeText(shareUrl);
+        toast({
+          title: "Link copied!",
+          description: "Share it with your friend to compare results"
+        });
+      }
     } catch (error) {
-      console.log("Sharing failed", error);
+      console.error("Sharing failed", error);
     }
   };
 
@@ -126,7 +108,7 @@ export const Result = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-md p-8 space-y-8">
+      <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
         <div className="space-y-4 text-center">
           <div className="floating inline-block">
             <img
@@ -154,22 +136,25 @@ export const Result = () => {
           </div>
         )}
 
-        <div className="space-y-4">
-          <Button
-            onClick={handleShare}
-            className="w-full"
-            variant="outline"
-          >
-            <Share2 className="mr-2 h-4 w-4" />
-            Share Result
-          </Button>
-          <Button
-            onClick={handleRetake}
-            className="w-full bg-primary hover:bg-primary/90"
-          >
-            Take Quiz Again
-          </Button>
-        </div>
+        {comparisonResult ? (
+          <PlanetComparison 
+            myPlanet={planetType} 
+            friendPlanet={comparisonResult.planetType}
+            myName={name}
+            friendName={comparisonResult.name}
+          />
+        ) : (
+          <div className="space-y-4">
+            <Button
+              onClick={handleShare}
+              className="w-full"
+              variant="outline"
+            >
+              <Share2 className="mr-2 h-4 w-4" />
+              Share & Compare with Friend
+            </Button>
+          </div>
+        )}
       </Card>
     </div>
   );
