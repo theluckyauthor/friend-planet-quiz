@@ -123,6 +123,9 @@ export const Quiz = () => {
   // Get data from URL if it exists (for direct comparison)
   const encodedData = searchParams.get('data');
   
+  // Check if the quiz is from a comparison route
+  const isComparisonQuiz = location.state?.originalResult;
+  
   useEffect(() => {
     if (encodedData) {
       try {
@@ -254,6 +257,14 @@ export const Quiz = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <Card className="glass-card w-full max-w-2xl p-8 space-y-8 bg-black/30 backdrop-blur-lg border-white/10">
+        {/* Display invitation message if it's a comparison quiz */}
+        {isComparisonQuiz && (
+          <div className="text-center text-white mb-4">
+            <h2 className="text-xl font-bold">
+              {location.state.name} has invited you, {location.state.originalResult.n}, to take this friendship quiz!
+            </h2>
+          </div>
+        )}
         <div className="space-y-4">
           <Progress value={progress} className="w-full" />
           <p className="text-sm text-white/70 text-center">

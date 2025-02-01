@@ -164,6 +164,9 @@ export const Result = () => {
               <div className="text-8xl mb-4">
                 {planetData[planetType as keyof typeof planetData].emoji}
               </div>
+              <h2 className="text-xl text-white">
+                {planetData[planetType as keyof typeof planetData].title}
+              </h2>
             </div>
             <div className="space-y-2">
               <p className="text-xl text-white/80">
@@ -207,43 +210,6 @@ export const Result = () => {
             </div>
           )}
 
-          {!comparisonResult && (
-            <div className="space-y-4">
-              <Button
-                onClick={handleShare}
-                className="w-full bg-white/10 hover:bg-white/20 text-white"
-                variant="outline"
-              >
-                <Share2 className="mr-2 h-4 w-4" />
-                Share & Compare with Friend
-              </Button>
-              
-              {showShareUrl && (
-                <div className="space-y-2">
-                  <p className="text-center text-white/60 text-sm">
-                    Share this link with {friendName} to compare results:
-                  </p>
-                  <div 
-                    className="p-3 bg-white/5 rounded border border-white/10 text-white/90 text-sm break-all cursor-text"
-                    onClick={(e) => e.currentTarget.select()}
-                  >
-                    {`${window.location.origin}/compare?data=${btoa(JSON.stringify({
-                      n: name,
-                      fn: friendName,
-                      pt: planetType,
-                      d: description
-                    }))}`}
-                  </div>
-                </div>
-              )}
-              
-              <p className="text-center text-white/60 text-sm">
-                Share this quiz with {friendName} to see how they view your friendship! 
-                <span role="img" aria-label="sparkles"> ✨</span>
-              </p>
-            </div>
-          )}
-
           {/* Add watermark */}
           <div className="text-center text-white/40 text-sm mt-4">
             friendplanet.app ✨
@@ -253,6 +219,14 @@ export const Result = () => {
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              onClick={handleShare}
+              className="bg-white/10 hover:bg-white/20 text-white"
+              variant="outline"
+            >
+              <Share2 className="mr-2 h-4 w-4" />
+              Share & Compare with Friend
+            </Button>
+            <Button
               onClick={handleDownloadImage}
               className="bg-white/10 hover:bg-white/20 text-white"
             >
@@ -261,7 +235,24 @@ export const Result = () => {
             </Button>
           </div>
           
-          {/* ... rest of sharing UI ... */}
+          {showShareUrl && (
+            <div className="space-y-2">
+              <p className="text-center text-white/60 text-sm">
+                Share this link with {friendName} to compare results:
+              </p>
+              <div 
+                className="p-3 bg-white/5 rounded border border-white/10 text-white/90 text-sm break-all cursor-text"
+                onClick={(e) => e.currentTarget.select()}
+              >
+                {`${window.location.origin}/compare?data=${btoa(JSON.stringify({
+                  n: name,
+                  fn: friendName,
+                  pt: planetType,
+                  d: description
+                }))}`}
+              </div>
+            </div>
+          )}
         </div>
       </Card>
     </div>

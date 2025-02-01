@@ -37,6 +37,9 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
           <div className="text-8xl mb-4">
             {planetData[myPlanet].emoji}
           </div>
+          <h2 className="text-xl text-white">
+            {planetData[myPlanet].title}
+          </h2>
         </div>
         <h2 className="text-2xl font-bold text-white">{myName}'s View</h2>
         <p className="text-white/80">{planetData[myPlanet].title}</p>
@@ -48,6 +51,9 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
           <div className="text-8xl mb-4">
             {planetData[friendPlanet].emoji}
           </div>
+          <h2 className="text-xl text-white">
+            {planetData[friendPlanet].title}
+          </h2>
         </div>
         <h2 className="text-2xl font-bold text-white">{friendName}'s View</h2>
         <p className="text-white/80">{planetData[friendPlanet].title}</p>
@@ -175,7 +181,16 @@ export const CompareResults = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <Card className="glass-card w-full max-w-4xl p-8 space-y-8">
-        {/* Wrap the content we want to capture in a ref */}
+        {/* Display invitation message if it's a comparison quiz */}
+        {location.state?.originalResult && (
+          <div className="text-center text-white mb-4">
+            <h2 className="text-xl font-bold">
+              {location.state.friendName} has invited you, {location.state.originalResult.n}, to take this friendship quiz!
+            </h2>
+          </div>
+        )}
+
+        {/* Wrap only the content we want to capture in resultsRef */}
         <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
           <h1 className="text-3xl font-bold text-center text-white mb-8">
             Your Cosmic Friendship Comparison
@@ -197,12 +212,13 @@ export const CompareResults = () => {
             </p>
           </div>
 
-          {/* Add a watermark */}
+          {/* Add watermark */}
           <div className="text-center text-white/40 text-sm mt-4">
             friendplanet.app ✨
           </div>
         </div>
 
+        {/* Buttons outside of the captured area */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <Button
             onClick={() => navigate("/")}
