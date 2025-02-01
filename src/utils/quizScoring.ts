@@ -1,83 +1,141 @@
-export type PlanetType = 
-  | 'sun' 
-  | 'mercury' 
-  | 'venus' 
-  | 'earth' 
-  | 'mars' 
-  | 'jupiter' 
-  | 'saturn' 
-  | 'uranus' 
-  | 'neptune' 
-  | 'pluto' 
-  | 'moon' 
-  | 'comet';
+import { PlanetType } from './analytics';
+
+type ScoreMap = Record<PlanetType, number>;
 
 interface PlanetScore {
-  [key: string]: number;
+  planet: PlanetType;
+  score: number;
+  frequency: number;
 }
 
-const PLANET_WEIGHTS = {
-  sun: { frequency: 5, closeness: 5, history: 5, goals: 5 },
-  mercury: { frequency: 3, closeness: 4, history: 2, goals: 4 },
-  venus: { frequency: 4, closeness: 5, history: 3, goals: 4 },
-  earth: { frequency: 5, closeness: 4, history: 4, goals: 4 },
-  mars: { frequency: 4, closeness: 3, history: 3, goals: 5 },
-  jupiter: { frequency: 3, closeness: 3, history: 3, goals: 5 },
-  saturn: { frequency: 2, closeness: 2, history: 3, goals: 2 },
-  uranus: { frequency: 2, closeness: 3, history: 2, goals: 3 },
-  neptune: { frequency: 2, closeness: 4, history: 4, goals: 2 },
-  pluto: { frequency: 1, closeness: 2, history: 5, goals: 1 },
-  moon: { frequency: 2, closeness: 4, history: 4, goals: 3 },
-  comet: { frequency: 2, closeness: 3, history: 3, goals: 2 }
+const PLANET_SCORES: Record<number, Record<string, PlanetType[]>> = {
+  1: { // How often do you talk
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['jupiter', 'comet'],
+    D: ['mercury', 'saturn'],
+    E: ['neptune', 'uranus', 'pluto']
+  },
+  2: { // Feeling after hangout
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['mercury', 'jupiter'],
+    D: ['saturn', 'uranus', 'comet'],
+    E: ['neptune', 'pluto']
+  },
+  3: { // Friendship duration
+    A: ['sun', 'earth'],
+    B: ['mars', 'moon'],
+    C: ['venus', 'jupiter'],
+    D: ['mercury', 'saturn', 'uranus', 'comet'],
+    E: ['neptune', 'pluto']
+  },
+  4: { // Usual interaction
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['mercury', 'jupiter', 'comet'],
+    D: ['saturn', 'neptune'],
+    E: ['uranus', 'pluto']
+  },
+  5: { // Sharing personal news
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['jupiter'],
+    D: ['mercury', 'saturn', 'comet'],
+    E: ['uranus', 'neptune', 'pluto']
+  },
+  6: { // Expected support
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['mercury', 'jupiter'],
+    D: ['saturn', 'uranus', 'comet'],
+    E: ['neptune', 'pluto']
+  },
+  7: { // Planning a trip
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['jupiter', 'comet'],
+    D: ['mercury', 'saturn'],
+    E: ['uranus', 'neptune', 'pluto']
+  },
+  8: { // Conflict handling
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['jupiter'],
+    D: ['mercury', 'saturn', 'comet'],
+    E: ['uranus', 'neptune', 'pluto']
+  },
+  9: { // Future interaction
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars', 'moon'],
+    C: ['jupiter', 'comet'],
+    D: ['mercury', 'saturn'],
+    E: ['uranus', 'neptune', 'pluto']
+  }
+};
+
+const SCORE_WEIGHTS: Record<string, number> = {
+  A: 5,
+  B: 4,
+  C: 3,
+  D: 2,
+  E: 1
 };
 
 export const calculatePlanetType = (answers: (number | string)[]): PlanetType => {
-  const scores: PlanetScore = Object.keys(PLANET_WEIGHTS).reduce((acc, planet) => {
-    acc[planet] = 0;
-    return acc;
-  }, {} as PlanetScore);
+  const scores: ScoreMap = {
+    sun: 0,
+    mercury: 0,
+    venus: 0,
+    earth: 0,
+    mars: 0,
+    jupiter: 0,
+    saturn: 0,
+    uranus: 0,
+    neptune: 0,
+    pluto: 0,
+    moon: 0,
+    comet: 0
+  };
+
+  const frequency: ScoreMap = { ...scores };
 
   // Process multiple choice answers (first 9 questions)
   answers.slice(0, 9).forEach((answer, index) => {
-    const answerNum = Number(answer);
-    
-    // Map question to categories
-    const categories = getQuestionCategories(index);
-    
-    // Calculate scores based on answer and categories
-    Object.entries(PLANET_WEIGHTS).forEach(([planet, weights]) => {
-      categories.forEach(category => {
-        scores[planet] += calculateCategoryScore(answerNum, weights[category as keyof typeof weights]);
+    if (typeof answer === 'number') {
+      const questionNumber = index + 1;
+      const letterScore = String.fromCharCode(65 + answer); // Convert 0-4 to A-E
+      const weight = SCORE_WEIGHTS[letterScore];
+      
+      // Get planets associated with this answer
+      const planets = PLANET_SCORES[questionNumber][letterScore] || [];
+      
+      // Add weighted score and increase frequency counter
+      planets.forEach(planet => {
+        scores[planet] += weight;
+        frequency[planet]++;
       });
-    });
+    }
   });
 
-  // Find planet with highest score
-  return Object.entries(scores).reduce((max, [planet, score]) => {
-    return score > scores[max] ? planet as PlanetType : max;
-  }, 'earth' as PlanetType);
+  // Find highest scoring planets
+  const planetScores: PlanetScore[] = Object.entries(scores).map(([planet, score]) => ({
+    planet: planet as PlanetType,
+    score,
+    frequency: frequency[planet as PlanetType]
+  }));
+
+  // Sort by score first, then by frequency if scores are tied
+  planetScores.sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score;
+    }
+    return b.frequency - a.frequency;
+  });
+
+  // Return the highest scoring planet
+  return planetScores[0].planet;
 };
-
-function getQuestionCategories(questionIndex: number): string[] {
-  const categoryMap = {
-    0: ['frequency'],
-    1: ['closeness'],
-    2: ['history'],
-    3: ['frequency', 'closeness'],
-    4: ['closeness', 'goals'],
-    5: ['closeness', 'goals'],
-    6: ['goals', 'closeness'],
-    7: ['closeness', 'history'],
-    8: ['goals', 'frequency']
-  };
-  
-  return categoryMap[questionIndex as keyof typeof categoryMap] || [];
-}
-
-function calculateCategoryScore(answerIndex: number, weight: number): number {
-  // Convert 0-4 answer index to 1-5 score and multiply by weight
-  return ((5 - answerIndex) * weight) / 5;
-}
 
 export const getPlanetDescription = (planetType: PlanetType): string => {
   const descriptions = {

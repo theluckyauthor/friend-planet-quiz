@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { calculatePlanetType } from "@/utils/quizScoring";
+import { trackQuizStart, trackQuizCompletion } from "@/utils/analytics";
+import { toast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
 
 const questions = [
   {
@@ -115,6 +118,11 @@ export const Quiz = () => {
   const comparisonId = searchParams.get('compare');
   
   const { name, friendName } = location.state || {};
+
+  // Start tracking when quiz begins
+  useEffect(() => {
+    trackQuizStart();
+  }, []);
   
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
@@ -123,14 +131,60 @@ export const Quiz = () => {
     newAnswers[currentQuestion] = answerIndex;
     setAnswers(newAnswers);
     
+    // Add a slight delay before moving to the next question
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+      }
+    }, 300); // 300ms delay for visual feedback
+  };
+
+  const handlePreviousQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  const handleNextQuestion = () => {
+    if (answers[currentQuestion] === undefined) {
+      toast({
+        title: "Please select an answer",
+        description: "You need to choose an option before continuing",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
 
   const handleDescriptionSubmit = () => {
-    const newAnswers = [...answers, description];
-    const planetType = calculatePlanetType(newAnswers);
+    // Ensure we have all required answers
+    if (answers.length < questions.length - 1) {
+      toast({
+        title: "Please answer all questions",
+        description: "Some questions are still unanswered",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!description.trim()) {
+      toast({
+        title: "Please add a description",
+        description: "Share your thoughts about this friendship",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Calculate planet type based on multiple choice answers
+    const planetType = calculatePlanetType(answers);
+    
+    // Track quiz completion
+    trackQuizCompletion(planetType);
     
     // Generate unique ID for this result
     const resultId = crypto.randomUUID();
@@ -142,6 +196,7 @@ export const Quiz = () => {
       friendName,
       planetType,
       description,
+      answers, // Store answers for potential future analysis
       timestamp: new Date().toISOString()
     };
     
@@ -152,6 +207,7 @@ export const Quiz = () => {
       localStorage.setItem(`quiz_comparison_${comparisonId}`, resultId);
     }
     
+    // Navigate to results page
     navigate("/result", { 
       state: { 
         resultId,
@@ -164,14 +220,21 @@ export const Quiz = () => {
     });
   };
 
+  // Redirect if missing required data
+  useEffect(() => {
+    if (!name || !friendName) {
+      navigate("/");
+    }
+  }, [name, friendName, navigate]);
+
   const currentQ = questions[currentQuestion];
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
+      <Card className="glass-card w-full max-w-2xl p-8 space-y-8 bg-black/30 backdrop-blur-lg border-white/10">
         <div className="space-y-4">
           <Progress value={progress} className="w-full" />
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="text-sm text-white/70 text-center">
             Question {currentQuestion + 1} of {questions.length}
           </p>
         </div>
@@ -188,27 +251,58 @@ export const Quiz = () => {
                   placeholder="Share your thoughts..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="min-h-[100px]"
+                  className="min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
                 <Button
                   onClick={handleDescriptionSubmit}
-                  className="w-full"
+                  className="w-full bg-white/10 hover:bg-white/20 text-white border-white/20"
                   disabled={!description.trim()}
                 >
                   Complete Quiz
                 </Button>
               </div>
             ) : (
-              currentQ.options?.map((option, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="w-full text-left justify-start h-auto p-4 hover:bg-primary/20 text-white/90 border-white/40 bg-white/10"
-                  onClick={() => handleAnswer(index)}
-                >
-                  {option}
-                </Button>
-              ))
+              <>
+                <div className="grid gap-4">
+                  {currentQ.options?.map((option, index) => (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      className={cn(
+                        "w-full text-left justify-start h-auto p-4",
+                        "text-white border-white/20",
+                        "bg-white/10 hover:bg-white/20",
+                        "transition-all duration-200",
+                        answers[currentQuestion] === index && "bg-white/30 border-white/50"
+                      )}
+                      onClick={() => handleAnswer(index)}
+                    >
+                      {option}
+                    </Button>
+                  ))}
+                </div>
+                
+                <div className="flex justify-between gap-4 mt-6">
+                  <Button
+                    onClick={handlePreviousQuestion}
+                    disabled={currentQuestion === 0}
+                    variant="outline"
+                    className="bg-white/10 hover:bg-white/20 text-white border-white/20"
+                  >
+                    Previous
+                  </Button>
+                  
+                  {currentQuestion < questions.length - 1 && (
+                    <Button
+                      onClick={handleNextQuestion}
+                      disabled={answers[currentQuestion] === undefined}
+                      className="bg-white/10 hover:bg-white/20 text-white border-white/20"
+                    >
+                      Next
+                    </Button>
+                  )}
+                </div>
+              </>
             )}
           </div>
         </div>
