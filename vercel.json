@@ -1,10 +1,5 @@
 {
     "rewrites": [
-      { "source": "/", "destination": "/welcome" },
-      { "source": "/quiz", "destination": "/quiz" },
-      { "source": "/result", "destination": "/result" },
-      { "source": "/compare", "destination": "/compare" },
-      { "source": "/compare-results", "destination": "/compare-results" },
-      { "source": "/404", "destination": "/not-found" }
-    ]
+        { "source": "/(.*)", "destination": "/" }
+      ]
   }
