@@ -177,12 +177,6 @@ export const CompareResults = () => {
             Download Results
             <Download className="ml-2 h-4 w-4" />
           </Button>
-          <Button
-            onClick={() => navigate("/compare-results")}
-            className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
-          >
-            Share Result with Friend
-          </Button>
         </div>
 
         <div className="text-center mt-4">

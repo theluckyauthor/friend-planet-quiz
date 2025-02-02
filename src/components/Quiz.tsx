@@ -249,7 +249,7 @@ export const Quiz = () => {
     }
 
     // Allow skipping the last open-ended question
-    if (currentQuestion === questions.length - 1 && !description.trim()) {
+    if (currentQuestion === questions.length - 1) {
       // Proceed without a description
       const planetType = calculatePlanetType(answers);
       trackQuizCompletion(planetType);
@@ -360,19 +360,16 @@ export const Quiz = () => {
             {currentQ.question}
           </h2>
           
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full">
             {currentQ.isOpenEnded ? (
               <div className="flex justify-center">
                 <Textarea
-                  placeholder="Share your thoughts (max 140 characters)..."
+                  placeholder="Share your thoughts (max 50 characters)..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  maxLength={140}
-                  className="min-h-[50px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  maxLength={50}
+                  className="min-h-[100px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50 md:max-w-lg"
                 />
-                <div className="char-counter" style={{ marginTop: '10px', marginBottom: '10px' }}>
-                  {description.length} / 140
-                </div>
               </div>
             ) : (
               <div className="grid gap-4">
