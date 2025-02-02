@@ -277,100 +277,58 @@ export const Quiz = () => {
   };
 
   const handleDescriptionSubmit = () => {
-    // Ensure we have all required answers except for the last open-ended question
-    if (answers.length < questions.length - 1) {
-      toast({
-        title: "Please answer all questions",
-        description: "Some questions are still unanswered",
-        variant: "destructive"
-      });
-      return;
+    // Ensure we have all required answers
+    if (answers.length < questions.length) {
+        toast({
+            title: "Please answer all questions",
+            description: "Some questions are still unanswered",
+            variant: "destructive"
+        });
+        return;
     }
 
-    // Allow skipping the last open-ended question
-    if (currentQuestion === questions.length - 1) {
-      // Proceed without a description
-      const planetType = calculatePlanetType(answers);
-      trackQuizCompletion(planetType);
-      const resultId = generateUID();
-      
-      // If this is a comparison quiz, navigate to comparison results
-      if (location.state?.originalResult) {
-        navigate("/compare-results", {
-          state: {
-            resultId,
-            name: location.state.originalResult.fn,
-            friendName: location.state.originalResult.n,
-            planetType,
-            description,
-            comparisonResult: {
-              name: location.state.originalResult.n,
-              friendName: location.state.originalResult.fn,
-              planetType: location.state.originalResult.pt,
-              description: location.state.originalResult.d
-            }
-          }
-        });
-      } else {
-        // Regular result navigation
-        navigate("/result", {
-          state: {
-            resultId,
-            name: location.state.name,
-            friendName: location.state.friendName,
-            planetType,
-            description
-          }
-        });
-      }
-      return; // Exit the function early
-    }
-
+    // Check if the last open-ended question has a description
     if (!description.trim()) {
-      toast({
-        title: "Please add a description",
-        description: "Share your thoughts about this friendship",
-        variant: "destructive"
-      });
-      return;
+        toast({
+            title: "Please add a description",
+            description: "Share your thoughts about this friendship",
+            variant: "destructive"
+        });
+        return;
     }
 
-    // Calculate planet type based on multiple choice answers
     const planetType = calculatePlanetType(answers);
-    
-    // Track quiz completion
     trackQuizCompletion(planetType);
-    
     const resultId = generateUID();
-    
+
     // If this is a comparison quiz, navigate to comparison results
     if (location.state?.originalResult) {
-      navigate("/compare-results", {
-        state: {
-          resultId,
-          name: location.state.originalResult.fn,
-          friendName: location.state.originalResult.n,
-          planetType,
-          description,
-          comparisonResult: {
-            name: location.state.originalResult.n,
-            friendName: location.state.originalResult.fn,
-            planetType: location.state.originalResult.pt,
-            description: location.state.originalResult.d
-          }
-        }
-      });
+        navigate("/compare-results", {
+            state: {
+                resultId,
+                name: location.state.originalResult.fn,
+                friendName: location.state.originalResult.n,
+                planetType,
+                description,
+                comparisonResult: {
+                    name: location.state.originalResult.n,
+                    friendName: location.state.originalResult.fn,
+                    planetType: location.state.originalResult.pt,
+                    description: location.state.originalResult.d
+                }
+            }
+        });
     } else {
-      // Regular result navigation
-      navigate("/result", {
-        state: {
-          resultId,
-          name: location.state.name,
-          friendName: location.state.friendName,
-          planetType,
-          description
-        }
-      });
+        // Regular result navigation
+        navigate("/result", {
+            state: {
+                resultId,
+                name: location.state.name,
+                friendName: location.state.friendName,
+                planetType,
+                description
+            }
+        });
     }
   };
 
