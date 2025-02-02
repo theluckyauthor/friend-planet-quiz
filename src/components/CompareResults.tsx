@@ -208,7 +208,7 @@ export const CompareResults = () => {
           </div>
 
           <div className="text-center text-white/40 text-sm mt-4">
-            friendplanet.app ✨
+          https://planety-quiz.vercel.app/ ✨
           </div>
         </div>
 
