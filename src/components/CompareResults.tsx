@@ -83,12 +83,12 @@ export const CompareResults = () => {
         sun: {
           sun: "A Radiant Bond ☀️☀️ - Two kindred souls whose friendship is like the sun—constant, warm, and illuminating every dark corner of life with trust and unwavering support.",
           moon: "Cosmic Balance ☀️🌙 - The brilliance of the sun meets the reflective calm of the moon, creating a harmonious blend of energy and introspection that perfectly balances passion with quiet understanding.",
-          venus: "Warm Embrace ☀️💖 - Sun’s vibrant energy complements Venus’s nurturing heart, forming a bond that not only lights up your world but also fosters growth, care, and emotional depth.",
-          mercury: "Dynamic Duo ☀️💫 - The radiant energy of the sun paired with Mercury’s quick wit sparks lively, engaging conversations that keep your friendship fresh and ever-evolving.",
-          mars: "Power Pair ☀️🔥 - The unstoppable drive of Mars fuels the sun’s brilliant light, resulting in a high-energy, action-packed friendship that motivates and inspires both of you.",
+          venus: "Warm Embrace ☀️💖 - Sun's vibrant energy complements Venus's nurturing heart, forming a bond that not only lights up your world but also fosters growth, care, and emotional depth.",
+          mercury: "Dynamic Duo ☀️💫 - The radiant energy of the sun paired with Mercury's quick wit sparks lively, engaging conversations that keep your friendship fresh and ever-evolving.",
+          mars: "Power Pair ☀️🔥 - The unstoppable drive of Mars fuels the sun's brilliant light, resulting in a high-energy, action-packed friendship that motivates and inspires both of you.",
           jupiter: "Expansive Joy ☀️🌟 - With the sun's warmth and Jupiter's expansive optimism, your friendship blossoms into a universe of shared opportunities, growth, and boundless possibilities.",
-          saturn: "Timeless Bond ☀️⭐ - Sun’s constant radiance combined with Saturn’s enduring stability creates a friendship that stands the test of time—a steadfast light in both your lives.",
-          comet: "Cyclical Magic ☀️☄️ - The steady glow of the sun is enlivened by Comet’s unpredictable brilliance, bringing delightful bursts of reconnection that keep your friendship sparkling."
+          saturn: "Timeless Bond ☀️⭐ - Sun's constant radiance combined with Saturn's enduring stability creates a friendship that stands the test of time—a steadfast light in both your lives.",
+          comet: "Cyclical Magic ☀️☄️ - The steady glow of the sun is enlivened by Comet's unpredictable brilliance, bringing delightful bursts of reconnection that keep your friendship sparkling."
         },
         moon: {
           moon: "Lunar Symphony 🌙🌙 - Two souls in quiet harmony, your friendship is like a gentle nocturne—a deep, intuitive connection where unspoken understanding flows effortlessly.",
@@ -179,7 +179,7 @@ export const CompareResults = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-4xl p-8 space-y-8">
+      <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
         <div className="text-center text-white mb-4">
           <h2 className="text-xl font-bold">
             {state.friendName} has invited you, {state.name}, to take this friendship quiz!
@@ -208,20 +208,20 @@ export const CompareResults = () => {
           </div>
 
           <div className="text-center text-white/40 text-sm mt-4">
-          https://planety-quiz.vercel.app/ ✨
+            https://planety-quiz.vercel.app/ ✨
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <Button
             onClick={() => navigate("/")}
-            className="bg-white/10 hover:bg-white/20 text-white"
+            className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
           >
             Take New Quiz
           </Button>
           <Button
             onClick={handleDownloadImage}
-            className="bg-white/10 hover:bg-white/20 text-white"
+            className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
           >
             Download Results
             <Download className="ml-2 h-4 w-4" />

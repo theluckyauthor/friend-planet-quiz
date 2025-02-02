@@ -277,7 +277,7 @@ export const Quiz = () => {
             {currentQ.question}
           </h2>
           
-          <div className="grid gap-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {currentQ.isOpenEnded ? (
               <div className="space-y-4">
                 <Textarea
