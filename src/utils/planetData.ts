@@ -11,559 +11,661 @@ interface PlanetInfo {
 export const planetData: Record<PlanetType, PlanetInfo> = {
 
     "sun": {
-        "title": "Family-Like Bonds",
-        "description": "This friend is like the center of your universe—whether they are actual family or someone you've chosen as family, they're always there. Your connection is built on a deep foundation of trust, loyalty, and unconditional support. No matter what happens, you can count on each other.",
+        "title": "Your Chosen Family",
+        "description": "This friend is the anchor of your universe—the one you trust with everything. Whether they're actual family or someone who feels like it, they're always there, offering unwavering love and support. Through every high and low, you know they'll never leave your orbit.",
         "traits": ["Unbreakable", "Lifelong", "Deeply Caring"],
-        "nurture": "Keep showing up for each other, even when life gets busy. Prioritize important moments—big or small—and express gratitude for their presence in your life.",
+        "nurture": "Never take this bond for granted. Show appreciation in small ways—send a heartfelt message, plan a catch-up, or simply remind them how much they mean to you.",
         "emoji": "☀️"
     },
     "mercury": {
-        "title": "Rapid, Intense Recent Connections",
-        "description": "This is a new and exciting connection—one that feels instant and effortless. Whether it's a short-lived spark or the beginning of something lasting, it's full of energy and curiosity, like a shooting star.",
+        "title": "Fast-Paced, Exciting Friendships",
+        "description": "This is a high-energy, rapidly growing connection. Maybe you just met, but it feels like you've known each other forever. Conversations flow effortlessly, and there's always something new to discover about each other.",
         "traits": ["Fast-growing", "Spontaneous", "Engaging"],
-        "nurture": "Keep exploring shared interests and see where it leads. Be open to deepening the connection, but don't force longevity—enjoy it for what it is.",
+        "nurture": "Keep up the momentum! Plan spontaneous outings, share fun experiences, and enjoy the thrill of getting to know each other. But don’t rush—let the bond deepen naturally.",
         "emoji": "☿️"
     },
     "venus": {
-        "title": "Deep, One-on-One Nurturing Friendships",
-        "description": "This is a deeply personal, one-on-one connection. You support and uplift each other, sharing thoughts, feelings, and dreams. It's an emotionally fulfilling bond built on trust and vulnerability.",
+        "title": "Your Heart-to-Heart Friend",
+        "description": "This is the friend who truly sees you. You confide in each other, share dreams, and support each other through life's emotional ups and downs. They bring warmth, comfort, and a deep sense of belonging.",
         "traits": ["Deep Trust", "Emotional Closeness", "Supportive"],
-        "nurture": "Make space for open conversations and emotional check-ins. Celebrate each other's successes and be a safe space during struggles.",
+        "nurture": "Make time for real conversations, not just surface-level chats. Show up for each other emotionally, whether it’s celebrating wins or holding space during tough times.",
         "emoji": "♀️"
     },
     "earth": {
-        "title": "Constant, Dependable Best Friends",
-        "description": "This is the center of your social world—your ride-or-die, the friend you always turn to. You talk regularly and share life's ups and downs, making this a solid, essential bond.",
+        "title": "Your Constant, Unshakable Best Friend",
+        "description": "This friend is your home base—the one who knows everything about you and still sticks around. They’re the person you call first with good or bad news, and no matter what, they always have your back.",
         "traits": ["Loyal", "Deeply Involved", "Always Present"],
-        "nurture": "Keep communication flowing and be present in each other's lives. Support each other's growth while maintaining your strong foundation.",
+        "nurture": "Don’t let routine take over. Keep making memories together, check in regularly, and never let distance (physical or emotional) create a gap.",
         "emoji": "🌍"
     },
     "mars": {
-        "title": "Energetic, Adventurous, Action-Oriented Friendships",
-        "description": "This friend is all about doing things together—whether it's sports, travel, challenges, or shared goals. Your bond thrives on action and adventure.",
+        "title": "Your Partner-in-Crime",
+        "description": "This is your adventure buddy, your hype person, your ‘let’s do it!’ friend. You thrive on shared experiences, adrenaline rushes, and pushing each other to try new things.",
         "traits": ["High-Energy", "Fun-Loving", "Daring"],
-        "nurture": "Plan exciting outings, challenges, and activities together. Keep the energy alive by finding new experiences to share.",
+        "nurture": "Keep the energy alive! Plan activities that challenge and excite you both. But also remember to slow down and check in emotionally once in a while.",
         "emoji": "♂️"
     },
     "jupiter": {
-        "title": "Friends Who Shine in Groups",
-        "description": "This friendship thrives in crowds—whether it's group outings, events, or social gatherings. This friend makes your world feel bigger and more exciting.",
+        "title": "Your Social Star",
+        "description": "This is the friend who makes every gathering better. They bring people together, create unforgettable moments, and make socializing effortless and fun.",
         "traits": ["Outgoing", "Fun", "Social Connector"],
-        "nurture": "Keep inviting each other to group events and shared experiences. Make sure to check in outside of group settings too.",
+        "nurture": "Celebrate this connection by inviting them to social events and finding time to hang out outside of groups, too. Deepen the bond beyond shared circles.",
         "emoji": "⚡"
     },
     "saturn": {
-        "title": "Casual, Circumstantial, Work/School Friendships",
-        "description": "This is a low-maintenance, circumstantial friendship—you may work, study, or share a space together. You get along well but don't go too deep.",
+        "title": "Your Steady, Reliable Friend",
+        "description": "This is a friendship built on shared environments—whether it’s work, school, or another setting. While not the deepest bond, there’s a sense of mutual respect and camaraderie.",
         "traits": ["Friendly", "Situational", "Easygoing"],
-        "nurture": "Keep the friendly connection alive, and let it develop naturally. Appreciate them for the role they play in your life.",
+        "nurture": "Enjoy the connection for what it is, but don’t be afraid to deepen it if the opportunity arises. Sometimes, the best friendships start in the most casual ways.",
         "emoji": "🪐"
     },
     "uranus": {
-        "title": "Quirky, Unpredictable, Offbeat Friendships",
-        "description": "This is a unique and unconventional friendship—you might have weird inside jokes, unexpected conversations, or a dynamic that doesn't fit into a box.",
+        "title": "Your Quirky, Unpredictable Friend",
+        "description": "This is a friendship full of unexpected twists. Inside jokes that make no sense, unconventional hangouts, and a dynamic that doesn’t follow the norm—it's weird, wonderful, and perfect in its own way.",
         "traits": ["Unpredictable", "Eccentric", "Free-Spirited"],
-        "nurture": "Embrace the weirdness and let the friendship evolve freely. Enjoy the unconventional nature of your bond.",
+        "nurture": "Lean into the chaos! Let the friendship be as spontaneous and unconventional as it wants to be. It’s the unpredictability that makes it special.",
         "emoji": "⚛️"
     },
     "neptune": {
-        "title": "Long-Distance, Digital Friendships",
-        "description": "Even if you're far apart, this friendship remains strong through texts, calls, and online chats. No matter how much time passes, you always pick up where you left off.",
+        "title": "Your Soulful, Distant Friend",
+        "description": "This is a friendship that transcends distance. Whether it's long-distance or just less frequent contact, you always pick up where you left off—no awkwardness, no expectations, just pure understanding.",
         "traits": ["Loyal", "Sentimental", "Tech-Driven"],
-        "nurture": "Check in, even if it's just a quick message. Schedule occasional deep conversations to keep the bond alive.",
+        "nurture": "A simple ‘thinking of you’ message goes a long way. Make time for deep conversations when you can, and let them know they matter.",
         "emoji": "🌊"
     },
     "pluto": {
-        "title": "Friendships That Have Faded Over Time",
-        "description": "You were once close, but life has taken you in different directions. Maybe you'll reconnect, or maybe this is a friendship you'll always remember fondly.",
+        "title": "Your Once-Close, Now-Distant Friend",
+        "description": "This is a friendship that was once everything, but time and life have taken you in different directions. The memories remain, and maybe the connection will spark again one day.",
         "traits": ["Nostalgic", "Distant", "Meaningful Past"],
-        "nurture": "If you want to reconnect, take the first step. If not, appreciate what it was and cherish the good memories.",
+        "nurture": "If they cross your mind, reach out. Even if you don’t reconnect, cherish what you had—it shaped you in ways you may not even realize.",
         "emoji": "❄️"
+    },
+    "comet": {
+        "title": "Your On-and-Off Friend",
+        "description": "This is a friendship that comes in waves—sometimes you’re inseparable, other times you drift apart. But when you reconnect, it’s like nothing changed.",
+        "traits": ["Unpredictable", "High-Intensity Phases", "Deep Connection When Active"],
+        "nurture": "Don’t overthink the distance. Enjoy the connection when it’s strong, and trust that if it’s meant to last, it will always return.",
+        "emoji": "☄️"
     },
     "moon": {
         "title": "Low-Maintenance Yet Meaningful Connections",
-        "description": "This is a steady, reliable friendship that doesn't need constant attention. Whether you talk every week or once a year, the connection never fades.",
+        "description": "This friend is like the moon—always there, even when you don’t see them. You might go weeks or months without talking, but when you reconnect, it feels like no time has passed. There’s no pressure, just a quiet, steady presence that provides comfort and familiarity.",
         "traits": ["Independent", "Secure", "Time-Proof"],
-        "nurture": "Just be there when it matters most. Reach out occasionally and trust that the friendship is strong.",
+        "nurture": "Don’t stress about constant communication—just check in every once in a while. A simple message, meme, or 'thinking of you' moment keeps the connection strong. Trust that your bond doesn’t need daily tending to stay meaningful.",
         "emoji": "🌙"
-    },
-    "comet": {
-        "title": "Friendships That Come in Phases",
-        "description": "This friendship has cycles—sometimes you're super close, other times you drift apart. But when you reconnect, it's like no time has passed.",
-        "traits": ["Unpredictable", "High-Intensity Phases", "Deep Connection When Active"],
-        "nurture": "Accept the ebb and flow, and enjoy the bursts of connection when they happen.",
-        "emoji": "☄️"
     },
     "cluster": {
         "title": "Group-Based Friendships",
-        "description": "Your friendship thrives in a group setting—you're part of a close-knit community, squad, or friend group where the connections are just as important as the individuals. This dynamic is built on shared experiences and collective memories.",
+        "description": "Your friendship thrives within a group—it could be your college crew, gaming squad, work besties, or a long-standing friend circle. You’re connected not just by individual friendships but by a shared history, inside jokes, and a sense of belonging that makes every group hangout special.",
         "traits": ["Community-Oriented", "Interconnected", "Shared Experiences"],
-        "nurture": "Keep the group energy alive by organizing meetups, staying engaged in group chats, and supporting each other as a collective.",
+        "nurture": "Keep the group dynamic alive! Plan occasional get-togethers, engage in group chats, and make sure everyone stays included. Individual friendships may fluctuate, but the collective bond can remain strong with effort.",
         "emoji": "🌌"
     },
     "satellite": {
         "title": "Comfortable Acquaintances",
-        "description": "These are the friendly faces you see regularly with whom you share pleasant, light-hearted exchanges. There's no need for deep connection—both of you are content to keep things casual and uncomplicated. You appreciate each other's presence without the pressure of closeness.",
+        "description": "This is the friendly face you always enjoy seeing but don’t necessarily have a deep bond with. Maybe it’s a gym buddy, a neighbor you exchange small talk with, or a colleague you always joke around with at work. There’s mutual respect and kindness, but no need for constant interaction.",
         "traits": ["Casual", "Low-Key", "Respectful"],
-        "nurture": "Keep it simple—share greetings, occasional chats, and enjoy the effortless, uncomplicated connection.",
+        "nurture": "No pressure—just keep it light and easy. A quick smile, a friendly greeting, or a shared joke now and then maintains this simple but valuable connection.",
         "emoji": "🛰️"
     }
 };
 
 // Update the type definition to allow optional properties
-export const combinations: Record<PlanetType, Partial<Record<PlanetType, { description: string; tip: string }>>> = {
+export const combinations: Record<PlanetType, Partial<Record<PlanetType, { title: string; description: string; tip: string }>>> = {
     sun: {
-        sun: {
-            description: "A Radiant Bond ☀️☀️ - Two kindred souls whose friendship is like the sun—constant, warm, and illuminating every dark corner of life with trust and unwavering support.",
-            tip: "Nurture your bond by celebrating each other's successes and providing unwavering encouragement during tough times."
+            sun: {
+                title: "A Radiant Bond ☀️☀️",
+                description: "This friendship is built on mutual warmth, reliability, and an effortless connection. Both sides see each other as a constant presence, someone they can always count on for support and celebration. The challenge is making sure the relationship doesn’t become stagnant—there’s so much trust that it’s easy to take each other for granted.",
+                tip: "Be intentional about deepening the friendship. Check in even when things are going well, and find ways to keep inspiring each other."
+            },
+            moon: {
+                title: "Cosmic Balance ☀️🌙",
+                description: "One side sees this as an energizing force, while the other provides quiet reflection and emotional depth. This creates a friendship that thrives on contrast—one brings excitement, the other brings perspective. Sometimes, differences in energy levels can cause friction, but when balanced, it results in a deep and harmonious connection.",
+                tip: "Respect each other’s natural rhythms. Find activities that allow for both lively conversation and meaningful silence."
+            },
+            venus: {
+                title: "Warm Embrace ☀️💖",
+                description: "One person feels like a source of joy and motivation, while the other offers deep emotional support and care. This friendship flourishes when both sides appreciate what the other brings—enthusiasm meets empathy, adventure meets understanding. The challenge is ensuring that one side doesn’t feel emotionally drained while the other doesn’t feel unheard.",
+                tip: "Check in on emotional balance. Celebrate the fun moments, but also make space for honest conversations."
+            },
+            mercury: {
+                "title": "Dynamic Duo ☀️💫",
+                "description": "This friendship thrives on fast-paced conversations, shared curiosity, and a natural ability to keep up with each other’s thoughts. One side might bring more stability, while the other keeps things fresh with new ideas. The risk? Burning out or getting distracted by too many directions.",
+                "tip": "Make time for follow-through. Excitement is great, but deepening the friendship requires moments of consistency too."
+            },
+            mars: {
+                "title": "Power Pair ☀️🔥",
+                "description": "A friendship full of energy, movement, and shared ambition. Whether it’s pushing each other to be better, taking on challenges together, or simply hyping each other up, this bond is built on action. However, differences in approach can sometimes lead to frustration—one might want to slow down when the other is ready to charge ahead.",
+                "tip": "Use your motivation for each other wisely. Support different approaches rather than competing for control."
+            },
+            jupiter: {
+                "title": "Expansive Joy ☀️🌟",
+                "description": "A friendship that feels limitless, full of big dreams and big laughter. One side might push for new experiences, while the other sees the potential in everything. The challenge is making sure these grand ideas turn into real moments rather than just endless plans.",
+                "tip": "Take action on shared goals. Whether it’s a trip, a project, or a tradition, make sure your dreams don’t just stay as ideas."
+            },
+            saturn: {
+                "title": "Timeless Bond ☀️⭐",
+                "description": "One side brings steady warmth, while the other values stability and consistency. This friendship feels solid and unshakable, even if there are long gaps in communication. The challenge is that stability can sometimes feel like distance—one side might crave more excitement, while the other prefers to keep things predictable.",
+                "tip": "Balance familiarity with new experiences. A friendship that lasts doesn’t have to stay the same forever."
+            },
+            uranus: {
+                "title": "Unexpected Sparks ☀️🌀",
+                "description": "A connection that thrives on unpredictability. One side sees the friendship as a steady presence, while the other keeps it fresh with surprises and unconventional ideas. This keeps things exciting but can sometimes feel ungrounded if expectations aren’t clear.",
+                "tip": "Embrace spontaneity but set some anchors. Reliable check-ins or traditions can keep things from feeling too chaotic."
+            },
+            neptune: {
+                "title": "Dream Weavers ☀️🌊",
+                "description": "A friendship built on inspiration and imagination. One side brings clarity and direction, while the other sees limitless possibilities. This makes for a deeply creative bond, but it can sometimes be frustrating if one person is more practical while the other stays lost in ideas.",
+                "tip": "Encourage dreams but bring them into reality. Support each other’s creative or personal projects in tangible ways."
+            },
+            pluto: {
+                "title": "Eclipsed Connection ☀️🌑",
+                "description": "A relationship that goes through phases of deep transformation. One side may see it as a bright, steady bond, while the other experiences intense personal changes. This can create moments of distance, but it also leads to growth when both sides remain patient.",
+                "tip": "Be open about how the friendship is evolving. Not every shift means losing the connection—sometimes, it just means finding a new dynamic."
+            },
+            comet: {
+                "title": "Cyclical Magic ☀️☄️",
+                "description": "A friendship that comes and goes but always reignites with the same energy. One side sees it as a constant source of warmth, while the other appears in bursts of excitement before fading out again. This works well if both people accept the rhythm, but it can be frustrating if expectations aren’t aligned.",
+                "tip": "If the pattern works for both of you, embrace it. If not, be honest about what you need."
+            },
+            "cluster": {
+                "title": "Galactic Radiance ☀️🌌",
+                "description": "A friendship that thrives within a larger social group. One side sees the relationship as deeply personal, while the other views it as part of a bigger collective. This can create a dynamic where one person wants more one-on-one time, while the other is comfortable keeping things in a shared space.",
+                "tip": "If one-on-one time matters, make it a priority. Friendships within groups can still have depth when nurtured individually."
+            },
+            "earth": {
+                "title": "Roots & Rays ☀️🌍",
+                "description": "A friendship that balances passion with stability. One side keeps things exciting, while the other ensures that the connection stays grounded. This creates a relationship that feels both steady and full of possibility, though it can lead to occasional friction if perspectives on pace differ.",
+                "tip": "Appreciate the different speeds. The balance between adventure and steadiness is what makes this work."
+            },
+            "satellite": {
+                "title": "Orbiting Trust ☀️🛰️",
+                "description": "One side sees the friendship as a guiding light, while the other values the perspective they bring from a distance. This means trust is strong, but communication might not always be frequent. If both sides understand that the bond remains strong regardless of time apart, this works well—but if expectations differ, it can create feelings of neglect.",
+                "tip": "Make time to check in. Even long-distance or low-maintenance friendships benefit from small moments of connection."
+            }
         },
-        moon: {
-            description: "Cosmic Balance ☀️🌙 - The brilliance of the sun meets the reflective calm of the moon, creating a harmonious blend of energy and introspection.",
-            tip: "Give space for deeper conversations and quiet moments; your balance thrives on both energy and reflection."
-        },
-        venus: {
-            description: "Warm Embrace ☀️💖 - Sun's vibrant energy complements Venus's nurturing heart, forming a bond that not only lights up your world but also fosters growth, care, and emotional depth.",
-            tip: "Express appreciation for the kindness and emotional depth that makes your bond so special."
-        },
-        mercury: {
-            description: "Dynamic Duo ☀️💫 - The radiant energy of the sun paired with Mercury's quick wit sparks lively, engaging conversations that keep your friendship fresh and ever-evolving.",
-            tip: "Keep challenging each other with new ideas and spontaneous adventures to keep the excitement alive."
-        },
-        mars: {
-            description: "Power Pair ☀️🔥 - The unstoppable drive of Mars fuels the sun's brilliant light, resulting in a high-energy, action-packed friendship that motivates and inspires both of you.",
-            tip: "Channel your shared energy into fun projects, workouts, or adventures to keep your momentum strong."
-        },
-        jupiter: {
-            description: "Expansive Joy ☀️🌟 - With the sun's warmth and Jupiter's expansive optimism, your friendship blossoms into a universe of shared opportunities, growth, and boundless possibilities.",
-            tip: "Dream big together—plan trips, projects, or learning experiences that expand both your horizons."
-        },
-        saturn: {
-            description: "Timeless Bond ☀️⭐ - Sun's constant radiance combined with Saturn's enduring stability creates a friendship that stands the test of time—a steadfast light in both your lives.",
-            tip: "Balance fun with responsibility; appreciate Saturn's wisdom while offering warmth in return."
-        },
-        uranus: {
-            description: "Unexpected Sparks ☀️🌀 - The sun's steady brightness meets Uranus's unpredictable energy, leading to a friendship full of exciting surprises and unconventional ideas.",
-            tip: "Embrace the unexpected and support each other's quirks—your best moments come from spontaneity."
-        },
-        neptune: {
-            description: "Dream Weavers ☀️🌊 - Sun's clarity pairs with Neptune's imagination, creating a friendship built on inspiration, creativity, and a shared sense of wonder.",
-            tip: "Encourage each other's dreams and creative pursuits; remind Neptune to stay grounded when needed."
-        },
-        pluto: {
-            description: "Eclipsed Connection ☀️🌑 - A friendship of deep transformation, where Pluto's intensity and the sun's light help each other grow through life's major changes.",
-            tip: "Stay patient during emotional shifts; your bond thrives when built on trust and mutual evolution."
-        },
-        comet: {
-            description: "Cyclical Magic ☀️☄️ - The steady glow of the sun is enlivened by Comet's unpredictable brilliance, bringing delightful bursts of reconnection that keep your friendship sparkling.",
-            tip: "Accept the ebb and flow—your friendship may have gaps, but every reunion is just as bright."
-        },
-        cluster: {
-            description: "Galactic Radiance ☀️🌌 - The sun's energy fuels a whole cluster of connections, making you the social center that keeps your shared friendships shining brightly.",
-            tip: "Use your warmth to bring people together, but make sure to nurture one-on-one connections too."
-        },
-        earth: {
-            description: "Roots & Rays ☀️🌍 - Earth's grounding presence balances the sun's passionate energy, making this a friendship of steady support and shared growth.",
-            tip: "Help each other stay balanced—Earth reminds you to slow down, and you remind them to dream big."
-        },
-        satellite: {
-            description: "Orbiting Trust ☀️🛰️ - The sun's steady warmth provides guidance, while the satellite offers perspective from a unique vantage point, creating a friendship that orbits around trust and reliability.",
-            tip: "Value each other's differing viewpoints—your friendship thrives when you acknowledge each other's strengths."
-        }
-    },
     moon: {
-        sun: {
-            description: "Cosmic Balance ☀️🌙 - The brilliance of the sun meets the reflective calm of the moon, creating a harmonious blend of energy and introspection.",
-            tip: "Give space for deeper conversations and quiet moments; your balance thrives on both energy and reflection."
+
+        "moon": {
+            "title": "Lunar Symphony 🌙🌙",
+            "description": "This friendship flows effortlessly, built on mutual understanding and unspoken connection. Both sides naturally tune into each other’s emotions, making communication feel almost intuitive. However, the risk is that unspoken thoughts can turn into assumptions—it's important to voice feelings openly.",
+            "tip": "Lean into your natural understanding, but remember to communicate openly to avoid unspoken tensions."
         },
-        moon: {
-            description: "Lunar Symphony 🌙🌙 - Two souls in quiet harmony, your friendship is like a gentle nocturne—a deep, intuitive connection where unspoken understanding flows effortlessly.",
-            tip: "Lean into your natural understanding, but remember to communicate openly to avoid unspoken tensions."
+        "venus": {
+            "title": "Gentle Tides 🌙💖",
+            "description": "One person nurtures with warmth, while the other brings calm and emotional depth. This friendship ebbs and flows naturally, full of care and subtle gestures of affection. The challenge is making sure emotions don’t become overwhelming or one-sided.",
+            "tip": "Make time for heartfelt conversations and small gestures of care—they mean the world to both of you."
         },
-        venus: {
-            description: "Gentle Tides 🌙💖 - Moon's serene, reflective nature mingles with Venus's warm tenderness, creating a soothing bond that ebbs and flows with a natural, nurturing rhythm.",
-            tip: "Make time for heartfelt conversations and small gestures of care—they mean the world to both of you."
+        "mercury": {
+            "title": "Night Whispers 🌙💫",
+            "description": "One side thrives on deep emotions, while the other brings quick wit and lively conversation. This creates a friendship where meaningful exchanges happen in quiet moments, often filled with insightful thoughts and late-night musings.",
+            "tip": "Encourage each other’s thoughts and creativity—your best ideas come in quiet moments together."
         },
-        mercury: {
-            description: "Night Whispers 🌙💫 - The soft glow of the moon and the swift insights of Mercury come together in a friendship marked by subtle communication and heartfelt exchanges.",
-            tip: "Encourage each other's thoughts and creativity—your best ideas come in quiet moments together."
+        "mars": {
+            "title": "Moonlit Adventures 🌙🔥",
+            "description": "One person seeks excitement and action, while the other provides a thoughtful, steady presence. This friendship thrives on contrast—one pushes forward, while the other offers perspective and emotional grounding. The challenge is finding a pace that suits both sides.",
+            "tip": "Balance action with reflection—Mars pushes you forward, while you provide perspective."
         },
-        mars: {
-            description: "Moonlit Adventures 🌙🔥 - The calm of the moon inspires bold ventures with Mars's fiery energy, leading to moments of quiet excitement and meaningful, shared explorations.",
-            tip: "Balance action with reflection—Mars pushes you forward, while you provide perspective."
+        "jupiter": {
+            "title": "Cosmic Growth 🌙🌟",
+            "description": "One side expands possibilities and seeks adventure, while the other ensures emotional depth and meaning. Together, this creates a friendship that encourages both personal growth and shared experiences. However, too much idealism without grounding can make plans feel distant.",
+            "tip": "Dream big together, but also ground each other's ideas in reality to make them happen."
         },
-        jupiter: {
-            description: "Cosmic Growth 🌙🌟 - Moon's introspection coupled with Jupiter's expansive vision nurtures a friendship that encourages personal evolution and the blossoming of shared dreams.",
-            tip: "Dream big together, but also ground each other's ideas in reality to make them happen."
+        "saturn": {
+            "title": "Steady Reflection 🌙⭐",
+            "description": "One side is deeply introspective, while the other provides structure and wisdom. This friendship is built on reliability and thoughtful counsel, offering a safe space for vulnerability and trust. The challenge is making sure it doesn’t become too rigid or overly serious.",
+            "tip": "Lean on each other for wisdom and stability—this friendship thrives when built on mutual trust."
         },
-        saturn: {
-            description: "Steady Reflection 🌙⭐ - The contemplative nature of the moon, balanced by Saturn's grounding presence, creates a reliable, reflective bond that offers comfort and wise counsel.",
-            tip: "Lean on each other for wisdom and stability—this friendship thrives when built on mutual trust."
+        "uranus": {
+            "title": "Eccentric Harmony 🌙🌀",
+            "description": "One side values deep emotions, while the other thrives on unpredictability and change. This makes for a dynamic, exciting friendship where comfort meets the unexpected. The challenge is making sure the bond remains stable despite shifts in energy.",
+            "tip": "Let each other be unique—your differences make your bond exciting and refreshing."
         },
-        uranus: {
-            description: "Eccentric Harmony 🌙🌀 - The moon's deep emotional tides mix with Uranus's unexpected energy, forming a friendship that is both comforting and delightfully unpredictable.",
-            tip: "Let each other be unique—your differences make your bond exciting and refreshing."
+        "neptune": {
+            "title": "Mystic Connection 🌙🌊",
+            "description": "This friendship feels like a dream—full of intuition, creativity, and a deep emotional bond. Conversations flow naturally, often without the need for many words. The challenge is staying connected to reality, as both sides may get lost in their own worlds.",
+            "tip": "Ground your connection with real-world actions—fantasy is beautiful, but memories are made in reality."
         },
-        neptune: {
-            description: "Mystic Connection 🌙🌊 - A dreamlike friendship where emotions and intuition intertwine, making every conversation feel like an unspoken understanding of each other's soul.",
-            tip: "Ground your connection with real-world actions—fantasy is beautiful, but memories are made in reality."
+        "pluto": {
+            "title": "Hidden Depths 🌙🌑",
+            "description": "A friendship rooted in transformation, deep trust, and silent understanding. One side may experience intense personal changes, while the other provides quiet support. This bond is powerful but requires patience, as emotions can run deep and unspoken.",
+            "tip": "Don't be afraid to share your emotions fully—Pluto understands the depths of your heart."
         },
-        pluto: {
-            description: "Hidden Depths 🌙🌑 - A powerful friendship rooted in deep emotions, transformations, and silent understanding, where trust is built over time through life's phases.",
-            tip: "Don't be afraid to share your emotions fully—Pluto understands the depths of your heart."
+        "comet": {
+            "title": "Phases of Wonder 🌙☄️",
+            "description": "Like the moon’s phases, this friendship experiences cycles of closeness and distance. Each reunion is filled with renewed energy and deep conversations. The challenge is trusting that distance doesn’t mean disconnection.",
+            "tip": "Appreciate the natural ebb and flow—distance never weakens your bond, it just makes reunions sweeter."
         },
-        comet: {
-            description: "Phases of Wonder 🌙☄️ - Like the ever-changing phases of the moon, your friendship experiences cycles of intensity and calm, each reunion filled with renewed awe and connection.",
-            tip: "Appreciate the natural ebb and flow—distance never weakens your bond, it just makes reunions sweeter."
+        "cluster": {
+            "title": "Celestial Ties 🌙🌌",
+            "description": "One side finds comfort in deep personal connections, while the other enjoys being part of a larger shared space. This creates a friendship that blends emotional intimacy with social connection, though one person may occasionally crave more one-on-one time.",
+            "tip": "Help the group stay connected by creating deep, personal moments within the collective dynamic."
         },
-        cluster: {
-            description: "Celestial Ties 🌙🌌 - Moon's quiet presence brings a gentle unity to a wider group, making this a friendship where emotions flow naturally within a shared space.",
-            tip: "Help the group stay connected by creating deep, personal moments within the collective dynamic."
+        "earth": {
+            "title": "Grounded Dreams 🌙🌍",
+            "description": "One side provides emotional depth, while the other offers stability and practicality. This makes for a supportive, trusting friendship where feelings are understood and actions are reliable. The challenge is making sure emotions don’t become overwhelming for the more grounded side.",
+            "tip": "Balance your emotions with action—Earth helps you stay present, while you remind them to feel deeply."
         },
-        earth: {
-            description: "Grounded Dreams 🌙🌍 - Earth's stability provides a safe haven for the moon's emotions, creating a friendship of deep trust, patience, and steady support.",
-            tip: "Balance your emotions with action—Earth helps you stay present, while you remind them to feel deeply."
-        },
-        satellite: {
-            description: "Orbiting Support 🌙🛰️ - A bond of quiet companionship where the moon's steady presence gives warmth, and the satellite provides thoughtful perspective from afar.",
-            tip: "Check in on each other even from a distance—your quiet support means more than words."
+        "satellite": {
+            "title": "Orbiting Support 🌙🛰️",
+            "description": "One side sees the friendship as a steady presence, while the other values the perspective they bring from a distance. This means trust is strong, but communication might not always be frequent. The key is knowing the bond remains intact even through space and time apart.",
+            "tip": "Check in on each other even from a distance—your quiet support means more than words."
         }
     },
     venus: {
-        venus: {
-            description: "Kindred Hearts 💖💖 - A friendship full of love, warmth, and deep emotional connection, where mutual care and understanding create a bond that feels like home.",
-            tip: "Express your appreciation often—your bond thrives on love, support, and small acts of kindness."
+        "venus": {
+            "title": "Kindred Hearts 💖💖",
+            "description": "This friendship is full of love, warmth, and deep emotional connection. Both value closeness, affection, and mutual care, creating a bond that feels like home.",
+            "tip": "Express your appreciation often—your bond thrives on love, support, and small acts of kindness."
         },
-        mercury: {
-            description: "Charming Chemistry 💖💫 - Venus's warmth meets Mercury's quick wit, creating a friendship full of engaging conversations, laughter, and intellectual connection.",
-            tip: "Keep the conversations flowing, but also make space for emotional depth—words are powerful, but feelings matter too."
+        "mercury": {
+            "title": "Charming Chemistry 💖💫",
+            "description": "One sees the friendship as deep and emotionally rich, while the other keeps things light, witty, and full of engaging conversation. The contrast keeps things interesting, balancing heart and mind.",
+            "tip": "Keep the conversations flowing, but also make space for emotional depth—words are powerful, but feelings matter too."
         },
-        mars: {
-            description: "Magnetic Bond 💖🔥 - Opposites attract in this passionate friendship—Venus's heart softens Mars's fire, while Mars pushes Venus toward adventure and excitement.",
-            tip: "Balance passion with patience—your energy together is electric, but remember to appreciate the quiet moments too."
+        "mars": {
+            "title": "Magnetic Bond 💖🔥",
+            "description": "One brings passion and adventure, the other brings warmth and emotional depth. Together, this friendship is an exciting push-and-pull, where different energies create a dynamic and fulfilling connection.",
+            "tip": "Balance passion with patience—your energy together is electric, but remember to appreciate the quiet moments too."
         },
-        jupiter: {
-            description: "Joyful Expansion 💖🌟 - A friendship that grows effortlessly, full of shared dreams, laughter, and big-picture thinking, making every moment feel full of possibility.",
-            tip: "Encourage each other's dreams, but also bring them to life through action—your optimism can move mountains."
+        "jupiter": {
+            "title": "Joyful Expansion 💖🌟",
+            "description": "One sees the friendship as an emotionally fulfilling connection, while the other thrives on shared experiences, big dreams, and an optimistic outlook. The mix of heart and adventure makes for an inspiring duo.",
+            "tip": "Encourage each other's dreams, but also bring them to life through action—your optimism can move mountains."
         },
-        saturn: {
-            description: "Loyal Devotion 💖⭐ - Venus's warmth softens Saturn's serious nature, creating a deep, lasting friendship built on trust, responsibility, and unwavering support.",
-            tip: "Cherish Saturn's reliability, and remind them to enjoy life's beauty—you balance each other perfectly."
+        "saturn": {
+            "title": "Loyal Devotion 💖⭐",
+            "description": "One values warmth and emotional connection, while the other sees the friendship as steady, reliable, and built on deep trust. What starts as different approaches turns into an unshakable bond.",
+            "tip": "Cherish reliability, and remind each other to enjoy life’s beauty—you balance each other perfectly."
         },
-        uranus: {
-            description: "Unconventional Harmony 💖🌀 - Venus's affection meets Uranus's spontaneity, forming a friendship that's as surprising as it is heartwarming, always evolving in unique ways.",
-            tip: "Embrace the unexpected—your best memories come from breaking routine and enjoying life's surprises together."
+        "uranus": {
+            "title": "Unconventional Harmony 💖🌀",
+            "description": "One appreciates deep emotional bonds, while the other thrives on unpredictability and freedom. This friendship is ever-changing and full of surprises, yet somehow, it always works.",
+            "tip": "Embrace the unexpected—your best memories come from breaking routine and enjoying life's surprises together."
         },
-        neptune: {
-            description: "Ethereal Connection 💖🌊 - A dreamy, deeply emotional friendship where intuition, creativity, and shared imagination make every interaction feel magical.",
-            tip: "Ground your connection with real-world actions—your bond is beautiful, but make sure to nurture it outside of dreams too."
+        "neptune": {
+            "title": "Ethereal Connection 💖🌊",
+            "description": "One sees the friendship as a dreamy, deeply emotional bond, while the other experiences it as an intuitive, almost magical connection. Reality may blur between imagination and feeling, creating a beautifully unique dynamic.",
+            "tip": "Ground your connection with real-world actions—your bond is beautiful, but make sure to nurture it outside of dreams too."
         },
-        pluto: {
-            description: "Intense Devotion 💖🌑 - A powerful, transformative friendship where Venus's love meets Pluto's depth, creating an unbreakable, soul-level bond.",
-            tip: "Allow each other space to evolve—your friendship is strong enough to withstand change and come out even deeper."
+        "pluto": {
+            "title": "Intense Devotion 💖🌑",
+            "description": "One experiences this as a deep and affectionate friendship, while the other sees it as a powerful and transformative connection. The result is an unbreakable bond that evolves over time.",
+            "tip": "Allow each other space to evolve—your friendship is strong enough to withstand change and come out even deeper."
         },
-        comet: {
-            description: "Fleeting Romance 💖☄️ - A friendship of passionate, unforgettable moments, where Venus's affection meets Comet's unpredictable energy in a bond that may come and go but never fades.",
-            tip: "Enjoy the intensity of your connection, but don't hold on too tightly—some friendships are meant to shine brightly, even if briefly."
+        "comet": {
+            "title": "Fleeting Romance 💖☄️",
+            "description": "One sees this as a deeply affectionate bond, while the other experiences it as fast-moving and full of excitement. Whether the connection is long-term or brief, it leaves a lasting impression.",
+            "tip": "Enjoy the intensity of your connection, but don't hold on too tightly—some friendships are meant to shine brightly, even if briefly."
         },
-        cluster: {
-            description: "Heart of the Group 💖🌌 - Venus's loving nature brings warmth and unity to a larger friendship circle, making everyone feel included and valued.",
-            tip: "Keep bringing people together, but don't forget to nurture one-on-one connections too—your warmth is a gift to all."
+        "cluster": {
+            "title": "Heart of the Group 💖🌌",
+            "description": "One experiences this as a close and personal bond, while the other sees it as part of a larger friendship circle. The mix creates a dynamic where warmth and social energy blend effortlessly.",
+            "tip": "Keep bringing people together, but don’t forget to nurture one-on-one connections too—your warmth is a gift to all."
         },
-        earth: {
-            description: "Rooted Affection 💖🌍 - A nurturing friendship where Venus's love blends with Earth's stability, creating a bond full of trust, comfort, and consistent support.",
-            tip: "Appreciate Earth's steady presence—it may not always be flashy, but it's the foundation of something truly lasting."
+        "earth": {
+            "title": "Rooted Affection 💖🌍",
+            "description": "One sees the friendship as deeply emotional and affectionate, while the other values its stability and grounded nature. The blend of love and reliability makes this a lasting connection.",
+            "tip": "Appreciate steady presence—it may not always be flashy, but it's the foundation of something truly lasting."
         },
-        satellite: {
-            description: "Distant Affection 💖🛰️ - A friendship that may be separated by time or space, yet remains full of love and care, always returning to warmth and connection.",
-            tip: "Check in often—distance doesn't weaken your bond, but small gestures keep it strong over time."
+        "satellite": {
+            "title": "Distant Affection 💖🛰️",
+            "description": "One experiences this as an affectionate, close-knit bond, while the other sees it as something that can withstand distance and time apart. No matter the space between, the connection remains strong.",
+            "tip": "Check in often—distance doesn’t weaken your bond, but small gestures keep it strong over time."
         }
     },
     mercury: {
-        mercury: {
-            description: "Witty Sparring 💫💫 - A friendship built on rapid-fire conversation, playful debates, and endless curiosity—two minds that thrive on learning and laughter.",
-            tip: "Keep challenging each other's ideas—it keeps your connection fresh and intellectually stimulating."
+        "mercury": {
+            "title": "Witty Sparring 💫💫",
+            "description": "This friendship thrives on rapid-fire conversation, playful debates, and endless curiosity. Both enjoy quick thinking, clever humor, and keeping each other on their toes.",
+            "tip": "Keep challenging each other's ideas—it keeps your connection fresh and intellectually stimulating."
         },
-        mars: {
-            description: "Energetic Exchange 💫🔥 - Mercury's quick wit and Mars's action-oriented energy create a dynamic, fast-paced friendship full of exciting ideas and bold execution.",
-            tip: "Balance thinking with doing—Mars pushes you to act, while you help refine their plans."
+        "mars": {
+            "title": "Energetic Exchange 💫🔥",
+            "description": "One brings quick wit and clever ideas, while the other brings action and bold energy. This friendship moves fast, full of excitement, brainstorming, and spontaneous plans.",
+            "tip": "Balance thinking with doing—Mars pushes you to act, while you help refine their plans."
         },
-        jupiter: {
-            description: "Big Ideas, Big Laughs 💫🌟 - A friendship fueled by expansive thinking and boundless optimism, where deep discussions turn into grand adventures.",
-            tip: "Dream big together, but also follow through—your ideas can become reality with the right action."
+        "jupiter": {
+            "title": "Big Ideas, Big Laughs 💫🌟",
+            "description": "One enjoys fast-paced, thought-provoking conversations, while the other thrives on grand ideas and boundless optimism. Together, every discussion feels like an adventure waiting to happen.",
+            "tip": "Dream big together, but also follow through—your ideas can become reality with the right action."
         },
-        saturn: {
-            description: "Grounded Wisdom 💫⭐ - Mercury's agility meets Saturn's patience, creating a friendship that blends quick thinking with structured wisdom for the best of both worlds.",
-            tip: "Learn from Saturn's stability while helping them stay open to new perspectives."
+        "saturn": {
+            "title": "Grounded Wisdom 💫⭐",
+            "description": "One enjoys quick thinking and adaptability, while the other values structure and long-term planning. This friendship balances spontaneity with steady wisdom, keeping both grounded yet open-minded.",
+            "tip": "Learn from Saturn's stability while helping them stay open to new perspectives."
         },
-        uranus: {
-            description: "Revolutionary Minds 💫🌀 - Two free spirits who challenge the norm, bringing rebellious innovation and unexpected surprises into each other's lives.",
-            tip: "Embrace the unconventional—your best ideas come from pushing past limits together."
+        "uranus": {
+            "title": "Revolutionary Minds 💫🌀",
+            "description": "One loves clever problem-solving, while the other craves innovation and breaking the rules. This friendship is full of wild ideas, unexpected insights, and a shared love of shaking things up.",
+            "tip": "Embrace the unconventional—your best ideas come from pushing past limits together."
         },
-        neptune: {
-            description: "Mystical Musings 💫🌊 - A friendship where Mercury's logic meets Neptune's dreamy intuition, leading to deep, philosophical conversations and imaginative storytelling.",
-            tip: "Balance facts with feelings—your different approaches create a unique and enriching perspective."
+        "neptune": {
+            "title": "Mystical Musings 💫🌊",
+            "description": "One sees the world through logic and curiosity, while the other views it through dreams and intuition. Together, this friendship blends imagination with intellect, creating deep and fascinating conversations.",
+            "tip": "Balance facts with feelings—your different approaches create a unique and enriching perspective."
         },
-        pluto: {
-            description: "Strategic Depth 💫🌑 - Mercury's intellect meets Pluto's intensity, forming a friendship built on deep, transformative discussions and a shared love of uncovering hidden truths.",
-            tip: "Use your insight wisely—together, you can navigate life's complexities like no one else."
+        "pluto": {
+            "title": "Strategic Depth 💫🌑",
+            "description": "One dissects ideas with sharp intellect, while the other seeks deep, hidden truths. This friendship is built on intense discussions, uncovering layers of meaning, and seeing beyond the surface.",
+            "tip": "Use your insight wisely—together, you can navigate life's complexities like no one else."
         },
-        comet: {
-            description: "Spontaneous Sparks 💫☄️ - A fast-moving, exhilarating friendship full of unexpected reunions, witty exchanges, and bursts of shared excitement.",
-            tip: "Make an effort to stay in touch—your quick connection is incredible, but consistency will deepen it."
+        "comet": {
+            "title": "Spontaneous Sparks 💫☄️",
+            "description": "One thrives on quick, clever interactions, while the other embraces fleeting but exhilarating moments. This friendship is full of witty exchanges, unexpected reunions, and bursts of excitement.",
+            "tip": "Make an effort to stay in touch—your quick connection is incredible, but consistency will deepen it."
         },
-        cluster: {
-            description: "Social Catalyst 💫🌌 - Mercury's lively energy thrives in a group setting, bringing people together through shared jokes, intriguing discussions, and endless curiosity.",
-            tip: "Use your gift of connection to foster deeper bonds within the group."
+        "cluster": {
+            "title": "Social Catalyst 💫🌌",
+            "description": "One enjoys sharp, engaging conversations, while the other thrives on group dynamics and lively discussions. Together, they bring energy, humor, and connection to any social setting.",
+            "tip": "Use your gift of connection to foster deeper bonds within the group."
         },
-        earth: {
-            description: "Mind & Heart 💫🌍 - A balanced friendship where Mercury's logic blends with Earth's steady care, creating a relationship that's both intellectually stimulating and emotionally supportive.",
-            tip: "Appreciate Earth's patience—it helps ground your fast-moving mind in meaningful ways."
+        "earth": {
+            "title": "Mind & Heart 💫🌍",
+            "description": "One loves intellectual stimulation, while the other values emotional stability. This friendship blends quick-witted conversations with deep, grounding support, creating a well-rounded connection.",
+            "tip": "Appreciate Earth's patience—it helps ground your fast-moving mind in meaningful ways."
         },
-        satellite: {
-            description: "Long-Distance Laughter 💫🛰️ - A friendship that may span distances but never loses its charm, always picking up right where it left off with ease and excitement.",
-            tip: "Keep the connection alive with spontaneous check-ins—your friendship is too fun to fade."
+        "satellite": {
+            "title": "Long-Distance Laughter 💫🛰️",
+            "description": "One keeps the friendship alive with humor and quick check-ins, while the other ensures it remains steady despite time and distance. No matter how long between conversations, it always picks up seamlessly.",
+            "tip": "Keep the connection alive with spontaneous check-ins—your friendship is too fun to fade."
         }
     },
     mars: {
-        mars: {
-            description: "Brothers in Arms 🔥🔥 - A high-energy, competitive, and adventure-filled friendship where passion and drive fuel an unstoppable duo.",
-            tip: "Turn competition into motivation—support each other's ambitions rather than seeing them as rivalries."
+        "mars": {
+            "title": "Brothers in Arms 🔥🔥",
+            "description": "This friendship is built on high-energy adventures, competition, and an unstoppable drive. Both thrive on challenges and pushing each other to be their best.",
+            "tip": "Turn competition into motivation—support each other's ambitions rather than seeing them as rivalries."
         },
-        jupiter: {
-            description: "The Powerhouse Duo 🔥🌟 - Mars's boldness meets Jupiter's grand vision, creating a friendship that thrives on big dreams, risk-taking, and pushing boundaries together.",
-            tip: "Encourage each other's ambitions, but also stay grounded—big plans need solid execution."
+        "jupiter": {
+            "title": "The Powerhouse Duo 🔥🌟",
+            "description": "One brings bold action, the other brings grand vision. Together, this friendship is all about big dreams, risk-taking, and pushing boundaries in pursuit of something greater.",
+            "tip": "Encourage each other's ambitions, but also stay grounded—big plans need solid execution."
         },
-        saturn: {
-            description: "Strength & Discipline 🔥⭐ - Mars's fiery energy is tempered by Saturn's patience and wisdom, creating a balanced friendship where action meets strategy.",
-            tip: "Listen to Saturn's advice—they help you pace your energy and avoid burnout."
+        "saturn": {
+            "title": "Strength & Discipline 🔥⭐",
+            "description": "One is full of fiery energy, always ready to act, while the other takes a patient, strategic approach. This friendship thrives when passion is tempered with wisdom.",
+            "tip": "Listen to Saturn's advice—they help you pace your energy and avoid burnout."
         },
-        uranus: {
-            description: "Rebellious Allies 🔥🌀 - A thrilling, unpredictable friendship where both of you challenge the rules, embrace change, and seek the next great adventure.",
-            tip: "Channel your rebellious streak into creative innovation rather than reckless impulses."
+        "uranus": {
+            "title": "Rebellious Allies 🔥🌀",
+            "description": "One thrives on action and thrill-seeking, while the other craves innovation and shaking things up. Together, this friendship is about breaking rules, embracing change, and chasing the next big adventure.",
+            "tip": "Channel your rebellious streak into creative innovation rather than reckless impulses."
         },
-        neptune: {
-            description: "Dreams & Drive 🔥🌊 - Mars's intense energy meets Neptune's depth, forming a unique friendship where passion fuels creativity, and action brings dreams to life.",
-            tip: "Let Neptune inspire your imagination while you help them turn visions into reality."
+        "neptune": {
+            "title": "Dreams & Drive 🔥🌊",
+            "description": "One is all about action and intensity, while the other brings deep emotions and creativity. This friendship finds balance when passion fuels imagination, and dreams turn into reality.",
+            "tip": "Let Neptune inspire your imagination while you help them turn visions into reality."
         },
-        pluto: {
-            description: "Unbreakable Bond 🔥🌑 - A deep, transformative friendship where Mars's raw intensity and Pluto's emotional depth create an unshakable, ride-or-die connection.",
-            tip: "Use your shared intensity for good—support each other through life's biggest transformations."
+        "pluto": {
+            "title": "Unbreakable Bond 🔥🌑",
+            "description": "One thrives on raw intensity, the other seeks deep emotional transformation. This friendship is built on trust, loyalty, and the ability to navigate life's biggest challenges together.",
+            "tip": "Use your shared intensity for good—support each other through life's biggest transformations."
         },
-        comet: {
-            description: "Explosive Chemistry 🔥☄️ - A friendship full of exciting bursts of energy, spontaneous adventures, and thrilling reunions that never fail to leave a lasting impact.",
-            tip: "While spontaneity is great, a little consistency can turn this into a lifelong connection."
+        "comet": {
+            "title": "Explosive Chemistry 🔥☄️",
+            "description": "One brings relentless energy, the other thrives on fast-moving connections. This friendship is all about spontaneous adventures, unexpected reunions, and unforgettable moments.",
+            "tip": "While spontaneity is great, a little consistency can turn this into a lifelong connection."
         },
-        cluster: {
-            description: "The Life of the Party 🔥🌌 - Mars's confidence shines in a group setting, leading the charge with boldness, enthusiasm, and a contagious sense of fun.",
-            tip: "Make sure to uplift others in the group—your energy can either inspire or overpower."
+        "cluster": {
+            "title": "The Life of the Party 🔥🌌",
+            "description": "One thrives on leading the charge with boldness and enthusiasm, while the other enjoys the collective energy of a group. Together, they keep the momentum going and the fun alive.",
+            "tip": "Make sure to uplift others in the group—your energy can either inspire or overpower."
         },
-        earth: {
-            description: "Grounded Fire 🔥🌍 - Mars's passion is kept steady by Earth's nurturing presence, creating a friendship that balances ambition with care and stability.",
-            tip: "Appreciate Earth's patience—it keeps you from burning out in your relentless pursuits."
+        "earth": {
+            "title": "Grounded Fire 🔥🌍",
+            "description": "One is all about ambition and drive, while the other provides steady, grounding support. This friendship balances relentless pursuit with emotional care and stability.",
+            "tip": "Appreciate Earth's patience—it keeps you from burning out in your relentless pursuits."
         },
-        satellite: {
-            description: "Distant Flames 🔥🛰️ - Even when apart, the intensity of this friendship never fades, with each reconnection reigniting the same spark as before.",
-            tip: "Check in regularly—a simple message can keep the fire alive across any distance."
+        "satellite": {
+            "title": "Distant Flames 🔥🛰️",
+            "description": "One is always on the move, full of energy, while the other stays connected even across distance. This friendship may go through long gaps, but every reconnection feels just as strong.",
+            "tip": "Check in regularly—a simple message can keep the fire alive across any distance."
         }
     },
     jupiter: {
-        jupiter: {
-            description: "Endless Horizons 🌟🌟 - Two adventurous souls who thrive on big dreams, philosophical discussions, and pushing each other to expand their limits.",
-            tip: "Embrace each other's grand ideas, but remember to ground them with actionable steps."
+        "jupiter": {
+            "title": "Endless Horizons 🌟🌟",
+            "description": "This friendship is fueled by adventure, big dreams, and a constant push to expand limits. Both thrive on grand ideas, philosophical discussions, and an ever-growing curiosity about life.",
+            "tip": "Embrace each other's grand ideas, but remember to ground them with actionable steps."
         },
-        saturn: {
-            description: "Wisdom & Wonder 🌟⭐ - Jupiter's optimism meets Saturn's discipline, creating a friendship that balances big dreams with practical execution.",
-            tip: "Saturn's realism isn't negativity—it's the structure that helps your dreams take flight."
+        "saturn": {
+            "title": "Wisdom & Wonder 🌟⭐",
+            "description": "One sees limitless possibilities, the other values careful planning. This friendship works when optimism meets structure, allowing dreams to take shape with practical execution.",
+            "tip": "Saturn's realism isn't negativity—it's the structure that helps your dreams take flight."
         },
-        uranus: {
-            description: "Visionary Minds 🌟🌀 - An electrifying friendship where innovation meets expansion, leading to groundbreaking ideas and out-of-the-box adventures.",
-            tip: "Support each other's wild ideas—together, you can redefine what's possible."
+        "uranus": {
+            "title": "Visionary Minds 🌟🌀",
+            "description": "One dreams of boundless expansion, while the other thrives on breaking norms. Together, this friendship is a whirlwind of groundbreaking ideas, unconventional adventures, and bold new perspectives.",
+            "tip": "Support each other's wild ideas—together, you can redefine what's possible."
         },
-        neptune: {
-            description: "Dream Weavers 🌟🌊 - Jupiter's boundless curiosity pairs with Neptune's creativity, forming a friendship that dives deep into imagination and shared ideals.",
-            tip: "Balance inspiration with action—turn dreams into reality together."
+        "neptune": {
+            "title": "Dream Weavers 🌟🌊",
+            "description": "One is driven by endless curiosity, the other by deep imagination. This friendship thrives on creative exploration, idealistic conversations, and a shared belief in limitless possibilities.",
+            "tip": "Balance inspiration with action—turn dreams into reality together."
         },
-        pluto: {
-            description: "Transformation & Growth 🌟🌑 - Jupiter's optimism encourages Pluto through deep personal changes, making this a friendship of profound evolution.",
-            tip: "Be patient with Pluto's intensity—your light helps them through their darkest moments."
+        "pluto": {
+            "title": "Transformation & Growth 🌟🌑",
+            "description": "One encourages expansion and positivity, while the other seeks depth and transformation. This friendship pushes both to evolve, bringing light to difficult changes and meaning to grand pursuits.",
+            "tip": "Be patient with Pluto's intensity—your light helps them through their darkest moments."
         },
-        comet: {
-            description: "Epic Encounters 🌟☄️ - A friendship full of grand reunions, spontaneous trips, and moments that feel like fate bringing you together again and again.",
-            tip: "Embrace the unpredictable nature of this bond—each reunion is an opportunity for new adventures."
+        "comet": {
+            "title": "Epic Encounters 🌟☄️",
+            "description": "One thrives on movement, the other embraces serendipity. This friendship is full of chance reunions, spontaneous trips, and experiences that feel like fate keeps bringing you together.",
+            "tip": "Embrace the unpredictable nature of this bond—each reunion is an opportunity for new adventures."
         },
-        cluster: {
-            description: "The Ultimate Social Duo 🌟🌌 - Jupiter's charisma shines in group dynamics, making this friendship one of leadership, connection, and shared joy.",
-            tip: "Use your influence to uplift others—your energy can inspire entire communities."
+        "cluster": {
+            "title": "The Ultimate Social Duo 🌟🌌",
+            "description": "One shines as the charismatic leader, the other thrives in shared group energy. This friendship is about bringing people together, spreading optimism, and creating unforgettable moments.",
+            "tip": "Use your influence to uplift others—your energy can inspire entire communities."
         },
-        earth: {
-            description: "Grounded Growth 🌟🌍 - Jupiter's expansion meets Earth's steady presence, forming a friendship that encourages both adventure and emotional security.",
-            tip: "Appreciate Earth's grounding nature—they help you stay connected to what truly matters."
+        "earth": {
+            "title": "Grounded Growth 🌟🌍",
+            "description": "One seeks endless adventure, the other provides steady support. This friendship balances expansion with emotional security, making room for big dreams without losing touch with reality.",
+            "tip": "Appreciate Earth's grounding nature—they help you stay connected to what truly matters."
         },
-        satellite: {
-            description: "Boundless Bonds 🌟🛰️ - A long-distance friendship where no amount of space can dim the light of your connection, always picking up where you left off.",
-            tip: "Stay in touch—your encouragement means the world, even from afar."
-        },
+        "satellite": {
+            "title": "Boundless Bonds 🌟🛰️",
+            "description": "One sees distance as just another challenge, the other values deep, lasting connection. This friendship remains strong no matter the miles, always picking up right where it left off.",
+            "tip": "Stay in touch—your encouragement means the world, even from afar."
+        }
     },
     saturn: {
-        saturn: {
-            description: "Unbreakable Bond ⭐⭐ - A friendship built on loyalty, patience, and mutual respect—your connection may take time to form, but once it does, it's rock-solid.",
-            tip: "Consistency is key—nurture your friendship with steady effort and understanding."
+        "saturn": {
+            "title": "Unbreakable Bond ⭐⭐",
+            "description": "This friendship is built on loyalty, patience, and mutual respect. It may take time to form, but once it does, it's rock-solid—steady, enduring, and built to last.",
+            "tip": "Consistency is key—nurture your friendship with steady effort and understanding."
         },
-        uranus: {
-            description: "Order & Chaos ⭐🌀 - Saturn's structure meets Uranus's rebellion, creating a friendship that challenges norms and reshapes perspectives.",
-            tip: "Embrace your differences—Saturn provides stability, while Uranus brings excitement."
+        "uranus": {
+            "title": "Order & Chaos ⭐🌀",
+            "description": "One values structure, the other thrives on disruption. This friendship is a constant push-and-pull between stability and excitement, challenging norms while reshaping perspectives.",
+            "tip": "Embrace your differences—Saturn provides stability, while Uranus brings excitement."
         },
-        neptune: {
-            description: "Depth & Discipline ⭐🌊 - Saturn grounds Neptune's dreamy nature, offering practical wisdom while also being inspired by Neptune's boundless imagination.",
-            tip: "Balance is everything—let Saturn provide structure without dimming Neptune's creativity."
+        "neptune": {
+            "title": "Depth & Discipline ⭐🌊",
+            "description": "One seeks stability, the other drifts through imagination. This friendship balances structure with creativity, where practical wisdom meets boundless dreams.",
+            "tip": "Balance is everything—let Saturn provide structure without dimming Neptune's creativity."
         },
-        pluto: {
-            description: "Silent Strength ⭐🌑 - A deeply transformative bond where Saturn's endurance helps Pluto navigate intense personal changes with unwavering support.",
-            tip: "Patience is key—Pluto's changes take time, and your steadiness is invaluable."
+        "pluto": {
+            "title": "Silent Strength ⭐🌑",
+            "description": "One provides quiet endurance, the other undergoes deep transformation. This friendship is a pillar of unwavering support, offering patience and strength through intense changes.",
+            "tip": "Patience is key—Pluto's changes take time, and your steadiness is invaluable."
         },
-        comet: {
-            description: "Fleeting Yet Familiar ⭐☄️ - A rare but meaningful friendship that may come and go, yet always leaves a lasting impact.",
-            tip: "Even if your paths cross sporadically, the wisdom you share stays forever."
+        "comet": {
+            "title": "Fleeting Yet Familiar ⭐☄️",
+            "description": "One moves at a slow, steady pace, while the other comes and goes in bursts. This friendship may not be constant, but every encounter leaves a lasting impact.",
+            "tip": "Even if your paths cross sporadically, the wisdom you share stays forever."
         },
-        cluster: {
-            description: "The Backbone of the Group ⭐🌌 - Saturn's loyalty and structure keep the friendship circle stable, providing support when things get chaotic.",
-            tip: "Don't always play the responsible one—let yourself enjoy the fun, too."
+        "cluster": {
+            "title": "The Backbone of the Group ⭐🌌",
+            "description": "One provides structure, the other thrives in community. This friendship keeps the group stable, offering reliability and support when things get chaotic.",
+            "tip": "Don't always play the responsible one—let yourself enjoy the fun, too."
         },
-        earth: {
-            description: "Steady Foundations ⭐🌍 - Saturn and Earth share a grounded, practical friendship built on trust, responsibility, and deep mutual respect.",
-            tip: "Make time to appreciate each other—your friendship is a rare and valuable anchor."
+        "earth": {
+            "title": "Steady Foundations ⭐🌍",
+            "description": "One builds with discipline, the other nurtures with care. This friendship is deeply rooted in trust and responsibility, providing an unshakable sense of stability.",
+            "tip": "Make time to appreciate each other—your friendship is a rare and valuable anchor."
         },
-        satellite: {
-            description: "Distant Yet Devoted ⭐🛰️ - A friendship where space and time never weaken the bond—Saturn's reliability keeps the connection intact.",
-            tip: "Check in once in a while—your steady presence provides comfort, even from afar."
-        },
+        "satellite": {
+            "title": "Distant Yet Devoted ⭐🛰️",
+            "description": "One remains steady, the other stays connected despite the distance. This friendship proves that space and time don’t weaken bonds when reliability is at its core.",
+            "tip": "Check in once in a while—your steady presence provides comfort, even from afar."
+        }
     },
     uranus: {
-        uranus: {
-            description: "Rebels at Heart 🌀🌀 - A friendship full of surprises, innovation, and unconventional ideas—together, you shake things up and challenge the norm.",
-            tip: "Embrace the chaos—your bond thrives on freedom and unpredictability."
+        "uranus": {
+            "title": "Rebels at Heart 🌀🌀",
+            "description": "This friendship thrives on surprises, innovation, and breaking the mold. Whether challenging traditions or chasing bold new ideas, nothing about this connection is ordinary.",
+            "tip": "Embrace the chaos—your bond thrives on freedom and unpredictability."
         },
-        neptune: {
-            description: "Dreamers & Visionaries 🌀🌊 - Uranus's bold ideas mix with Neptune's deep imagination, creating a friendship full of creative breakthroughs and spiritual exploration.",
-            tip: "Ground your ideas in reality—dream big, but also take action together."
+        "neptune": {
+            "title": "Dreamers & Visionaries 🌀🌊",
+            "description": "One brings radical ideas, the other adds deep imagination. This friendship is a fusion of creativity and idealism, where dreams and innovation fuel each other.",
+            "tip": "Ground your ideas in reality—dream big, but also take action together."
         },
-        pluto: {
-            description: "Revolution & Transformation 🌀🌑 - A deep, intense bond where Uranus's radical changes fuel Pluto's need for transformation, leading to profound personal growth.",
-            tip: "Change is your strength—help each other embrace the unknown fearlessly."
+        "pluto": {
+            "title": "Revolution & Transformation 🌀🌑",
+            "description": "One thrives on disruption, the other on deep transformation. This friendship pushes boundaries, constantly evolving and reshaping both people involved.",
+            "tip": "Change is your strength—help each other embrace the unknown fearlessly."
         },
-        comet: {
-            description: "Cosmic Sparks 🌀☄️ - A high-energy friendship filled with unexpected reunions and wild, exhilarating experiences that leave a lasting impact.",
-            tip: "Cherish the spontaneous moments—some friendships don't need routine to thrive."
+        "comet": {
+            "title": "Cosmic Sparks 🌀☄️",
+            "description": "One moves unpredictably, the other thrives in spontaneity. This friendship is full of thrilling, unexpected reunions and unforgettable moments.",
+            "tip": "Cherish the spontaneous moments—some friendships don't need routine to thrive."
         },
-        cluster: {
-            description: "The Eccentric Crew 🌀🌌 - Your shared uniqueness makes you the life of any group, bringing fresh perspectives and shaking things up in the best way possible.",
-            tip: "Stay connected—your presence keeps your group dynamic and full of new ideas."
+        "cluster": {
+            "title": "The Eccentric Crew 🌀🌌",
+            "description": "One shakes things up, the other brings fresh perspectives. This friendship keeps the group dynamic, always introducing new ideas and exciting changes.",
+            "tip": "Stay connected—your presence keeps your group vibrant and full of new ideas."
         },
-        earth: {
-            description: "Groundbreaker Duo 🌀🌍 - Uranus's innovation pushes Earth's steady nature to embrace change, while Earth helps Uranus bring wild ideas into reality.",
-            tip: "Find balance—Uranus inspires, and Earth builds upon those inspirations."
+        "earth": {
+            "title": "Groundbreaker Duo 🌀🌍",
+            "description": "One challenges the status quo, the other provides steady support. This friendship finds balance between pushing boundaries and creating something lasting.",
+            "tip": "Find balance—Uranus inspires, and Earth builds upon those inspirations."
         },
-        satellite: {
-            description: "Distant Signals 🌀🛰️ - A friendship built on intellectual curiosity, where deep discussions and shared discoveries keep you connected no matter the distance.",
-            tip: "Keep the conversation going—your bond grows through thought-provoking talks."
-        },
+        "satellite": {
+            "title": "Distant Signals 🌀🛰️",
+            "description": "One thrives on discovery, the other values deep discussions. This friendship stays strong across any distance through thought-provoking ideas and shared curiosity.",
+            "tip": "Keep the conversation going—your bond grows through thought-provoking talks."
+        }
     },
     neptune: {
-        neptune: {
-            description: "Soul Connection 🌊🌊 - A friendship built on intuition, deep emotions, and shared dreams, where words are often unnecessary to understand each other.",
-            tip: "Trust your bond—your connection runs deeper than the surface."
+        "neptune": {
+            "title": "Soul Connection 🌊🌊",
+            "description": "This friendship is built on intuition, deep emotions, and shared dreams. Conversations flow effortlessly, and even in silence, there’s an unspoken understanding.",
+            "tip": "Trust your bond—your connection runs deeper than the surface."
         },
-        pluto: {
-            description: "Mystical Depths 🌊🌑 - Neptune's dreamy nature merges with Pluto's transformative energy, creating a friendship full of deep talks and spiritual growth.",
-            tip: "Embrace the depth—your friendship is a rare blend of mystery and meaning."
+        "pluto": {
+            "title": "Mystical Depths 🌊🌑",
+            "description": "One brings dreamy idealism, the other deep transformation. This friendship thrives on intense conversations, personal growth, and exploring life’s mysteries together.",
+            "tip": "Embrace the depth—your friendship is a rare blend of mystery and meaning."
         },
-        comet: {
-            description: "Drifting Tides 🌊☄️ - Sometimes close, sometimes distant, but always meaningful—your friendship flows like the ocean, reconnecting when the time is right.",
-            tip: "Cherish the moments you share—every reconnection brings new wisdom."
+        "comet": {
+            "title": "Drifting Tides 🌊☄️",
+            "description": "One flows with emotion, the other moves unpredictably. This friendship ebbs and flows, sometimes close, sometimes distant, yet always meaningful when paths cross again.",
+            "tip": "Cherish the moments you share—every reconnection brings new wisdom."
         },
-        cluster: {
-            description: "Creative Collective 🌊🌌 - A group dynamic where Neptune's imagination blends with others' energy, inspiring artistic expression, philosophy, and dreamy conversations.",
-            tip: "Keep sharing your dreams—your vision brings magic to the group."
+        "cluster": {
+            "title": "Creative Collective 🌊🌌",
+            "description": "One brings imagination, the other amplifies it. This friendship thrives in a group where artistic ideas, deep conversations, and dreamy perspectives inspire everyone.",
+            "tip": "Keep sharing your dreams—your vision brings magic to the group."
         },
-        earth: {
-            description: "Dreamer & Doer 🌊🌍 - Neptune's idealism meets Earth's practicality, turning dreams into reality while keeping the magic alive.",
-            tip: "Ground your dreams—Earth helps make them real, so embrace their stability."
+        "earth": {
+            "title": "Dreamer & Doer 🌊🌍",
+            "description": "One dreams big, the other makes things happen. This friendship finds harmony in turning ideals into reality, with Earth providing the grounding that Neptune needs.",
+            "tip": "Ground your dreams—Earth helps make them real, so embrace their stability."
         },
-        satellite: {
-            description: "Long-Distance Daydreamers 🌊🛰️ - A connection that thrives on emotional depth and shared ideals, even if you're miles apart.",
-            tip: "Keep the inspiration alive—small gestures maintain your emotional closeness."
-        },
+        "satellite": {
+            "title": "Long-Distance Daydreamers 🌊🛰️",
+            "description": "One thrives on imagination, the other on emotional connection. This friendship stays strong across any distance, bonded by shared ideals and deep conversations.",
+            "tip": "Keep the inspiration alive—small gestures maintain your emotional closeness."
+        }
     },
     pluto: {
-        pluto: {
-            description: "Eternal Bond 🌑🌑 - A friendship rooted in transformation, resilience, and unspoken understanding, surviving time, distance, and life's changes.",
-            tip: "Embrace the evolution—your friendship grows stronger through every phase."
+        "pluto": {
+            "title": "Eternal Bond 🌑🌑",
+            "description": "This friendship is built on transformation, resilience, and an unspoken understanding. No matter how much life changes, the connection endures, growing deeper with every challenge.",
+            "tip": "Embrace the evolution—your friendship grows stronger through every phase."
         },
-        comet: {
-            description: "Fated Encounters 🌑☄️ - Your paths cross in unpredictable yet meaningful ways, each meeting bringing new perspectives and deep conversations.",
-            tip: "Appreciate the mystery—each reunion carries a purpose."
+        "comet": {
+            "title": "Fated Encounters 🌑☄️",
+            "description": "One moves through life in cycles of deep change, the other appears unpredictably. This friendship isn't about constant presence but about the meaning behind each reconnection.",
+            "tip": "Appreciate the mystery—each reunion carries a purpose."
         },
-        cluster: {
-            description: "Hidden Depths 🌑🌌 - In a group, you may be the quiet observer, but with the right people, your insights and loyalty shine through.",
-            tip: "Don't be afraid to open up—your presence holds power in your circle."
+        "cluster": {
+            "title": "Hidden Depths 🌑🌌",
+            "description": "One prefers depth, the other thrives in the group. In a friendship circle, this dynamic brings quiet insight and unwavering loyalty, even if not always vocal.",
+            "tip": "Don't be afraid to open up—your presence holds power in your circle."
         },
-        earth: {
-            description: "Old Roots 🌑🌍 - A friendship with deep history, where even if life takes you in different directions, the connection remains unshaken.",
-            tip: "Reconnect when you can—the foundation of your friendship is unbreakable."
+        "earth": {
+            "title": "Old Roots 🌑🌍",
+            "description": "One values transformation, the other stability. This friendship has deep history, proving that no matter how much things change, the foundation remains steady.",
+            "tip": "Reconnect when you can—the foundation of your friendship is unbreakable."
         },
-        satellite: {
-            description: "Distant but Unforgotten 🌑🛰️ - Time and space may separate you, but when you do talk, it feels like nothing has changed.",
-            tip: "A simple message can reignite the bond—don't hesitate to reach out."
-        },
+        "satellite": {
+            "title": "Distant but Unforgotten 🌑🛰️",
+            "description": "One moves through cycles of deep change, the other stays steady from afar. Even with time and space between you, every conversation feels like no time has passed.",
+            "tip": "A simple message can reignite the bond—don't hesitate to reach out."
+        }
     },
     comet: {
-        comet: {
-            description: "Celestial Wanderers ☄️☄️ - Two free spirits who drift in and out of each other's lives, but every encounter feels just as magical as the last.",
-            tip: "Enjoy the spontaneity—your bond doesn't need constant contact to be meaningful."
+        "comet": {
+            "title": "Celestial Wanderers ☄️☄️",
+            "description": "This friendship moves in cycles—sometimes close, sometimes distant—but every time you reconnect, it feels just as magical as before. No matter how much time passes, the energy is always there.",
+            "tip": "Enjoy the spontaneity—your bond doesn't need constant contact to be meaningful."
         },
-        cluster: {
-            description: "Orbiting Together ☄️🌌 - You thrive in shared spaces, weaving in and out of the same social circles while keeping your unique spark alive.",
-            tip: "Even in a group, make time for one-on-one moments to strengthen your bond."
+        "cluster": {
+            "title": "Orbiting Together ☄️🌌",
+            "description": "One flows in and out, the other holds steady in a shared space. This friendship thrives in groups, where your paths keep crossing in unexpected yet familiar ways.",
+            "tip": "Even in a group, make time for one-on-one moments to strengthen your bond."
         },
-        earth: {
-            description: "Gravity & Motion ☄️🌍 - Earth's stability gives Comet a place to return to, while Comet brings excitement and change to Earth's steady world.",
-            tip: "Balance spontaneity with consistency—check in, even when life pulls you away."
+        "earth": {
+            "title": "Gravity & Motion ☄️🌍",
+            "description": "One is always on the move, the other provides steady ground. This friendship is a mix of adventure and reliability—one keeps things exciting, the other offers a place to return to.",
+            "tip": "Balance spontaneity with consistency—check in, even when life pulls you away."
         },
-        satellite: {
-            description: "Cosmic Signals ☄️🛰️ - You may drift far apart, but when you reconnect, it's like picking up an ongoing cosmic conversation.",
-            tip: "Leave small messages—random check-ins can mean the world to both of you."
-        },
+        "satellite": {
+            "title": "Cosmic Signals ☄️🛰️",
+            "description": "One drifts through space, the other stays in orbit. This friendship works across time and distance, thriving on occasional yet meaningful check-ins.",
+            "tip": "Leave small messages—random check-ins can mean the world to both of you."
+        }
     },
     cluster: {
-        cluster: {
-            description: "Galactic Bond 🌌🌌 - A vibrant web of connections where friendships thrive within a shared space, creating a dynamic and ever-expanding universe of camaraderie.",
-            tip: "Celebrate the group energy, but nurture individual friendships within it to deepen your bonds."
+        "cluster": {
+            "title": "Galactic Bond 🌌🌌",
+            "description": "This friendship exists within a web of connections, where bonds thrive in a shared space. There's always movement, new faces, and shifting dynamics, but the core remains strong.",
+            "tip": "Celebrate the group energy, but nurture individual friendships within it to deepen your bonds."
         },
-        earth: {
-            description: "Rooted in Community 🌌🌍 - Earth's deep connection stabilizes Cluster's expansive nature, ensuring that even within a vast social circle, a strong personal bond remains.",
-            tip: "Find time for meaningful one-on-one moments amidst the group dynamic."
+        "earth": {
+            "title": "Rooted in Community 🌌🌍",
+            "description": "One thrives in the vastness of social circles, the other values deep, personal connections. This friendship balances expansive networks with meaningful one-on-one moments.",
+            "tip": "Find time for meaningful conversations amidst the group dynamic to keep the bond strong."
         },
-        satellite: {
-            description: "Orbiting Together 🌌🛰️ - Satellite stays on the fringes of Cluster's bustling connections, always part of the network but sometimes watching from a distance.",
-            tip: "A simple reach-out can pull a drifting friend back into the heart of the group."
+        "satellite": {
+            "title": "Orbiting Together 🌌🛰️",
+            "description": "One moves freely within the group, while the other stays on the edges, watching from a distance. This friendship remains connected even when one prefers a quieter presence.",
+            "tip": "A simple reach-out can pull a drifting friend back into the heart of the group."
         }
     },
     earth: {
-        earth: {
-            description: "Unshakable Roots 🌍🌍 - A bond built on trust, care, and deep understanding—Earth friends support each other through every season of life, always nurturing their connection.",
-            tip: "Consistency is key—check in regularly and show up for each other in both big and small ways."
+        "earth": {
+            "title": "Unshakable Roots 🌍🌍",
+            "description": "This friendship is built on trust, care, and deep understanding. Both people see the relationship as something stable and worth nurturing, making it a bond that withstands time and change.",
+            "tip": "Consistency is key—check in regularly and show up for each other in both big and small ways."
         },
-        satellite: {
-            description: "Grounded Orbit 🌍🛰️ - Earth's steady presence gives Satellite a place to return to, offering a comforting, dependable friendship even when distance or time creates gaps.",
-            tip: "Even if they drift, a gentle reminder of your presence can keep the bond strong."
+        "satellite": {
+            "title": "Grounded Orbit 🌍🛰️",
+            "description": "One remains steady and present, while the other moves in and out of reach. The connection stays strong because there is always a place to return to, even if life creates distance.",
+            "tip": "Even if they drift, a gentle reminder of your presence can keep the bond strong."
         }
     },
     satellite: {
-        satellite: {
-            description: "Parallel Paths 🛰️🛰️ - Two satellites in motion, your friendship flows in and out of sync, always orbiting but never truly lost. When you reconnect, it feels as if no time has passed.",
-            tip: "Embrace the ebb and flow—sporadic check-ins and thoughtful messages will keep your bond alive."
+        "satellite": {
+            "title": "Parallel Paths 🛰️🛰️",
+            "description": "This friendship moves in and out of sync, always in motion but never truly lost. Both people understand the distance and trust that whenever they reconnect, it will feel as if no time has passed.",
+            "tip": "Embrace the ebb and flow—sporadic check-ins and thoughtful messages will keep your bond alive."
         }
-    }    
+    }
     
 };
 
