@@ -102,10 +102,61 @@ const questions = [
     ],
   },
   {
-    question: "Describe your friendship in a few words!",
+    question: "How do you celebrate each other's successes?",
+    options: [
+      "We throw a big party and celebrate in style! 🎉",
+      "We share heartfelt congratulations and catch up over coffee ☕",
+      "We exchange quick high-fives and cheers 👏",
+      "We acknowledge them with a simple nod or smile 🙂",
+      "I rarely comment, but I feel proud internally 🤫",
+    ],
+  },
+  {
+    question: "How do you handle differing opinions or disagreements?",
+    options: [
+      "We discuss openly and find mutual understanding 🗨️",
+      "We debate passionately but always come to an agreement 🔥",
+      "We agree to disagree and move on peacefully 🤝",
+      "It can be a bit awkward, but we manage to coexist 🤷",
+      "We tend to avoid conflict at all costs 🚧",
+    ],
+  },
+  {
+    question: "How well do you know your friend's personal history?",
+    options: [
+      "I know everything—our lives are deeply intertwined 📚",
+      "I know a lot; we've shared many personal details 💡",
+      "I know the basics and some important moments 📝",
+      "I know enough for casual conversation 🗣️",
+      "I don't really know much; we keep it surface-level 🚶",
+    ],
+  },
+  {
+    question: "How would you describe the evolution of your friendship over time?",
+    options: [
+      "It has grown deeper and stronger with every challenge 💪",
+      "It has evolved into a meaningful, enduring bond 🌱",
+      "It has been consistent, with occasional ups and downs ⚖️",
+      "It has become more casual as we grow older 🕰️",
+      "It has faded compared to how it once was 🕳️",
+    ],
+  },
+  {
+    question: "How do you envision your friendship growing in the future?",
+    options: [
+      "It will remain a constant, unwavering bond 🌟",
+      "It will evolve into an even deeper connection 💞",
+      "It will continue as it is—steady and reliable ⏳",
+      "It may become more casual over time 🌀",
+      "I'm uncertain—our paths might eventually diverge 🌫️",
+    ],
+  },
+  {
+    question: "Describe your friendship in a couple words!",
     isOpenEnded: true,
   },
 ];
+
 
 // Add this helper function at the top of the file
 function generateUID(): string {
@@ -276,11 +327,13 @@ export const Quiz = () => {
             {currentQ.isOpenEnded ? (
               <div className="flex justify-center">
                 <Textarea
-                  placeholder="Share your thoughts..."
+                  placeholder="Share your thoughts (max 140 characters)..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="min-h-[200px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  maxLength={140}
+                  className="min-h-[50px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
+                <p className="text-white text-sm text-right mt-1">{description.length}/140</p>
               </div>
             ) : (
               <div className="grid gap-4">

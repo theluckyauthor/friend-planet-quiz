@@ -10,7 +10,9 @@ export type PlanetType =
   | 'neptune' 
   | 'pluto' 
   | 'moon' 
-  | 'comet';
+  | 'comet' 
+  |'cluster'
+  | 'satellite';
 
 interface QuizAnalytics {
   startTime: Date;

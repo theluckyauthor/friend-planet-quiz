@@ -14,27 +14,27 @@ const PLANET_SCORES: Record<number, Record<string, PlanetType[]>> = {
     B: ['venus', 'mars', 'moon'],
     C: ['jupiter', 'comet'],
     D: ['mercury', 'saturn'],
-    E: ['neptune', 'uranus', 'pluto']
+    E: ['neptune', 'uranus', 'pluto', 'satellite'] // acquaintances (satellite) added here
   },
   2: { // Feeling after hangout
     A: ['sun', 'earth'],
     B: ['venus', 'mars', 'moon'],
     C: ['mercury', 'jupiter'],
     D: ['saturn', 'uranus', 'comet'],
-    E: ['neptune', 'pluto']
+    E: ['neptune', 'pluto', 'satellite']
   },
   3: { // Friendship duration
     A: ['sun', 'earth'],
     B: ['mars', 'moon'],
     C: ['venus', 'jupiter'],
-    D: ['mercury', 'saturn', 'uranus', 'comet'],
+    D: ['mercury', 'saturn', 'uranus', 'comet', 'satellite'], // acquaintances can be recent & casual
     E: ['neptune', 'pluto']
   },
   4: { // Usual interaction
     A: ['sun', 'earth'],
     B: ['venus', 'mars', 'moon'],
     C: ['mercury', 'jupiter', 'comet'],
-    D: ['saturn', 'neptune'],
+    D: ['saturn', 'neptune', 'satellite'], // added satellite here
     E: ['uranus', 'pluto']
   },
   5: { // Sharing personal news
@@ -42,36 +42,73 @@ const PLANET_SCORES: Record<number, Record<string, PlanetType[]>> = {
     B: ['venus', 'mars', 'moon'],
     C: ['jupiter'],
     D: ['mercury', 'saturn', 'comet'],
-    E: ['uranus', 'neptune', 'pluto']
+    E: ['uranus', 'neptune', 'pluto', 'satellite']
   },
   6: { // Expected support
     A: ['sun', 'earth'],
     B: ['venus', 'mars', 'moon'],
     C: ['mercury', 'jupiter'],
     D: ['saturn', 'uranus', 'comet'],
-    E: ['neptune', 'pluto']
+    E: ['neptune', 'pluto', 'satellite']
   },
   7: { // Planning a trip
     A: ['sun', 'earth'],
     B: ['venus', 'mars', 'moon'],
-    C: ['jupiter', 'comet'],
+    C: ['jupiter', 'comet', 'cluster'], // group trips can highlight star_cluster
     D: ['mercury', 'saturn'],
-    E: ['uranus', 'neptune', 'pluto']
+    E: ['uranus', 'neptune', 'pluto', 'satellite']
   },
   8: { // Conflict handling
     A: ['sun', 'earth'],
     B: ['venus', 'mars', 'moon'],
     C: ['jupiter'],
     D: ['mercury', 'saturn', 'comet'],
-    E: ['uranus', 'neptune', 'pluto']
+    E: ['uranus', 'neptune', 'pluto', 'satellite']
   },
   9: { // Future interaction
     A: ['sun', 'earth'],
     B: ['venus', 'mars', 'moon'],
-    C: ['jupiter', 'comet'],
+    C: ['jupiter', 'comet', 'cluster'], // option for group-based vision
     D: ['mercury', 'saturn'],
-    E: ['uranus', 'neptune', 'pluto']
+    E: ['uranus', 'neptune', 'pluto', 'satellite']
+  },
+  10: { // Celebrating successes
+    A: ['jupiter', 'sun', 'cluster'], // Big parties, group vibe
+    B: ['venus', 'earth'],
+    C: ['mercury', 'mars'],
+    D: ['saturn', 'moon', 'satellite'], // Casual acknowledgment
+    E: ['uranus', 'pluto']
+  },
+  
+  11: { // Handling disagreements
+    A: ['sun', 'earth'],
+    B: ['mars', 'mercury'],
+    C: ['venus', 'moon'],
+    D: ['saturn', 'comet'],
+    E: ['uranus', 'neptune', 'satellite'] // acquaintances tend to avoid conflict
+  },
+  12: { // Knowing personal history
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars'],
+    C: ['mercury', 'jupiter'],
+    D: ['saturn', 'moon'],
+    E: ['uranus', 'neptune', 'pluto', 'satellite'] // surface-level knowledge aligns with satellite
+  },
+  13: { // Evolution of friendship
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars'],
+    C: ['mercury', 'jupiter'],
+    D: ['saturn', 'moon'],
+    E: ['uranus', 'pluto', 'satellite']
+  },
+  14: { // Future vision for the friendship
+    A: ['sun', 'earth'],
+    B: ['venus', 'mars'],
+    C: ['mercury', 'jupiter'],
+    D: ['saturn', 'moon', 'satellite'], // Option for a vision of casual continuity
+    E: ['uranus', 'pluto']
   }
+  
 };
 
 const SCORE_WEIGHTS: Record<string, number> = {
@@ -95,13 +132,16 @@ export const calculatePlanetType = (answers: (number | string)[]): PlanetType =>
     neptune: 0,
     pluto: 0,
     moon: 0,
-    comet: 0
+    comet: 0,
+    // New types:
+    cluster: 0,
+    satellite: 0
   };
 
   const frequency: ScoreMap = { ...scores };
 
-  // Process multiple choice answers (first 9 questions)
-  answers.slice(0, 9).forEach((answer, index) => {
+  // Process multiple choice answers (first 14 questions)
+  answers.slice(0, 14).forEach((answer, index) => {
     if (typeof answer === 'number') {
       const questionNumber = index + 1;
       const letterScore = String.fromCharCode(65 + answer); // Convert 0-4 to A-E
@@ -150,7 +190,9 @@ export const getPlanetDescription = (planetType: PlanetType): string => {
     neptune: "Even if you're far apart, this friendship remains strong through texts, calls, and online chats. No matter how much time passes, you always pick up where you left off.",
     pluto: "You were once close, but life has taken you in different directions. Maybe you'll reconnect, or maybe this is a friendship you'll always remember fondly.",
     moon: "This is a steady, reliable friendship that doesn't need constant attention. Whether you talk every week or once a year, the connection never fades.",
-    comet: "This friendship has cycles—sometimes you're super close, other times you drift apart. But when you reconnect, it's like no time has passed."
+    comet: "This friendship has cycles—sometimes you're super close, other times you drift apart. But when you reconnect, it's like no time has passed.",
+    star_cluster: "Your connection thrives in a group setting. You belong to a close-knit community where collective experiences and shared energy make your bond unique.",
+    satellite: "This is a comfortable acquaintance—a friendly, casual connection that requires little maintenance, and both of you are content keeping it that way."
   };
 
   return descriptions[planetType];
