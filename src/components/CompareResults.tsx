@@ -36,6 +36,7 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
 
   return (
     <div className="space-y-6 text-center">
+      <h2 className="text-2xl font-bold text-white">{myName}'s View</h2>
       <div className="floating">
         <div className="text-8xl mb-4">
           {myPlanetInfo.emoji}
@@ -44,11 +45,12 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
           {myPlanetInfo.title}
         </h2>
       </div>
-      <h2 className="text-2xl font-bold text-white">{myName}'s View</h2>
       <p className="text-white/80">{myPlanetInfo.description}</p>
       <p className="text-white/60 italic">"{myDescription}"</p>
       <h3 className="text-lg text-white">Traits: {myPlanetInfo.traits.join(", ")}</h3>
       <p className="text-white/60">Nurture: {myPlanetInfo.nurture}</p>
+      
+      <hr className="my-4 border-t border-white/30" />
     </div>
   );
 };
@@ -89,10 +91,6 @@ const CombinedResults = ({ planet1, planet2 }) => {
       <p className="text-white/90 text-lg">
         {getCombinedFlavorTip(planet1, planet2)}
       </p>
-      <h3 className="text-lg text-white">Planet 1: {planet1Info.title} - {planet1Info.emoji}</h3>
-      <p className="text-white/80">{planet1Info.description}</p>
-      <h3 className="text-lg text-white">Planet 2: {planet2Info.title} - {planet2Info.emoji}</h3>
-      <p className="text-white/80">{planet2Info.description}</p>
     </div>
   );
 };

@@ -152,11 +152,50 @@ const questions = [
     ],
   },
   {
+    question: "How do you and this friend express creativity or share interests?",
+    options: [
+      "We inspire each other creatively and spiritually 🎨",
+      "We share specific hobbies or activities 🎯",
+      "We mostly just hang out casually 🛋️",
+      "We don't really share creative pursuits 🤷",
+      "We used to share interests but have grown apart 📝"
+    ]
+  },
+  {
+    question: "Has this friendship changed who you are as a person?",
+    options: [
+      "Yes, profoundly and permanently 🦋",
+      "Yes, in specific meaningful ways 🌱",
+      "Somewhat, but naturally over time 📈",
+      "Not significantly 🤔",
+      "We've grown in different directions 🔄"
+    ]
+  },
+  {
+    question: "How does this friendship fit into your social circle?",
+    options: [
+      "They're part of my core friend group 👥",
+      "We have our own unique bond outside any group 🤝",
+      "We mainly connect through shared friends/activities 🎯",
+      "We drift between different social circles 🌐",
+      "We don't really share social circles anymore 🏃"
+    ]
+  },
+  {
+    question: "What's the primary foundation of your friendship?",
+    options: [
+      "Deep emotional connection and trust 💝",
+      "Shared experiences and adventures 🎢",
+      "Common interests or activities 🎯",
+      "Circumstantial but meaningful connection 🤝",
+      "Historical bond that's evolved over time ⏳"
+    ]
+  },
+  {
     question: "Describe your friendship in a couple words!",
     isOpenEnded: true,
   },
 ];
-
 
 // Add this helper function at the top of the file
 function generateUID(): string {
