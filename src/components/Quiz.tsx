@@ -226,7 +226,7 @@ export const Quiz = () => {
       navigate("/compare-results", {
         state: {
           resultId,
-          name: location.state.name,
+          name: location.state.originalResult.fn,
           friendName: location.state.originalResult.n,
           planetType,
           description,

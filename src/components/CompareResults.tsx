@@ -38,11 +38,11 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
             {planetData[myPlanet].emoji}
           </div>
           <h2 className="text-xl text-white">
-            {planetData[myPlanet].title}
+            {myPlanet.charAt(0).toUpperCase() + myPlanet.slice(1)}
           </h2>
         </div>
         <h2 className="text-2xl font-bold text-white">{myName}'s View</h2>
-        <p className="text-white/80">{planetData[myPlanet].title}</p>
+        <p className="text-white/80">{planetData[myPlanet].description}</p>
         <p className="text-white/60 italic">"{myDescription}"</p>
       </div>
 
@@ -52,11 +52,11 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
             {planetData[friendPlanet].emoji}
           </div>
           <h2 className="text-xl text-white">
-            {planetData[friendPlanet].title}
+            {friendPlanet.charAt(0).toUpperCase() + friendPlanet.slice(1)}
           </h2>
         </div>
         <h2 className="text-2xl font-bold text-white">{friendName}'s View</h2>
-        <p className="text-white/80">{planetData[friendPlanet].title}</p>
+        <p className="text-white/80">{planetData[friendPlanet].description}</p>
         <p className="text-white/60 italic">"{friendDescription}"</p>
       </div>
     </div>
@@ -71,68 +71,69 @@ export const CompareResults = () => {
 
   // Redirect if missing required data
   useEffect(() => {
-    if (!state?.planetType || !state?.comparisonResult) {
+    if (!state || !state.planetType || !state.comparisonResult) {
       navigate("/");
     }
   }, [state, navigate]);
 
-  if (!state?.planetType) return null;
+  if (!state) return null; // Early return if state is not available
 
   const getCombinedFlavor = (planet1: string, planet2: string) => {
     const combinations: Record<string, Record<string, string>> = {
         sun: {
-          sun: "A Radiant Bond ☀️☀️ - Two bright stars illuminating each other's lives with warmth and energy!",
-          moon: "Cosmic Balance 🌞🌙 - A perfect harmony of energy and reflection, day and night united.",
-          venus: "Warm Embrace ☀️💖 - A nurturing connection that helps both friends grow and shine.",
-          mercury: "Dynamic Duo ☀️💫 - Quick-witted exchanges that keep the friendship energized and bright.",
-          mars: "Power Pair ☀️🔥 - A high-energy bond that motivates and inspires both friends.",
-          jupiter: "Expansive Joy ☀️🌟 - A friendship that brings growth, wisdom, and endless possibilities.",
-          saturn: "Timeless Bond ☀️⭐ - A stable, enduring connection that stands the test of time.",
-          comet: "Cyclical Magic ☀️☄️ - An energizing friendship that reignites with every meeting."
+          sun: "A Radiant Bond ☀️☀️ - Two kindred souls whose friendship is like the sun—constant, warm, and illuminating every dark corner of life with trust and unwavering support.",
+          moon: "Cosmic Balance ☀️🌙 - The brilliance of the sun meets the reflective calm of the moon, creating a harmonious blend of energy and introspection that perfectly balances passion with quiet understanding.",
+          venus: "Warm Embrace ☀️💖 - Sun’s vibrant energy complements Venus’s nurturing heart, forming a bond that not only lights up your world but also fosters growth, care, and emotional depth.",
+          mercury: "Dynamic Duo ☀️💫 - The radiant energy of the sun paired with Mercury’s quick wit sparks lively, engaging conversations that keep your friendship fresh and ever-evolving.",
+          mars: "Power Pair ☀️🔥 - The unstoppable drive of Mars fuels the sun’s brilliant light, resulting in a high-energy, action-packed friendship that motivates and inspires both of you.",
+          jupiter: "Expansive Joy ☀️🌟 - With the sun's warmth and Jupiter's expansive optimism, your friendship blossoms into a universe of shared opportunities, growth, and boundless possibilities.",
+          saturn: "Timeless Bond ☀️⭐ - Sun’s constant radiance combined with Saturn’s enduring stability creates a friendship that stands the test of time—a steadfast light in both your lives.",
+          comet: "Cyclical Magic ☀️☄️ - The steady glow of the sun is enlivened by Comet’s unpredictable brilliance, bringing delightful bursts of reconnection that keep your friendship sparkling."
         },
         moon: {
-          moon: "Lunar Symphony 🌙🌙 - A deeply intuitive connection where both friends understand each other without words.",
-          venus: "Gentle Tides 🌙💖 - A soothing, nurturing bond that ebbs and flows with natural rhythm.",
-          mercury: "Night Whispers 🌙💫 - Quiet conversations that bring clarity and understanding.",
-          mars: "Moonlit Adventures 🌙🔥 - A dynamic blend of reflection and action.",
-          jupiter: "Cosmic Growth 🌙🌟 - An emotionally enriching bond that helps both friends evolve.",
-          saturn: "Steady Reflection 🌙⭐ - A reliable connection grounded in emotional wisdom.",
-          comet: "Phases of Wonder 🌙☄️ - A friendship that waxes and wanes but never truly fades."
+          moon: "Lunar Symphony 🌙🌙 - Two souls in quiet harmony, your friendship is like a gentle nocturne—a deep, intuitive connection where unspoken understanding flows effortlessly.",
+          venus: "Gentle Tides 🌙💖 - Moon’s serene, reflective nature mingles with Venus’s warm tenderness, creating a soothing bond that ebbs and flows with natural, nurturing rhythm.",
+          mercury: "Night Whispers 🌙💫 - The soft glow of the moon and the swift insights of Mercury come together in a friendship marked by subtle communication and heartfelt exchanges.",
+          mars: "Moonlit Adventures 🌙🔥 - The calm of the moon inspires bold ventures with Mars’s fiery energy, leading to moments of quiet excitement and meaningful, shared explorations.",
+          jupiter: "Cosmic Growth 🌙🌟 - Moon’s introspection coupled with Jupiter’s expansive vision nurtures a friendship that encourages personal evolution and the blossoming of shared dreams.",
+          saturn: "Steady Reflection 🌙⭐ - The contemplative nature of the moon, balanced by Saturn’s grounding presence, creates a reliable, reflective bond that offers comfort and wise counsel.",
+          comet: "Phases of Wonder 🌙☄️ - Like the ever-changing phases of the moon, your friendship experiences cycles of intensity and calm, each reunion filled with renewed awe and connection."
         },
         venus: {
-          venus: "Heart Connection 💖💖 - A deeply nurturing bond where both friends feel truly seen and valued.",
-          mercury: "Social Harmony 💖💫 - Quick to laugh, quick to care, this friendship brings joy to both.",
-          mars: "Passionate Support 💖🔥 - A dynamic friendship that combines care with motivation.",
-          jupiter: "Growing Together 💖🌟 - An expansive bond that nurtures personal growth.",
-          saturn: "Lasting Love 💖⭐ - A stable, nurturing friendship that stands the test of time.",
-          comet: "Sweet Returns 💖☄️ - A tender connection that strengthens with each reunion."
+          venus: "Heart Connection 💖💖 - Two hearts deeply intertwined, your friendship is a sanctuary of trust, vulnerability, and genuine care—a place where both feel truly seen and valued.",
+          mercury: "Social Harmony 💖💫 - Venus’s warm, nurturing nature dances with Mercury’s swift intellect, forging a friendship that is both emotionally rich and playfully engaging.",
+          mars: "Passionate Support 💖🔥 - The fire of Mars ignites Venus’s caring spirit, producing a vibrant, dynamic friendship where encouragement and shared passion fuel each other’s growth.",
+          jupiter: "Growing Together 💖🌟 - With Venus’s intimacy and Jupiter’s expansive optimism, your bond transforms into a journey of mutual development, where both hearts flourish.",
+          saturn: "Lasting Love 💖⭐ - Venus’s tenderness, when grounded by Saturn’s dependability, creates a nurturing and enduring friendship that remains a constant source of comfort and strength.",
+          comet: "Sweet Returns 💖☄️ - Even if life takes you in different directions, the gravitational pull of Venus ensures that every reunion rekindles the warmth and depth of your cherished bond."
         },
         mercury: {
-          mercury: "Swift Spirits 💫💫 - A friendship full of wit, banter, and lightning-fast understanding.",
-          mars: "Quick Action 💫🔥 - Energetic exchanges that spark ideas and drive.",
-          jupiter: "Bright Ideas 💫🌟 - An intellectually stimulating friendship that expands horizons.",
-          saturn: "Thoughtful Bond 💫⭐ - Deep conversations that build lasting understanding.",
-          comet: "Sparking Joy 💫☄️ - Brief but brilliant exchanges that light up both lives."
+          mercury: "Swift Spirits 💫💫 - Two minds in rapid sync, your friendship is marked by lightning-fast communication and a dynamic interplay of ideas that keeps your connection ever lively.",
+          mars: "Quick Action 💫🔥 - Mercury’s agile intellect pairs perfectly with Mars’s adventurous spirit, sparking a friendship full of spontaneous ideas and energetic pursuits.",
+          jupiter: "Bright Ideas 💫🌟 - The clever, quick-thinking Mercury and the expansive, visionary Jupiter merge to create a friendship where every conversation opens up new horizons.",
+          saturn: "Thoughtful Bond 💫⭐ - Mercury’s rapid-fire insights find depth and structure with Saturn’s reflective wisdom, resulting in a balanced friendship built on both spontaneity and thoughtfulness.",
+          comet: "Sparking Joy 💫☄️ - Brief yet brilliant, Mercury’s energetic spark, when met with Comet’s cyclical flair, lights up your interactions with moments of dazzling, unexpected delight."
         },
         mars: {
-          mars: "Dynamic Force 🔥🔥 - A powerhouse friendship that motivates and energizes both.",
-          jupiter: "Bold Adventures 🔥🌟 - An expansive connection that pushes boundaries together.",
-          saturn: "Steady Strength 🔥⭐ - A grounding force that channels energy into growth.",
-          comet: "Fierce Returns 🔥☄️ - An intense bond that blazes bright with each meeting."
+          mars: "Dynamic Force 🔥🔥 - A powerhouse of energy, your friendship with Mars is an unyielding force that drives both of you to conquer challenges and seize every adventure.",
+          jupiter: "Bold Adventures 🔥🌟 - Mars’s daring spirit, combined with Jupiter’s limitless optimism, forms a friendship that’s not afraid to push boundaries and explore new frontiers together.",
+          saturn: "Steady Strength 🔥⭐ - Mars’s raw, enthusiastic energy is beautifully balanced by Saturn’s dependable steadiness, creating a friendship that channels passion into lasting progress.",
+          comet: "Fierce Returns 🔥☄️ - Even when separated, the fiery bond of Mars is reignited by Comet’s intermittent brilliance, delivering intense, passionate reunions that leave a lasting impression."
         },
         jupiter: {
-          jupiter: "Cosmic Expansion 🌟🌟 - A friendship that constantly grows and brings new opportunities.",
-          saturn: "Wise Growth ⭐🌟 - Balancing expansion with stability for lasting wisdom.",
-          comet: "Joyful Returns 🌟☄️ - Each reunion brings new adventures and insights."
+          jupiter: "Cosmic Expansion 🌟🌟 - Two expansive spirits join forces to create a friendship that continually grows, inspiring both to embrace new opportunities and share endless joy.",
+          saturn: "Wise Growth ⭐🌟 - Jupiter’s buoyant optimism, when tempered by Saturn’s grounded wisdom, fosters a friendship where learning and personal evolution go hand in hand.",
+          comet: "Joyful Returns 🌟☄️ - The vibrant energy of Jupiter, combined with the ever-surprising Comet, ensures that each reunion is filled with fresh excitement, renewed creativity, and boundless inspiration."
         },
         saturn: {
-          saturn: "Eternal Bond ⭐⭐ - A rock-solid friendship that grows stronger with time.",
-          comet: "Patient Love ⭐☄️ - A steady presence that welcomes each return."
+          saturn: "Eternal Bond ⭐⭐ - A rock-solid connection that only deepens over time, Saturn’s steady presence anchors a friendship built on mutual respect, reliability, and quiet strength.",
+          comet: "Patient Love ⭐☄️ - Saturn’s enduring stability meets Comet’s whimsical returns, forming a friendship characterized by measured understanding and heartwarming reunions that are worth the wait."
         },
         comet: {
-          comet: "Celestial Dance ☄️☄️ - A unique rhythm of connection that creates its own orbit."
+          comet: "Celestial Dance ☄️☄️ - Two unique souls engaged in an ever-evolving dance, your friendship is defined by its rhythmic cycles—each phase, departure, and return adding a new dimension to your shared journey."
         }
       };
+      
 
     const [first, second] = [planet1, planet2].sort();
     return combinations[first]?.[second] || 
@@ -143,7 +144,6 @@ export const CompareResults = () => {
     if (!resultsRef.current) return;
 
     try {
-      // Show loading toast
       toast({
         title: "Creating your cosmic snapshot...",
         description: "Please wait while we capture your results ✨",
@@ -151,13 +151,12 @@ export const CompareResults = () => {
 
       const canvas = await html2canvas(resultsRef.current, {
         backgroundColor: null,
-        scale: 2, // Higher quality
+        scale: 2,
         logging: false,
         useCORS: true,
         allowTaint: true,
       });
 
-      // Create download link
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
@@ -181,14 +180,12 @@ export const CompareResults = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <Card className="glass-card w-full max-w-4xl p-8 space-y-8">
-        {/* Always display the invitation message */}
         <div className="text-center text-white mb-4">
           <h2 className="text-xl font-bold">
-            {location.state.originalResult.fn} has invited you, {location.state.originalResult.n}, to take this friendship quiz!
+            {state.friendName} has invited you, {state.name}, to take this friendship quiz!
           </h2>
         </div>
 
-        {/* Wrap only the content we want to capture in resultsRef */}
         <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
           <h1 className="text-3xl font-bold text-center text-white mb-8">
             Your Cosmic Friendship Comparison
@@ -197,7 +194,7 @@ export const CompareResults = () => {
           <PlanetComparison 
             myPlanet={state.planetType}
             friendPlanet={state.comparisonResult.planetType}
-            myName={location.state.originalResult.fn}
+            myName={state.name}
             friendName={state.comparisonResult.name}
             myDescription={state.description}
             friendDescription={state.comparisonResult.description}
@@ -210,13 +207,11 @@ export const CompareResults = () => {
             </p>
           </div>
 
-          {/* Add watermark */}
           <div className="text-center text-white/40 text-sm mt-4">
             friendplanet.app ✨
           </div>
         </div>
 
-        {/* Buttons outside of the captured area */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <Button
             onClick={() => navigate("/")}

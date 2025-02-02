@@ -164,16 +164,13 @@ export const Result = () => {
               <div className="text-8xl mb-4">
                 {planetData[planetType as keyof typeof planetData].emoji}
               </div>
-              <h2 className="text-xl text-white">
-                {planetData[planetType as keyof typeof planetData].title}
-              </h2>
             </div>
             <div className="space-y-2">
               <p className="text-xl text-white/80">
                 {getCelestialLabel(planetType)} is:
               </p>
               <h1 className="text-3xl font-bold text-white">
-                {planetType === 'comet' ? 'Comet: A Cosmic ' : (planetType.charAt(0).toUpperCase() + planetType.slice(1) + ' - ')}
+                {planetType === 'comet' ? 'Comet' : (planetType.charAt(0).toUpperCase() + planetType.slice(1) + ' - ')}
                 {planetData[planetType as keyof typeof planetData].title}
               </h1>
             </div>
