@@ -360,19 +360,19 @@ export const Quiz = () => {
             {currentQ.question}
           </h2>
           
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full">
+          <div className="flex flex-col items-center justify-center w-full">
             {currentQ.isOpenEnded ? (
-              <div className="flex justify-center">
+              <div className="flex justify-center w-full">
                 <Textarea
                   placeholder="Share your thoughts (max 50 characters)..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   maxLength={50}
-                  className="min-h-[100px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50 md:max-w-lg"
+                  className="min-h-[100px] w-full max-w-lg bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
               </div>
             ) : (
-              <div className="grid gap-4">
+              <div className="grid gap-4 w-full md:grid-cols-2 lg:grid-cols-3">
                 {currentQ.options?.map((option, index) => (
                   <Button
                     key={index}
