@@ -32,19 +32,24 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
   myDescription: string;
   friendDescription: string;
 }) => {
+  const myPlanetInfo = planetData[myPlanet];
+  const friendPlanetInfo = planetData[friendPlanet];
+
   return (
     <div className="space-y-6 text-center">
       <div className="floating">
         <div className="text-8xl mb-4">
-          {planetData[myPlanet].emoji}
+          {myPlanetInfo.emoji}
         </div>
         <h2 className="text-xl text-white">
-          {myPlanet.charAt(0).toUpperCase() + myPlanet.slice(1)}
+          {myPlanetInfo.title}
         </h2>
       </div>
       <h2 className="text-2xl font-bold text-white">{myName}'s View</h2>
-      <p className="text-white/80">{planetData[myPlanet].description}</p>
+      <p className="text-white/80">{myPlanetInfo.description}</p>
       <p className="text-white/60 italic">"{myDescription}"</p>
+      <h3 className="text-lg text-white">Traits: {myPlanetInfo.traits.join(", ")}</h3>
+      <p className="text-white/60">Nurture: {myPlanetInfo.nurture}</p>
     </div>
   );
 };
@@ -72,6 +77,9 @@ const CombinedResults = ({ planet1, planet2 }) => {
         : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
   };
 
+  const planet1Info = planetData[planet1];
+  const planet2Info = planetData[planet2];
+
   return (
     <div className="space-y-4 text-center mt-8">
       <h2 className="text-2xl font-bold text-white">Your Combined Cosmic Energy</h2>
@@ -82,6 +90,10 @@ const CombinedResults = ({ planet1, planet2 }) => {
       <p className="text-white/90 text-lg">
         {getCombinedFlavorTip(planet1, planet2)}
       </p>
+      <h3 className="text-lg text-white">Planet 1: {planet1Info.title} - {planet1Info.emoji}</h3>
+      <p className="text-white/80">{planet1Info.description}</p>
+      <h3 className="text-lg text-white">Planet 2: {planet2Info.title} - {planet2Info.emoji}</h3>
+      <p className="text-white/80">{planet2Info.description}</p>
     </div>
   );
 };
@@ -100,27 +112,6 @@ export const CompareResults = () => {
   }, [state, navigate]);
 
   if (!state) return null; // Early return if state is not available
-
-  const getCombinedFlavorTip = (planet1: string, planet2: string) => {
-    const [first, second] = [planet1, planet2].sort();
-    
-    // Check if a combination exists for the two planets in both orders
-    const combination = combinations[first]?.[second] || combinations[second]?.[first];
-        return combination 
-        ? ` ${combination.tip}` 
-        : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
-  };
-  const getCombinedFlavor = (planet1: string, planet2: string) => {
-    const [first, second] = [planet1, planet2].sort();
-    
-    // Check if a combination exists for the two planets in both orders
-    const combination = combinations[first]?.[second] || combinations[second]?.[first];
-    
-    // Return the combination description if it exists, otherwise return the default message
-    return combination 
-        ? `${combination.description}` 
-        : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
-  };
 
   const handleDownloadImage = async () => {
     if (!resultsRef.current) return;
