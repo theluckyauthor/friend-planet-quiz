@@ -251,7 +251,7 @@ export const Quiz = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-2xl p-8 space-y-8 bg-black/30 backdrop-blur-lg border-white/10">
+      <Card className="glass-card w-full max-w-2xl p-8 space-y-8 bg-black/30 backdrop-blur-lg border-white/10 overflow-hidden">
         {/* Display invitation message if it's a comparison quiz */}
         {isComparisonQuiz && (
           <div className="text-center text-white mb-4">
@@ -294,7 +294,8 @@ export const Quiz = () => {
                       "bg-white/10 hover:bg-white/20",
                       "transition-all duration-200",
                       answers[currentQuestion] === index && "bg-white/30 border-white/50",
-                      "whitespace-normal"
+                      "whitespace-normal",
+                      "overflow-hidden"
                     )}
                     onClick={() => handleAnswer(index)}
                   >
