@@ -172,11 +172,6 @@ export const Quiz = () => {
     }, 300); // 300ms delay for visual feedback
   };
 
-  const handlePreviousQuestion = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    }
-  };
 
   const handleNextQuestion = () => {
     if (answers[currentQuestion] === undefined) {
@@ -286,35 +281,27 @@ export const Quiz = () => {
                   onChange={(e) => setDescription(e.target.value)}
                   className="min-h-[200px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
-                <Button
-                  onClick={handleDescriptionSubmit}
-                  className="w-full bg-white/10 hover:bg-white/20 text-white border-white/20"
-                  disabled={!description.trim()}
-                >
-                  Complete Quiz
-                </Button>
               </div>
             ) : (
-              <>
-                <div className="grid gap-4">
-                  {currentQ.options?.map((option, index) => (
-                    <Button
-                      key={index}
-                      variant="outline"
-                      className={cn(
-                        "w-full text-left justify-start h-auto p-4",
-                        "text-white border-white/20",
-                        "bg-white/10 hover:bg-white/20",
-                        "transition-all duration-200",
-                        answers[currentQuestion] === index && "bg-white/30 border-white/50"
-                      )}
-                      onClick={() => handleAnswer(index)}
-                    >
-                      {option}
-                    </Button>
-                  ))}
-                </div>
-              </>
+              <div className="grid gap-4">
+                {currentQ.options?.map((option, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    className={cn(
+                      "w-full text-left justify-start h-auto p-4",
+                      "text-white border-white/20",
+                      "bg-white/10 hover:bg-white/20",
+                      "transition-all duration-200",
+                      answers[currentQuestion] === index && "bg-white/30 border-white/50",
+                      "whitespace-normal"
+                    )}
+                    onClick={() => handleAnswer(index)}
+                  >
+                    {option}
+                  </Button>
+                ))}
+              </div>
             )}
           </div>
 
