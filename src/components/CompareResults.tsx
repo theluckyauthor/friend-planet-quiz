@@ -83,12 +83,12 @@ export const CompareResults = () => {
         sun: {
           sun: "A Radiant Bond ☀️☀️ - Two kindred souls whose friendship is like the sun—constant, warm, and illuminating every dark corner of life with trust and unwavering support.",
           moon: "Cosmic Balance ☀️🌙 - The brilliance of the sun meets the reflective calm of the moon, creating a harmonious blend of energy and introspection that perfectly balances passion with quiet understanding.",
-          venus: "Warm Embrace ☀️💖 - Sun's vibrant energy complements Venus's nurturing heart, forming a bond that not only lights up your world but also fosters growth, care, and emotional depth.",
-          mercury: "Dynamic Duo ☀️💫 - The radiant energy of the sun paired with Mercury's quick wit sparks lively, engaging conversations that keep your friendship fresh and ever-evolving.",
-          mars: "Power Pair ☀️🔥 - The unstoppable drive of Mars fuels the sun's brilliant light, resulting in a high-energy, action-packed friendship that motivates and inspires both of you.",
+          venus: "Warm Embrace ☀️💖 - Sun’s vibrant energy complements Venus’s nurturing heart, forming a bond that not only lights up your world but also fosters growth, care, and emotional depth.",
+          mercury: "Dynamic Duo ☀️💫 - The radiant energy of the sun paired with Mercury’s quick wit sparks lively, engaging conversations that keep your friendship fresh and ever-evolving.",
+          mars: "Power Pair ☀️🔥 - The unstoppable drive of Mars fuels the sun’s brilliant light, resulting in a high-energy, action-packed friendship that motivates and inspires both of you.",
           jupiter: "Expansive Joy ☀️🌟 - With the sun's warmth and Jupiter's expansive optimism, your friendship blossoms into a universe of shared opportunities, growth, and boundless possibilities.",
-          saturn: "Timeless Bond ☀️⭐ - Sun's constant radiance combined with Saturn's enduring stability creates a friendship that stands the test of time—a steadfast light in both your lives.",
-          comet: "Cyclical Magic ☀️☄️ - The steady glow of the sun is enlivened by Comet's unpredictable brilliance, bringing delightful bursts of reconnection that keep your friendship sparkling."
+          saturn: "Timeless Bond ☀️⭐ - Sun’s constant radiance combined with Saturn’s enduring stability creates a friendship that stands the test of time—a steadfast light in both your lives.",
+          comet: "Cyclical Magic ☀️☄️ - The steady glow of the sun is enlivened by Comet’s unpredictable brilliance, bringing delightful bursts of reconnection that keep your friendship sparkling."
         },
         moon: {
           moon: "Lunar Symphony 🌙🌙 - Two souls in quiet harmony, your friendship is like a gentle nocturne—a deep, intuitive connection where unspoken understanding flows effortlessly.",
@@ -134,6 +134,7 @@ export const CompareResults = () => {
         }
       };
       
+      
 
     const [first, second] = [planet1, planet2].sort();
     return combinations[first]?.[second] || 
@@ -150,7 +151,7 @@ export const CompareResults = () => {
       });
 
       const canvas = await html2canvas(resultsRef.current, {
-        backgroundColor: null,
+        backgroundColor: "#000",
         scale: 2,
         logging: false,
         useCORS: true,
@@ -160,12 +161,12 @@ export const CompareResults = () => {
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = `cosmic-friendship-${state.name}-${state.friendName}.png`;
+      link.download = `cosmic-friendship-comparison-${state.name}-${state.friendName}.png`;
       link.click();
 
       toast({
         title: "Success!",
-        description: "Your cosmic friendship snapshot is ready to share! ✨",
+        description: "Your cosmic friendship comparison snapshot is ready to share! ✨",
       });
     } catch (error) {
       console.error("Screenshot failed:", error);
