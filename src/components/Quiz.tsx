@@ -316,11 +316,11 @@ export const Quiz = () => {
                 </div>
                 
                 {currentQuestion > 0 && (
-                  <div className="flex justify-start mt-6">
+                  <div className="flex justify-center mt-6">
                     <Button
                       onClick={handlePreviousQuestion}
                       variant="outline"
-                      className="bg-white/10 hover:bg-white/20 text-white border-white/20"
+                      className="bg-white/10 hover:bg-white/20 text-white border-white/20 w-full sm:w-auto"
                     >
                       Previous Question
                     </Button>
