@@ -79,7 +79,7 @@ export const Result = () => {
       const encodedData = btoa(JSON.stringify(shareData));
       
       // Create the share URL - link directly to comparison quiz
-      const shareUrl = `https://planety-quiz-hkaj7hk48-daniels-projects-7bab0f49.vercel.app/compare?data=${encodedData}`;
+      const shareUrl = `https://planety-quiz.vercel.app/compare?data=${encodedData}`;
       
       // Create share text
       const shareText = `${name} wants to compare your friendship! Take the quiz and see how your views match. 🌟`;
