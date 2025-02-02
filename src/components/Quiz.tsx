@@ -284,7 +284,7 @@ export const Quiz = () => {
                   placeholder="Share your thoughts..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  className="min-h-[150px] w-full bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
                 <Button
                   onClick={handleDescriptionSubmit}
