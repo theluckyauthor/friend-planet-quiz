@@ -279,12 +279,12 @@ export const Quiz = () => {
           
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {currentQ.isOpenEnded ? (
-              <div className="space-y-4">
+              <div className="flex justify-center">
                 <Textarea
                   placeholder="Share your thoughts..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="min-h-[150px] w-full bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  className="min-h-[200px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
                 <Button
                   onClick={handleDescriptionSubmit}
@@ -314,21 +314,19 @@ export const Quiz = () => {
                     </Button>
                   ))}
                 </div>
-                
-                {currentQuestion > 0 && (
-                  <div className="flex justify-center mt-6">
-                    <Button
-                      onClick={handlePreviousQuestion}
-                      variant="outline"
-                      className="bg-white/10 hover:bg-white/20 text-white border-white/20 w-full sm:w-auto"
-                    >
-                      Previous Question
-                    </Button>
-                  </div>
-                )}
               </>
             )}
           </div>
+
+          {currentQ.isOpenEnded && (
+            <Button
+              onClick={handleDescriptionSubmit}
+              className="w-full bg-white/10 hover:bg-white/20 text-white border-white/20"
+              disabled={!description.trim()}
+            >
+              Complete Quiz
+            </Button>
+          )}
         </div>
       </Card>
     </div>
