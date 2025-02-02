@@ -91,12 +91,11 @@ export const Result = () => {
           text: shareText,
           url: shareUrl
         });
-      } else {
-        // Show the URL for manual copying
-        setShowShareUrl(true);
-      }
+      } 
     } catch (error) {
       console.error("Sharing failed", error);
+    } finally {
+      // Always show the URL for manual copying
       setShowShareUrl(true);
     }
   };
@@ -209,7 +208,7 @@ export const Result = () => {
 
           {/* Add watermark */}
           <div className="text-center text-white/40 text-sm mt-4">
-            friendplanet.app ✨
+            https://planety-quiz.vercel.app/ ✨
           </div>
         </div>
 
