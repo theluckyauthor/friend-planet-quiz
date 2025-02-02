@@ -8,6 +8,7 @@ import { Quiz } from "./components/Quiz";
 import { Result } from "./components/Result";
 import { CompareResults } from "./components/CompareResults";
 import NotFound from "./pages/NotFound";
+import Glossary from "./components/Glossary";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
       <Router>
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/glossary" element={<Glossary />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/compare" element={<Quiz />} />

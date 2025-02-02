@@ -64,6 +64,10 @@ export const WelcomeScreen = () => {
     }
   }
 
+  const handleGoToGlossary = () => {
+    navigate("/glossary");
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black overflow-hidden relative">
       {/* Animated stars background */}
@@ -153,6 +157,10 @@ export const WelcomeScreen = () => {
             </Button>
           </form>
         )}
+
+        <Button onClick={handleGoToGlossary} className="mt-4 bg-primary hover:bg-primary/90 text-white">
+          View Planet Glossary
+        </Button>
 
         <p className="text-xs text-center text-white/60">
           No login required • Takes only 2 minutes • Get instant results
