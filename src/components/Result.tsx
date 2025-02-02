@@ -213,7 +213,7 @@ export const Result = () => {
         </div>
 
         <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button
               onClick={handleShare}
               className="bg-white/10 hover:bg-white/20 text-white"
@@ -228,6 +228,12 @@ export const Result = () => {
             >
               <Download className="mr-2 h-4 w-4" />
               Download Result
+            </Button>
+            <Button
+              onClick={handleRetake}
+              className="bg-white/10 hover:bg-white/20 text-white"
+            >
+              Retake Quiz
             </Button>
           </div>
           

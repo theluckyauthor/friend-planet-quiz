@@ -225,22 +225,20 @@ export const Quiz = () => {
 
 
   const handleNextQuestion = () => {
-    if (answers[currentQuestion] === undefined) {
-      toast({
-        title: "Please select an answer",
-        description: "You need to choose an option before continuing",
-        variant: "destructive"
-      });
-      return;
-    }
-    
+    // Reset the selected answer when moving to the next question
+    setAnswers([]);
+
+    // Proceed to the next question
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+    } else {
+      // Handle quiz completion
+      handleDescriptionSubmit();
     }
   };
 
   const handleDescriptionSubmit = () => {
-    // Ensure we have all required answers
+    // Ensure we have all required answers except for the last open-ended question
     if (answers.length < questions.length - 1) {
       toast({
         title: "Please answer all questions",
@@ -248,6 +246,45 @@ export const Quiz = () => {
         variant: "destructive"
       });
       return;
+    }
+
+    // Allow skipping the last open-ended question
+    if (currentQuestion === questions.length - 1 && !description.trim()) {
+      // Proceed without a description
+      const planetType = calculatePlanetType(answers);
+      trackQuizCompletion(planetType);
+      const resultId = generateUID();
+      
+      // If this is a comparison quiz, navigate to comparison results
+      if (location.state?.originalResult) {
+        navigate("/compare-results", {
+          state: {
+            resultId,
+            name: location.state.originalResult.fn,
+            friendName: location.state.originalResult.n,
+            planetType,
+            description: "", // No description provided
+            comparisonResult: {
+              name: location.state.originalResult.n,
+              friendName: location.state.originalResult.fn,
+              planetType: location.state.originalResult.pt,
+              description: location.state.originalResult.d
+            }
+          }
+        });
+      } else {
+        // Regular result navigation
+        navigate("/result", {
+          state: {
+            resultId,
+            name: location.state.name,
+            friendName: location.state.friendName,
+            planetType,
+            description: "" // No description provided
+          }
+        });
+      }
+      return; // Exit the function early
     }
 
     if (!description.trim()) {
@@ -333,7 +370,9 @@ export const Quiz = () => {
                   maxLength={140}
                   className="min-h-[50px] w-full max-w-md bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 />
-                <p className="text-white text-sm text-right mt-1">{description.length}/140</p>
+                <div className="char-counter" style={{ marginTop: '10px', marginBottom: '10px' }}>
+                  {description.length} / 140
+                </div>
               </div>
             ) : (
               <div className="grid gap-4">
