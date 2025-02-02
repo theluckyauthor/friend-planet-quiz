@@ -8,7 +8,6 @@ import { planetData } from "@/utils/planetData";
 import html2canvas from "html2canvas";
 import { toast } from "@/components/ui/use-toast";
 import { combinations } from "@/utils/planetData"; // Import combinations
-import Slider from "react-slick"; // Import the slider component
 
 interface ComparisonResultProps {
   resultId: string;
@@ -159,34 +158,32 @@ export const CompareResults = () => {
           </h2>
         </div>
 
-        <Slider {...{ dots: true, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1 }}>
-          <div>
-            <PlanetComparison 
-              myPlanet={state.planetType}
-              friendPlanet={state.comparisonResult.planetType}
-              myName={state.name}
-              friendName={state.comparisonResult.name}
-              myDescription={state.description}
-              friendDescription={state.comparisonResult.description}
-            />
-          </div>
-          <div>
-            <PlanetComparison 
-              myPlanet={state.comparisonResult.planetType}
-              friendPlanet={state.planetType}
-              myName={state.comparisonResult.name}
-              friendName={state.name}
-              myDescription={state.comparisonResult.description}
-              friendDescription={state.description}
-            />
-          </div>
-          <div>
-            <CombinedResults 
-              planet1={state.planetType}
-              planet2={state.comparisonResult.planetType}
-            />
-          </div>
-        </Slider>
+        <div>
+          <PlanetComparison 
+            myPlanet={state.planetType}
+            friendPlanet={state.comparisonResult.planetType}
+            myName={state.name}
+            friendName={state.comparisonResult.name}
+            myDescription={state.description}
+            friendDescription={state.comparisonResult.description}
+          />
+        </div>
+        <div>
+          <PlanetComparison 
+            myPlanet={state.comparisonResult.planetType}
+            friendPlanet={state.planetType}
+            myName={state.comparisonResult.name}
+            friendName={state.name}
+            myDescription={state.comparisonResult.description}
+            friendDescription={state.description}
+          />
+        </div>
+        <div>
+          <CombinedResults 
+            planet1={state.planetType}
+            planet2={state.comparisonResult.planetType}
+          />
+        </div>
 
         <div className="text-center text-white/40 text-sm mt-4">
           https://planety-quiz.vercel.app/ ✨
