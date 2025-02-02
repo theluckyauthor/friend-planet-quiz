@@ -79,6 +79,15 @@ export const CompareResults = () => {
 
   if (!state) return null; // Early return if state is not available
 
+  const getCombinedFlavorTip = (planet1: string, planet2: string) => {
+    const [first, second] = [planet1, planet2].sort();
+    
+    // Check if a combination exists for the two planets in both orders
+    const combination = combinations[first]?.[second] || combinations[second]?.[first];
+        return combination 
+        ? ` ${combination.tip}` 
+        : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
+  };
   const getCombinedFlavor = (planet1: string, planet2: string) => {
     const [first, second] = [planet1, planet2].sort();
     
@@ -87,7 +96,7 @@ export const CompareResults = () => {
     
     // Return the combination description if it exists, otherwise return the default message
     return combination 
-        ? `${combination.description} ${combination.tip}` 
+        ? `${combination.description}` 
         : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
   };
 
@@ -155,6 +164,10 @@ export const CompareResults = () => {
             <h2 className="text-2xl font-bold text-white">Your Combined Cosmic Energy</h2>
             <p className="text-white/90 text-lg">
               {getCombinedFlavor(state.planetType, state.comparisonResult.planetType)}
+            </p>
+            <h2 className="text-2xl font-bold text-white">Friendship Tip:</h2>
+            <p className="text-white/90 text-lg">
+              {getCombinedFlavorTip(state.planetType, state.comparisonResult.planetType)}
             </p>
           </div>
 
