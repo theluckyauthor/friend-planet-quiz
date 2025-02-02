@@ -237,6 +237,17 @@ export const Result = () => {
             </Button>
           </div>
           
+          <div className="text-center mt-4">
+            <a
+              href="https://forms.gle/f3vUAD96ADCarQjUA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white underline hover:text-gray-300"
+            >
+              Give us your feedback!
+            </a>
+          </div>
+          
           {showShareUrl && (
             <div className="space-y-2">
               <p className="text-center text-white/60 text-sm">
