@@ -160,7 +160,7 @@ export const CompareResults = () => {
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = `cosmic-friendship-${location.state.originalResult.fn}-${state.friendName}.png`;
+      link.download = `cosmic-friendship-${state.name}-${state.friendName}.png`;
       link.click();
 
       toast({
