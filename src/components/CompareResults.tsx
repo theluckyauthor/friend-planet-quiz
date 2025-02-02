@@ -45,12 +45,26 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
           {myPlanetInfo.title}
         </h2>
       </div>
-      <p className="text-white/80">{myPlanetInfo.description}</p>
-      <p className="text-white/60 italic">"{myDescription}"</p>
+      <p className="text-white/80 italic">"{myDescription}"</p>
+      <p className="text-white/60">{myPlanetInfo.description}</p>
       <h3 className="text-lg text-white">Traits: {myPlanetInfo.traits.join(", ")}</h3>
       <p className="text-white/60">Nurture: {myPlanetInfo.nurture}</p>
       
       <hr className="my-4 border-t border-white/30" />
+      
+      <h2 className="text-2xl font-bold text-white">{friendName}'s View</h2>
+      <div className="floating">
+        <div className="text-8xl mb-4">
+          {friendPlanetInfo.emoji}
+        </div>
+        <h2 className="text-xl text-white">
+          {friendPlanetInfo.title}
+        </h2>
+      </div>
+      <p className="text-white/80 italic">"{friendDescription}"</p>
+      <p className="text-white/60">{friendPlanetInfo.description}</p>
+      <h3 className="text-lg text-white">Traits: {friendPlanetInfo.traits.join(", ")}</h3>
+      <p className="text-white/60">Nurture: {friendPlanetInfo.nurture}</p>
     </div>
   );
 };
