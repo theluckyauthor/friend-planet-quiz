@@ -6,11 +6,5 @@
       { "source": "/compare", "destination": "/compare" },
       { "source": "/compare-results", "destination": "/compare-results" },
       { "source": "/404", "destination": "/not-found" }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/$1"
-      }
     ]
   }
