@@ -302,12 +302,12 @@ export const Quiz = () => {
             name: location.state.originalResult.fn,
             friendName: location.state.originalResult.n,
             planetType,
-            description: "", // No description provided
+            description: location.state.originalResult.d,
             comparisonResult: {
               name: location.state.originalResult.n,
               friendName: location.state.originalResult.fn,
               planetType: location.state.originalResult.pt,
-              description: location.state.originalResult.d
+              description: location.state.description
             }
           }
         });
@@ -319,7 +319,7 @@ export const Quiz = () => {
             name: location.state.name,
             friendName: location.state.friendName,
             planetType,
-            description: "" // No description provided
+            description:location.state.description // No description provided
           }
         });
       }
