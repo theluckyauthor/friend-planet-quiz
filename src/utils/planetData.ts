@@ -22,14 +22,14 @@ export const planetData: Record<PlanetType, PlanetInfo> = {
         "description": "This is a high-energy, rapidly growing connection. Maybe you just met, but it feels like you've known each other forever. Conversations flow effortlessly, and there's always something new to discover about each other.",
         "traits": ["Fast-growing", "Spontaneous", "Engaging"],
         "nurture": "Keep up the momentum! Plan spontaneous outings, share fun experiences, and enjoy the thrill of getting to know each other. But don’t rush—let the bond deepen naturally.",
-        "emoji": "☿️"
+        "emoji": "💫"
     },
     "venus": {
         "title": "Your Heart-to-Heart Friend",
         "description": "This is the friend who truly sees you. You confide in each other, share dreams, and support each other through life's emotional ups and downs. They bring warmth, comfort, and a deep sense of belonging.",
         "traits": ["Deep Trust", "Emotional Closeness", "Supportive"],
         "nurture": "Make time for real conversations, not just surface-level chats. Show up for each other emotionally, whether it’s celebrating wins or holding space during tough times.",
-        "emoji": "♀️"
+        "emoji": "💖"
     },
     "earth": {
         "title": "Your Constant, Unshakable Best Friend",
@@ -43,7 +43,7 @@ export const planetData: Record<PlanetType, PlanetInfo> = {
         "description": "This is your adventure buddy, your hype person, your ‘let’s do it!’ friend. You thrive on shared experiences, adrenaline rushes, and pushing each other to try new things.",
         "traits": ["High-Energy", "Fun-Loving", "Daring"],
         "nurture": "Keep the energy alive! Plan activities that challenge and excite you both. But also remember to slow down and check in emotionally once in a while.",
-        "emoji": "♂️"
+        "emoji": "🔥"
     },
     "jupiter": {
         "title": "Your Social Star",
