@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from "react-slick";
 import { planetData } from "@/utils/planetData";
 
 const Glossary = () => {
-  const [selectedPlanet, setSelectedPlanet] = useState<keyof typeof planetData>("sun"); // Default to "sun"
-
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-  };
-
-  const handlePlanetChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedPlanet(event.target.value as keyof typeof planetData);
   };
 
   return (
@@ -45,31 +39,25 @@ const Glossary = () => {
         </ol>
       </div>
 
-      {/* Dropdown for planet selection */}
-      <div className="mb-4">
-        <label htmlFor="planet-select" className="text-white">Select a Planet:</label>
-        <select
-          id="planet-select"
-          value={selectedPlanet}
-          onChange={handlePlanetChange}
-          className="ml-2 p-2 rounded bg-white/20 text-white border border-white/40"
-        >
-          {Object.keys(planetData).map((planet) => (
-            <option key={planet} value={planet}>
-              {planetData[planet as keyof typeof planetData].title}
-            </option>
-          ))}
-        </select>
-      </div>
+       {/* Title for the cards */}
+       <h2 className="text-2xl font-bold text-white mb-4">Explore Your Planet Types</h2>
 
       {/* Carousel for planet information */}
       <Slider {...settings} className="w-full max-w-2xl">
         {Object.keys(planetData).map((planet) => (
-          <div key={planet} className="bg-white/10 p-6 rounded-lg shadow-lg text-white">
-            <h2 className="text-2xl">{planetData[planet as keyof typeof planetData].title} {planetData[planet as keyof typeof planetData].emoji}</h2>
-            <p className="text-white/90">{planetData[planet as keyof typeof planetData].description}</p>
-            <h3 className="text-lg">Traits: {planetData[planet as keyof typeof planetData].traits.join(", ")}</h3>
-            <p className="text-white/70">Nurture: {planetData[planet as keyof typeof planetData].nurture}</p>
+          <div key={planet} className="bg-white/10 p-6 rounded-lg shadow-lg text-white text-center">
+            <div className="text-6xl mb-2">
+              {planetData[planet as keyof typeof planetData].emoji}
+            </div>
+            <h2 className="text-2xl font-semibold">
+              {planetData[planet as keyof typeof planetData].title}
+            </h2>
+            <h3 className="text-lg font-medium mt-2">{planet.charAt(0).toUpperCase() + planet.slice(1)}</h3>
+            <p className="text-white/90 mt-2">{planetData[planet as keyof typeof planetData].description}</p>
+            <h4 className="text-lg mt-4">Traits:</h4>
+            <p className="text-white/70">{planetData[planet as keyof typeof planetData].traits.join(", ")}</p>
+            <h4 className="text-lg mt-4">Nurture:</h4>
+            <p className="text-white/70">{planetData[planet as keyof typeof planetData].nurture}</p>
           </div>
         ))}
       </Slider>
