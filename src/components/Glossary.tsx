@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
 import { planetData } from "@/utils/planetData";
+import { Card } from "@/components/ui/card";
 
 const Glossary = () => {
   const settings = {
@@ -12,7 +13,7 @@ const Glossary = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-gray-800 to-black">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <h1 className="text-4xl font-bold text-white text-center mb-6">Planet Glossary</h1>
       
       {/* Introduction to the quiz */}
@@ -45,7 +46,7 @@ const Glossary = () => {
       {/* Carousel for planet information */}
       <Slider {...settings} className="w-full max-w-2xl">
         {Object.keys(planetData).map((planet) => (
-          <div key={planet} className="bg-white/10 p-6 rounded-lg shadow-lg text-white text-center">
+          <Card key={planet} className="bg-white/10 p-6 rounded-lg shadow-lg text-white text-center">
             <div className="text-6xl mb-2">
               {planetData[planet as keyof typeof planetData].emoji}
             </div>
@@ -58,7 +59,7 @@ const Glossary = () => {
             <p className="text-white/70">{planetData[planet as keyof typeof planetData].traits.join(", ")}</p>
             <h4 className="text-lg mt-4">Nurture:</h4>
             <p className="text-white/70">{planetData[planet as keyof typeof planetData].nurture}</p>
-          </div>
+          </Card>
         ))}
       </Slider>
     </div>

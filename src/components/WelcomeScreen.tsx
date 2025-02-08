@@ -158,7 +158,7 @@ export const WelcomeScreen = () => {
           </form>
         )}
 
-        <Button onClick={handleGoToGlossary} className="mt-4 bg-primary hover:bg-primary/90 text-white">
+        <Button onClick={handleGoToGlossary} className="mt-4 w-full bg-primary hover:bg-primary/90 text-white">
           View Planet Glossary
         </Button>
 
