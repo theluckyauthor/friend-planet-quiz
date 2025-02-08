@@ -152,12 +152,12 @@ export const WelcomeScreen = () => {
             </div>
             <Button 
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-white p-2 rounded"
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded"
             >
               <span className="relative z-10">
                 {comparisonData ? "Start Comparison Quiz" : "Start Quiz"}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" />
             </Button>
           </form>
         )}
