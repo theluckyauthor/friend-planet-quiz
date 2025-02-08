@@ -152,7 +152,7 @@ export const WelcomeScreen = () => {
             </div>
             <Button 
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l text-white group relative overflow-hidden rounded"
+              className="w-full text-white group relative overflow-hidden rounded"
             >
               <span className="relative z-10">
                 {comparisonData ? "Start Comparison Quiz" : "Start Quiz"}
