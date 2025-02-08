@@ -9,6 +9,7 @@ import { Result } from "./components/Result";
 import { CompareResults } from "./components/CompareResults";
 import NotFound from "./pages/NotFound";
 import Glossary from "./components/Glossary";
+import About from "./components/About";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/result" element={<Result />} />
           <Route path="/compare" element={<Quiz />} />
           <Route path="/compare-results" element={<CompareResults />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

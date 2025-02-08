@@ -68,6 +68,10 @@ export const WelcomeScreen = () => {
     navigate("/glossary");
   };
 
+  const handleGoToAbout = () => {
+    navigate("/about");
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black overflow-hidden relative">
       {/* Animated stars background */}
@@ -158,9 +162,21 @@ export const WelcomeScreen = () => {
           </form>
         )}
 
-        <Button onClick={handleGoToGlossary} className="mt-4 w-full bg-primary hover:bg-primary/90 text-white">
-          View Planet Glossary
-        </Button>
+        {/* Buttons for navigation */}
+        <div className="mt-4 w-full flex justify-between">
+          <button 
+            onClick={handleGoToGlossary} 
+            className="w-full bg-primary hover:bg-primary/90 text-white p-2 rounded mr-2"
+          >
+            Glossary
+          </button>
+          <button 
+            onClick={handleGoToAbout} 
+            className="w-full bg-primary hover:bg-primary/90 text-white p-2 rounded ml-2"
+          >
+            About
+          </button>
+        </div>
 
         <p className="text-xs text-center text-white/60">
           No login required • Takes only 2 minutes • Get instant results
