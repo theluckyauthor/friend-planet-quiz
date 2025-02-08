@@ -152,7 +152,7 @@ export const WelcomeScreen = () => {
             </div>
             <Button 
               type="submit"
-              className="w-full text-white group relative overflow-hidden rounded"
+              className="w-full bg-primary hover:bg-primary/90 text-white p-2 rounded"
             >
               <span className="relative z-10">
                 {comparisonData ? "Start Comparison Quiz" : "Start Quiz"}
@@ -166,13 +166,13 @@ export const WelcomeScreen = () => {
         <div className="mt-4 w-full flex justify-between">
           <Button 
             onClick={handleGoToGlossary} 
-            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l text-white p-2 rounded mr-2"
+            className="w-full text-white group relative overflow-hidden rounded mr-2"
           >
             Glossary
           </Button>
           <Button 
             onClick={handleGoToAbout} 
-            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l text-white p-2 rounded ml-2"
+            className="w-full text-white group relative overflow-hidden rounded ml-2"
           >
             About
           </Button>
