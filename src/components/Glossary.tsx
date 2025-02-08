@@ -42,7 +42,7 @@ const Glossary = () => {
       {/* Back to Home Button */}
       <button 
         onClick={() => navigate("/")} 
-        className="mt-6 w-full bg-primary hover:bg-primary/90 text-white p-2 rounded"
+        className="mt-6 w-full max-w-2xl bg-primary hover:bg-primary/90 text-white p-2 rounded"
       >
         Back to Home
       </button>
