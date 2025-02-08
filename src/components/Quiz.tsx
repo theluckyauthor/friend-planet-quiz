@@ -278,7 +278,7 @@ export const Quiz = () => {
 
   const handleDescriptionSubmit = () => {
     // Ensure we have all required answers
-    if (answers.length < questions.length) {
+    if (answers.length < questions.length - 1) {
         toast({
             title: "Please answer all questions",
             description: "Some questions are still unanswered",
@@ -379,7 +379,7 @@ export const Quiz = () => {
                       "text-white border-white/20",
                       "bg-white/10 hover:bg-white/20",
                       "transition-all duration-200",
-                      answers[currentQuestion] === index && "bg-white/30 border-white/50",
+                      answers[currentQuestion] === index ? "bg-white/30 border-white/50" : "bg-white/10 border-white/20",
                       "whitespace-normal",
                       "overflow-hidden"
                     )}
