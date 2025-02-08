@@ -9,6 +9,8 @@ import { Result } from "./components/Result";
 import { CompareResults } from "./components/CompareResults";
 import NotFound from "./pages/NotFound";
 import Glossary from "./components/Glossary";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const queryClient = new QueryClient();
 
