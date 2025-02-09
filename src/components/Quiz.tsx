@@ -379,7 +379,6 @@ export const Quiz = () => {
                       "text-white border-white/20",
                       "bg-white/10 hover:bg-white/20",
                       "transition-all duration-200",
-                      answers[currentQuestion] === index ? "bg-white/30 border-white/50" : "bg-white/10 border-white/20",
                       "whitespace-normal",
                       "overflow-hidden"
                     )}
