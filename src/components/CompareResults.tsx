@@ -120,7 +120,7 @@ export const CompareResults = () => {
       });
 
       const canvas = await html2canvas(resultsRef.current, {
-        backgroundColor: "#000",
+        backgroundColor: null,
         scale: 2,
         logging: false,
         useCORS: true,
@@ -130,8 +130,10 @@ export const CompareResults = () => {
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = image;
-      link.download = `cosmic-friendship-comparison-${state.name}-${state.friendName}.png`;
+      link.download = `cosmic-friendship-comparison.png`;
+      document.body.appendChild(link); // Append link to body
       link.click();
+      document.body.removeChild(link); // Remove link after clicking
 
       toast({
         title: "Success!",
