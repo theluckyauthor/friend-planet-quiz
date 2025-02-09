@@ -367,15 +367,13 @@ export const Quiz = () => {
                     className={cn(
                       "w-full text-left justify-start h-auto p-4",
                       "text-white border-white/20",
-                      "bg-white/10",
+                      "bg-transparent",
+                      "hover:bg-transparent",
+                      "active:bg-transparent",
                       "whitespace-normal",
-                      "overflow-hidden",
-                      { 'bg-white/20': selectedOption === index }
+                      "overflow-hidden"
                     )}
-                    onClick={() => {
-                      handleAnswer(index);
-                      setSelectedOption(null);
-                    }}
+                    onClick={() => handleAnswer(index)}
                   >
                     {option}
                   </Button>
