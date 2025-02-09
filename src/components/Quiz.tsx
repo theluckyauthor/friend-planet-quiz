@@ -209,6 +209,7 @@ export const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<(number | string)[]>([]);
   const [description, setDescription] = useState("");
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
   
   // Get data from URL if it exists (for direct comparison)
   const encodedData = searchParams.get('data');
@@ -253,11 +254,13 @@ export const Quiz = () => {
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = answerIndex;
     setAnswers(newAnswers);
-    
+    setSelectedOption(answerIndex);
+
     // Add a slight delay before moving to the next question
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
+        setSelectedOption(null);
       }
     }, 300); // 300ms delay for visual feedback
   };
@@ -365,7 +368,8 @@ export const Quiz = () => {
                       "text-white border-white/20",
                       "bg-white/10 hover:bg-white/20",
                       "whitespace-normal",
-                      "overflow-hidden"
+                      "overflow-hidden",
+                      { 'bg-white/20': selectedOption === index }
                     )}
                     onClick={() => handleAnswer(index)}
                   >
