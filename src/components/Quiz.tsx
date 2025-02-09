@@ -369,9 +369,9 @@ export const Quiz = () => {
                     className={cn(
                       "w-full text-left justify-start h-auto p-4",
                       "text-white border-white/20",
-                      "bg-white/10 hover:bg-white/20",
+                      "bg-white/10",
                       "whitespace-normal",
-                      "overflow-hidden",
+                      "overflow-hidden"
                     )}
                     onClick={() => handleAnswer(index)}
                   >
