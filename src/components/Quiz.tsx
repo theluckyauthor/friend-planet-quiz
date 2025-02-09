@@ -210,6 +210,7 @@ export const Quiz = () => {
   const [answers, setAnswers] = useState<(number | string)[]>([]);
   const [description, setDescription] = useState("");
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
   
   // Get data from URL if it exists (for direct comparison)
   const encodedData = searchParams.get('data');
@@ -255,12 +256,14 @@ export const Quiz = () => {
     newAnswers[currentQuestion] = answerIndex;
     setAnswers(newAnswers);
     setSelectedOption(answerIndex);
+    setIsButtonPressed(true);
 
     // Add a slight delay before moving to the next question
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedOption(null);
+        setIsButtonPressed(false);
       }
     }, 300); // 300ms delay for visual feedback
   };
@@ -368,7 +371,8 @@ export const Quiz = () => {
                       "text-white border-white/20",
                       "bg-white/10 hover:bg-white/20",
                       "whitespace-normal",
-                      "overflow-hidden"
+                      "overflow-hidden",
+                      { 'bg-white/20': isButtonPressed && selectedOption === index }
                     )}
                     onClick={() => handleAnswer(index)}
                   >
