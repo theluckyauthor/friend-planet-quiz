@@ -370,8 +370,12 @@ export const Quiz = () => {
                       "bg-transparent",
                       "hover:bg-transparent",
                       "active:bg-transparent",
+                      "focus:bg-transparent",
                       "whitespace-normal",
-                      "overflow-hidden"
+                      "overflow-hidden",
+                      "hover:text-white",
+                      "active:text-white",
+                      "focus:text-white"
                     )}
                     onClick={() => handleAnswer(index)}
                   >
