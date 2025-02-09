@@ -256,14 +256,12 @@ export const Quiz = () => {
     newAnswers[currentQuestion] = answerIndex;
     setAnswers(newAnswers);
     setSelectedOption(answerIndex);
-    setIsButtonPressed(true);
 
     // Add a slight delay before moving to the next question
     setTimeout(() => {
       if (currentQuestion < questions.length - 1) {
         setCurrentQuestion(currentQuestion + 1);
         setSelectedOption(null);
-        setIsButtonPressed(false);
       }
     }, 300); // 300ms delay for visual feedback
   };
@@ -371,9 +369,13 @@ export const Quiz = () => {
                       "text-white border-white/20",
                       "bg-white/10",
                       "whitespace-normal",
-                      "overflow-hidden"
+                      "overflow-hidden",
+                      { 'bg-white/20': selectedOption === index }
                     )}
-                    onClick={() => handleAnswer(index)}
+                    onClick={() => {
+                      handleAnswer(index);
+                      setSelectedOption(null);
+                    }}
                   >
                     {option}
                   </Button>
