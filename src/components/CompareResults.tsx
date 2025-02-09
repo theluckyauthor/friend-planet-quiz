@@ -152,68 +152,70 @@ export const CompareResults = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
       <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
-        <div className="text-center text-white mb-4">
-          <h2 className="text-xl font-bold">
-            {state.friendName} has invited you, {state.name}, to take this friendship quiz!
-          </h2>
-        </div>
+        <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
+          <div className="text-center text-white mb-4">
+            <h2 className="text-xl font-bold">
+              {state.friendName} has invited you, {state.name}, to take this friendship quiz!
+            </h2>
+          </div>
 
-        <div>
-          <PlanetComparison 
-            myPlanet={state.planetType}
-            friendPlanet={state.comparisonResult.planetType}
-            myName={state.name}
-            friendName={state.comparisonResult.name}
-            myDescription={state.description}
-            friendDescription={state.comparisonResult.description}
-          />
-        </div>
-        <div>
-          <PlanetComparison 
-            myPlanet={state.comparisonResult.planetType}
-            friendPlanet={state.planetType}
-            myName={state.comparisonResult.name}
-            friendName={state.name}
-            myDescription={state.comparisonResult.description}
-            friendDescription={state.description}
-          />
-        </div>
-        <div>
-          <CombinedResults 
-            planet1={state.planetType}
-            planet2={state.comparisonResult.planetType}
-          />
-        </div>
+          <div>
+            <PlanetComparison 
+              myPlanet={state.planetType}
+              friendPlanet={state.comparisonResult.planetType}
+              myName={state.name}
+              friendName={state.comparisonResult.name}
+              myDescription={state.description}
+              friendDescription={state.comparisonResult.description}
+            />
+          </div>
+          <div>
+            <PlanetComparison 
+              myPlanet={state.comparisonResult.planetType}
+              friendPlanet={state.planetType}
+              myName={state.comparisonResult.name}
+              friendName={state.name}
+              myDescription={state.comparisonResult.description}
+              friendDescription={state.description}
+            />
+          </div>
+          <div>
+            <CombinedResults 
+              planet1={state.planetType}
+              planet2={state.comparisonResult.planetType}
+            />
+          </div>
 
-        <div className="text-center text-white/40 text-sm mt-4">
-          https://planety-quiz.vercel.app/ ✨
-        </div>
+          <div className="text-center text-white/40 text-sm mt-4">
+            https://planety-quiz.vercel.app/ ✨
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <Button
-            onClick={() => navigate("/")}
-            className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
-          >
-            Take New Quiz
-          </Button>
-          <Button
-            onClick={handleDownloadImage}
-            className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
-          >
-            Download Results
-            <Download className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Button
+              onClick={() => navigate("/")}
+              className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
+            >
+              Take New Quiz
+            </Button>
+            <Button
+              onClick={handleDownloadImage}
+              className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
+            >
+              Download Results
+              <Download className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
 
-        <div className="text-center mt-4">
-          <a
-            href="https://forms.gle/f3vUAD96ADCarQjUA"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white underline hover:text-gray-300"
-          >
-            Give us your feedback!
-          </a>
+          <div className="text-center mt-4">
+            <a
+              href="https://forms.gle/f3vUAD96ADCarQjUA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white underline hover:text-gray-300"
+            >
+              Give us your feedback!
+            </a>
+          </div>
         </div>
       </Card>
     </div>
