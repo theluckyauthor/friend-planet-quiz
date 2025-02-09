@@ -372,7 +372,6 @@ export const Quiz = () => {
                       "bg-white/10 hover:bg-white/20",
                       "whitespace-normal",
                       "overflow-hidden",
-                      { 'bg-white/20': isButtonPressed && selectedOption === index }
                     )}
                     onClick={() => handleAnswer(index)}
                   >
