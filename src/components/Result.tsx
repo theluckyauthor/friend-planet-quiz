@@ -127,7 +127,7 @@ export const Result = () => {
       });
 
       const canvas = await html2canvas(resultsRef.current, {
-        backgroundColor: #6b5b9a,
+        backgroundColor: '#6b5b9a',
         scale: 2,
         logging: false,
         useCORS: true,
