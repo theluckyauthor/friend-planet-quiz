@@ -368,8 +368,7 @@ export const Quiz = () => {
                       "text-white border-white/20",
                       "bg-white/10 hover:bg-white/20",
                       "whitespace-normal",
-                      "overflow-hidden",
-                      { 'bg-white/20': selectedOption === index }
+                      "overflow-hidden"
                     )}
                     onClick={() => handleAnswer(index)}
                   >
