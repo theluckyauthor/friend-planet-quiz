@@ -262,20 +262,6 @@ export const Quiz = () => {
     }, 300); // 300ms delay for visual feedback
   };
 
-
-  const handleNextQuestion = () => {
-    // Reset the selected answer when moving to the next question
-    setAnswers([]);
-
-    // Proceed to the next question
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      // Handle quiz completion
-      handleDescriptionSubmit();
-    }
-  };
-
   const handleDescriptionSubmit = () => {
     // Ensure we have all required answers
     if (answers.length < questions.length - 1) {
@@ -378,7 +364,6 @@ export const Quiz = () => {
                       "w-full text-left justify-start h-auto p-4",
                       "text-white border-white/20",
                       "bg-white/10 hover:bg-white/20",
-                      "transition-all duration-200",
                       "whitespace-normal",
                       "overflow-hidden"
                     )}

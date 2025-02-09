@@ -120,7 +120,7 @@ export const CompareResults = () => {
       });
 
       const canvas = await html2canvas(resultsRef.current, {
-        backgroundColor: null,
+        backgroundColor: "#6b5b9a",
         scale: 2,
         logging: false,
         useCORS: true,
