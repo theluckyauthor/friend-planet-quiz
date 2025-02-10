@@ -12,8 +12,7 @@ import Glossary from "./components/Glossary";
 import About from "./components/About";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Analytics } from '@vercel/analytics/next';
-
+import { Analytics } from "@vercel/analytics/react"
 
 const queryClient = new QueryClient();
 
