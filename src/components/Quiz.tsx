@@ -376,8 +376,8 @@ export const Quiz = () => {
   const currentQ = questions[currentQuestion];
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-2xl p-8 space-y-8 bg-black/30 backdrop-blur-lg border-white/10 overflow-hidden">
+    <div className="cosmic-bg flex items-center justify-center p-4">
+      <Card className="cosmic-card w-full max-w-2xl p-8 space-y-8 overflow-hidden">
         {/* Display invitation message if it's a comparison quiz */}
         {isComparisonQuiz && (
           <div className="text-center text-white mb-4">
@@ -406,7 +406,7 @@ export const Quiz = () => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   maxLength={50}
-                  className="min-h-[100px] w-full max-w-lg bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                  className="min-h-[100px] w-full max-w-lg bg-white/5 border-white/20 text-white placeholder:text-white/50"
                 />
               </div>
             ) : (
@@ -418,10 +418,10 @@ export const Quiz = () => {
                     className={cn(
                       "w-full text-left justify-start h-auto p-4",
                       "text-white border-white/20",
-                      "bg-transparent",
-                      "hover:bg-transparent",
-                      "active:bg-transparent",
-                      "focus:bg-transparent",
+                      "bg-white/5",
+                      "hover:bg-white/10",
+                      "active:bg-white/10",
+                      "focus:bg-white/10",
                       "whitespace-normal",
                       "break-words",
                       "hover:text-white",
@@ -442,7 +442,7 @@ export const Quiz = () => {
           {currentQ.isOpenEnded && (
             <Button
               onClick={handleDescriptionSubmit}
-              className="w-full bg-white/10 hover:bg-white/20 text-white border-white/20"
+              className="w-full bg-slate-100 text-slate-900 hover:bg-slate-200"
               disabled={!description.trim()}
             >
               Complete Quiz

@@ -73,19 +73,19 @@ export const WelcomeScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black overflow-hidden relative">
+    <div className="cosmic-bg flex flex-col items-center justify-center p-4 overflow-hidden relative">
       {/* Animated stars background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="stars absolute inset-0" />
         <div className="twinkling absolute inset-0" />
       </div>
       
-      <div className="glass-card w-full max-w-md p-8 space-y-8 relative z-10">
+      <div className="cosmic-card w-full max-w-md p-8 space-y-8 relative z-10">
         <div className="space-y-2 text-center">
           <div className="flex justify-center mb-4">
-            <Stars className="w-12 h-12 text-primary animate-pulse" />
+            <Stars className="w-12 h-12 text-cyan-300/90 animate-pulse" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tighter bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-100">
             Friend Planet Quiz
           </h1>
           {comparisonData ? (
@@ -106,19 +106,16 @@ export const WelcomeScreen = () => {
 
         {comparisonData ? (
           <div className="space-y-4">
-            <Button 
+            <Button
               onClick={handleNewQuiz}
-              className="w-full bg-primary hover:bg-primary/90 text-white group relative overflow-hidden"
+              className="w-full bg-slate-100 text-slate-900 hover:bg-slate-200"
             >
-              <span className="relative z-10">
-                Take New Quiz with Another Friend
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              Take New Quiz with Another Friend
             </Button>
             <Button 
               onClick={handleViewComparison}
               variant="outline"
-              className="w-full bg-white/10 hover:bg-white/20 text-white"
+              className="w-full border border-white/20 bg-white/5 hover:bg-white/10 text-white"
             >
               View Friendship Comparison
             </Button>
@@ -134,7 +131,7 @@ export const WelcomeScreen = () => {
                 onChange={(e) => setUserName(e.target.value)}
                 placeholder="Enter your name"
                 required
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                className="bg-white/5 border-white/20 text-white placeholder:text-white/50"
               />
             </div>
             <div className="space-y-2">
@@ -146,18 +143,15 @@ export const WelcomeScreen = () => {
                 onChange={(e) => setFriendName(e.target.value)}
                 placeholder="Enter your friend's name"
                 required
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                className="bg-white/5 border-white/20 text-white placeholder:text-white/50"
                 disabled={!!comparisonData}
               />
             </div>
-            <Button 
+            <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded"
+              className="w-full bg-slate-100 text-slate-900 hover:bg-slate-200"
             >
-              <span className="relative z-10">
-                {comparisonData ? "Start Comparison Quiz" : "Start Quiz"}
-              </span>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              {comparisonData ? "Start Comparison Quiz" : "Start Quiz"}
             </Button>
           </form>
         )}
@@ -166,13 +160,13 @@ export const WelcomeScreen = () => {
         <div className="mt-4 w-full flex justify-between">
           <Button 
             onClick={handleGoToGlossary} 
-            className="w-full text-white group relative overflow-hidden rounded mr-2"
+            className="w-full rounded mr-2 border border-white/20 bg-white/5 text-white hover:bg-white/10"
           >
             Glossary
           </Button>
           <Button 
             onClick={handleGoToAbout} 
-            className="w-full text-white group relative overflow-hidden rounded ml-2"
+            className="w-full rounded ml-2 border border-white/20 bg-white/5 text-white hover:bg-white/10"
           >
             About
           </Button>

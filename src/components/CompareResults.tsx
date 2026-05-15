@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Share2, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { PlanetType } from "@/utils/analytics";
 import { planetData } from "@/utils/planetData";
 import html2canvas from "html2canvas";
@@ -120,7 +120,7 @@ export const CompareResults = () => {
       });
 
       const canvas = await html2canvas(resultsRef.current, {
-        backgroundColor: "#6b5b9a",
+        backgroundColor: "#0f172a",
         scale: 2,
         logging: false,
         useCORS: true,
@@ -150,8 +150,8 @@ export const CompareResults = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
+    <div className="cosmic-bg flex items-center justify-center p-4">
+      <Card className="cosmic-card w-full max-w-2xl p-8 space-y-8">
         <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
           <div className="text-center text-white mb-4">
             <h2 className="text-xl font-bold">
@@ -193,13 +193,13 @@ export const CompareResults = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button
               onClick={() => navigate("/")}
-              className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
+              className="border border-white/20 bg-white/5 hover:bg-white/10 text-white w-full sm:w-auto"
             >
               Take New Quiz
             </Button>
             <Button
               onClick={handleDownloadImage}
-              className="bg-white/10 hover:bg-white/20 text-white w-full sm:w-auto"
+              className="bg-slate-100 text-slate-900 hover:bg-slate-200 w-full sm:w-auto"
             >
               Download Results
               <Download className="ml-2 h-4 w-4" />

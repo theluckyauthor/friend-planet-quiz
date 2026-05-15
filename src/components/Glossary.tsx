@@ -16,13 +16,13 @@ const Glossary = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <h2 className="text-2xl font-bold text-white mb-4">Explore Your Planet Types</h2>
+    <div className="cosmic-bg flex flex-col items-center justify-center p-4">
+      <h2 className="text-2xl font-bold text-slate-100 mb-4">Explore Your Planet Types</h2>
 
       {/* Carousel for planet information */}
       <Slider {...settings} className="w-full max-w-2xl">
         {Object.keys(planetData).map((planet) => (
-          <Card key={planet} className="bg-white/10 p-6 rounded-lg shadow-lg text-white text-center">
+          <Card key={planet} className="cosmic-card p-6 text-white text-center">
             <div className="text-6xl mb-2">
               {planetData[planet as keyof typeof planetData].emoji}
             </div>
@@ -42,7 +42,7 @@ const Glossary = () => {
       {/* Back to Home Button */}
       <button 
         onClick={() => navigate("/")} 
-        className="mt-6 w-full max-w-2xl bg-primary hover:bg-primary/90 text-white p-2 rounded"
+        className="mt-6 w-full max-w-2xl bg-slate-100 hover:bg-slate-200 text-slate-900 p-2 rounded"
       >
         Back to Home
       </button>

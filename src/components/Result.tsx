@@ -127,7 +127,7 @@ export const Result = () => {
       });
 
       const canvas = await html2canvas(resultsRef.current, {
-        backgroundColor: '#6b5b9a',
+        backgroundColor: '#0f172a',
         scale: 2,
         logging: false,
         useCORS: true,
@@ -155,8 +155,8 @@ export const Result = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-b from-purple-900 to-black">
-      <Card className="glass-card w-full max-w-2xl p-8 space-y-8">
+    <div className="cosmic-bg flex items-center justify-center p-4">
+      <Card className="cosmic-card w-full max-w-2xl p-8 space-y-8">
         <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
           <div className="space-y-4 text-center">
             <div className="floating inline-block">
@@ -216,7 +216,7 @@ export const Result = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button
               onClick={handleShare}
-              className="bg-white/10 hover:bg-white/20 text-white"
+              className="border border-white/20 bg-white/5 hover:bg-white/10 text-white"
               variant="outline"
             >
               <Share2 className="mr-2 h-4 w-4" />
@@ -224,14 +224,14 @@ export const Result = () => {
             </Button>
             <Button
               onClick={handleDownloadImage}
-              className="bg-white/10 hover:bg-white/20 text-white"
+              className="bg-slate-100 text-slate-900 hover:bg-slate-200"
             >
               <Download className="mr-2 h-4 w-4" />
               Download Result
             </Button>
             <Button
               onClick={handleRetake}
-              className="bg-white/10 hover:bg-white/20 text-white"
+              className="border border-white/20 bg-white/5 hover:bg-white/10 text-white"
             >
               Retake Quiz
             </Button>
@@ -255,7 +255,6 @@ export const Result = () => {
               </p>
               <div 
                 className="p-3 bg-white/5 rounded border border-white/10 text-white/90 text-sm break-all cursor-text"
-                onClick={(e) => e.currentTarget.select()}
               >
                 {`${window.location.origin}/compare?data=${btoa(JSON.stringify({
                   n: name,

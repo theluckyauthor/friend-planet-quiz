@@ -10,19 +10,19 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 262 80% 75%;
+    --primary: 199 74% 62%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 262 60% 54%;
+    --secondary: 210 34% 36%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 262 40% 96.1%;
+    --accent: 199 38% 94%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262 80% 75%;
+    --ring: 199 74% 62%;
     --radius: 1rem;
   }
 }
@@ -39,7 +39,15 @@
 
 /* Custom animations and styles */
 .glass-card {
-  @apply bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl border border-white border-opacity-20 shadow-xl;
+  @apply rounded-2xl border border-white/15 bg-slate-900/55 backdrop-blur-lg shadow-2xl shadow-slate-950/35;
+}
+
+.cosmic-bg {
+  @apply min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950;
+}
+
+.cosmic-card {
+  @apply rounded-2xl border border-white/15 bg-slate-900/55 backdrop-blur-lg shadow-2xl shadow-slate-950/35;
 }
 
 .stars {
