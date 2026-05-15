@@ -202,6 +202,57 @@ function generateUID(): string {
   return Math.random().toString(36).substring(2) + Date.now().toString(36);
 }
 
+function stripEmoji(text: string): string {
+  return text
+    .replace(/[\p{Extended_Pictographic}\uFE0F\u200D\u2640-\u2642]/gu, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+const HIGHLIGHT_KEYWORDS = new Set([
+  "deep",
+  "deeply",
+  "emotional",
+  "support",
+  "honestly",
+  "adventure",
+  "adventures",
+  "trust",
+  "connected",
+  "constant",
+  "reliable",
+  "meaningful",
+  "lifelong",
+  "creative",
+  "openly",
+  "always",
+  "core",
+  "future",
+  "evolve",
+  "stronger",
+  "bond",
+  "bonding",
+]);
+
+function renderOptionWithHighlights(option: string) {
+  const cleanedOption = stripEmoji(option);
+  const tokens = cleanedOption.split(/(\s+)/);
+
+  return tokens.map((token, index) => {
+    const normalized = token.toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "");
+    const shouldHighlight = HIGHLIGHT_KEYWORDS.has(normalized);
+
+    return (
+      <span
+        key={`${token}-${index}`}
+        className={shouldHighlight ? "font-semibold italic text-slate-100" : "text-white/90"}
+      >
+        {token}
+      </span>
+    );
+  });
+}
+
 export const Quiz = () => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -372,14 +423,16 @@ export const Quiz = () => {
                       "active:bg-transparent",
                       "focus:bg-transparent",
                       "whitespace-normal",
-                      "overflow-hidden",
+                      "break-words",
                       "hover:text-white",
                       "active:text-white",
                       "focus:text-white"
                     )}
                     onClick={() => handleAnswer(index)}
                   >
-                    {option}
+                    <span className="whitespace-normal break-words leading-relaxed">
+                      {renderOptionWithHighlights(option)}
+                    </span>
                   </Button>
                 ))}
               </div>
