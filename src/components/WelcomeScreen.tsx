@@ -75,9 +75,16 @@ export const WelcomeScreen = () => {
   return (
     <div className="cosmic-bg flex flex-col items-center justify-center p-4 overflow-hidden relative">
       {/* Animated stars background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-0">
         <div className="stars absolute inset-0" />
         <div className="twinkling absolute inset-0" />
+        <div className="nebula-layer nebula-layer-1" />
+        <div className="nebula-layer nebula-layer-2" />
+        <div className="nebula-layer nebula-layer-3" />
+        <div className="nebula-cloud nebula-cloud-a" />
+        <div className="nebula-cloud nebula-cloud-b" />
+        <div className="nebula-cloud nebula-cloud-c" />
+        <div className="nebula-vignette" />
       </div>
       
       <div className="cosmic-card w-full max-w-md p-8 space-y-8 relative z-10">
@@ -94,7 +101,7 @@ export const WelcomeScreen = () => {
                 <span className="font-semibold text-primary">{comparisonData.n}</span> has invited you, <span className="font-semibold text-primary">{userName}</span>, to take this friendship test!
               </p>
               <p className="text-white/60 text-sm">
-                Take the quiz to see how your views of the friendship align ✨
+                Take the quiz to see how your views of the friendship align.
               </p>
             </div>
           ) : (

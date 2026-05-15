@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import { planetData } from "@/utils/planetData";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { PlanetIllustration } from "@/components/ui/planet-illustration";
+import { PlanetType } from "@/utils/analytics";
 
 const Glossary = () => {
   const navigate = useNavigate();
@@ -23,8 +25,8 @@ const Glossary = () => {
       <Slider {...settings} className="w-full max-w-2xl">
         {Object.keys(planetData).map((planet) => (
           <Card key={planet} className="cosmic-card p-6 text-white text-center">
-            <div className="text-6xl mb-2">
-              {planetData[planet as keyof typeof planetData].emoji}
+            <div className="mb-3">
+              <PlanetIllustration planet={planet as PlanetType} size="lg" />
             </div>
             <h2 className="text-2xl font-semibold">
               {planetData[planet as keyof typeof planetData].title}

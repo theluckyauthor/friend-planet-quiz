@@ -9,6 +9,7 @@ import { trackQuizStart, trackQuizCompletion } from "@/utils/analytics";
 import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { Sparkles } from "lucide-react";
 
 const questions = [
   {
@@ -430,8 +431,11 @@ export const Quiz = () => {
                     )}
                     onClick={() => handleAnswer(index)}
                   >
-                    <span className="whitespace-normal break-words leading-relaxed">
-                      {renderOptionWithHighlights(option)}
+                    <span className="inline-flex items-start gap-2 whitespace-normal break-words leading-relaxed">
+                      <span className="mt-0.5 shrink-0 rounded-full bg-cyan-200/20 p-1">
+                        <Sparkles className="h-3.5 w-3.5 text-cyan-200" />
+                      </span>
+                      <span>{renderOptionWithHighlights(option)}</span>
                     </span>
                   </Button>
                 ))}

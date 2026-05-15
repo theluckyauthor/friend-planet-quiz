@@ -8,6 +8,7 @@ import React from "react";
 import { toast } from "@/components/ui/use-toast";
 import { planetData } from "@/utils/planetData";
 import html2canvas from "html2canvas";
+import { PlanetIllustration } from "@/components/ui/planet-illustration";
 
 interface ComparisonProps {
   myPlanet: PlanetType;
@@ -28,16 +29,12 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
       <h2 className="text-2xl font-bold text-white">Friendship Dynamic</h2>
       <div className="flex justify-center gap-8">
         <div className="floating">
-          <div className="text-6xl mb-2">
-            {planetData[myPlanet].emoji}
-          </div>
+          <PlanetIllustration planet={myPlanet} size="md" className="mx-auto mb-2" />
           <p className="text-white mt-2">{myName}</p>
           <p className="text-white/80 italic text-sm mt-2">"{myDescription}"</p>
         </div>
         <div className="floating delay-75">
-          <div className="text-6xl mb-2">
-            {planetData[friendPlanet].emoji}
-          </div>
+          <PlanetIllustration planet={friendPlanet} size="md" className="mx-auto mb-2" />
           <p className="text-white mt-2">{friendName}</p>
           <p className="text-white/80 italic text-sm mt-2">"{friendDescription}"</p>
         </div>
@@ -82,7 +79,7 @@ export const Result = () => {
       const shareUrl = `https://planety-quiz.vercel.app/compare?data=${encodedData}`;
       
       // Create share text
-      const shareText = `${name} wants to compare your friendship! Take the quiz and see how your views match. 🌟`;
+      const shareText = `${name} wants to compare your friendship! Take the quiz and see how your views match.`;
       
       // Try native share first
       if (navigator.share) {
@@ -123,7 +120,7 @@ export const Result = () => {
     try {
       toast({
         title: "Creating your cosmic snapshot...",
-        description: "Please wait while we capture your results ✨",
+        description: "Please wait while we capture your results.",
       });
 
       const canvas = await html2canvas(resultsRef.current, {
@@ -142,7 +139,7 @@ export const Result = () => {
 
       toast({
         title: "Success!",
-        description: "Your cosmic friendship snapshot is ready to share! ✨",
+        description: "Your cosmic friendship snapshot is ready to share.",
       });
     } catch (error) {
       console.error("Screenshot failed:", error);
@@ -160,9 +157,7 @@ export const Result = () => {
         <div ref={resultsRef} className="space-y-8 p-8 rounded-lg">
           <div className="space-y-4 text-center">
             <div className="floating inline-block">
-              <div className="text-8xl mb-4">
-                {planetData[planetType as keyof typeof planetData].emoji}
-              </div>
+              <PlanetIllustration planet={planetType as PlanetType} size="lg" className="mx-auto mb-4" />
             </div>
             <div className="space-y-2">
               <p className="text-xl text-white/80">
@@ -195,7 +190,7 @@ export const Result = () => {
             </div>
             
             <p className="text-center text-white/80 italic">
-              💫 {planetData[planetType as keyof typeof planetData].nurture}
+              Nurture tip: {planetData[planetType as keyof typeof planetData].nurture}
             </p>
           </div>
 
@@ -208,7 +203,7 @@ export const Result = () => {
 
           {/* Add watermark */}
           <div className="text-center text-white/40 text-sm mt-4">
-            https://planety-quiz.vercel.app/ ✨
+            https://planety-quiz.vercel.app/
           </div>
         </div>
 

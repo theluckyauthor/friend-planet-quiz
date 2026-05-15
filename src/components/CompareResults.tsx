@@ -8,6 +8,7 @@ import { planetData } from "@/utils/planetData";
 import html2canvas from "html2canvas";
 import { toast } from "@/components/ui/use-toast";
 import { combinations } from "@/utils/planetData"; // Import combinations
+import { PlanetIllustration } from "@/components/ui/planet-illustration";
 
 interface ComparisonResultProps {
   resultId: string;
@@ -32,15 +33,12 @@ const PlanetComparison = ({ myPlanet, friendPlanet, myName, friendName, myDescri
   friendDescription: string;
 }) => {
   const myPlanetInfo = planetData[myPlanet];
-  const friendPlanetInfo = planetData[friendPlanet];
 
   return (
     <div className="space-y-6 text-center">
       <h2 className="text-2xl font-bold text-white">{myName}'s View</h2>
       <div className="floating">
-        <div className="text-8xl mb-4">
-          {myPlanetInfo.emoji}
-        </div>
+        <PlanetIllustration planet={myPlanet} size="lg" className="mx-auto mb-4" />
         <h2 className="text-xl text-white">
           {myPlanetInfo.title}
         </h2>
@@ -64,7 +62,7 @@ const CombinedResults = ({ planet1, planet2 }) => {
     const combination = combinations[first]?.[second] || combinations[second]?.[first];
         return combination 
         ? ` ${combination.tip}` 
-        : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - Keep working on your frienship!`;
+        : "Cosmic Connection - Keep working on your friendship!";
   };
   const getCombinedFlavor = (planet1: string, planet2: string) => {
     const [first, second] = [planet1, planet2].sort();
@@ -75,11 +73,9 @@ const CombinedResults = ({ planet1, planet2 }) => {
     // Return the combination description if it exists, otherwise return the default message
     return combination 
         ? `${combination.description}` 
-        : `Cosmic Connection ${planetData[planet1].emoji}${planetData[planet2].emoji} - A unique bond that transcends celestial boundaries!`;
+        : "Cosmic Connection - A unique bond that transcends celestial boundaries!";
   };
 
-  const planet1Info = planetData[planet1];
-  const planet2Info = planetData[planet2];
 
   return (
     <div className="space-y-4 text-center mt-8">
@@ -116,7 +112,7 @@ export const CompareResults = () => {
     try {
       toast({
         title: "Creating your cosmic snapshot...",
-        description: "Please wait while we capture your results ✨",
+        description: "Please wait while we capture your results.",
       });
 
       const canvas = await html2canvas(resultsRef.current, {
@@ -137,7 +133,7 @@ export const CompareResults = () => {
 
       toast({
         title: "Success!",
-        description: "Your cosmic friendship comparison snapshot is ready to share! ✨",
+        description: "Your cosmic friendship comparison snapshot is ready to share.",
       });
     } catch (error) {
       console.error("Screenshot failed:", error);
@@ -187,7 +183,7 @@ export const CompareResults = () => {
           </div>
 
           <div className="text-center text-white/40 text-sm mt-4">
-            https://planety-quiz.vercel.app/ ✨
+            https://planety-quiz.vercel.app/
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
